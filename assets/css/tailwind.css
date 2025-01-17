@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.center {
+  @apply flex justify-center items-center;
+}
+.side_padding {
+  @apply px-6 sm:px-14 md:px-16 lg:px-20 xl:px-24;
+}
+.section_padding {
+  @apply xl:py-20 md:py-14 py-8;
+}

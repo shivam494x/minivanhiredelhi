@@ -1,0 +1,15 @@
+:root {
+  --primary-color: #ff9000;
+  --secondary-color: #14181c;
+}
+
+section#hero {
+  max-width: 100vw;
+  width: 100%;
+  height: 100vh;
+  max-height: calc(100vh - 4rem);
+}
+
+.router-link-active {
+  color: var(--primary-color);
+}
