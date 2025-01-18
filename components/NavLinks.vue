@@ -1,15 +1,18 @@
 <template>
   <ul
-    class="flex md:space-x-5 text-3xl md:text-base font-normal md:border border-gray-400 flex-col md:flex-row items-center h-full text-white md:font-semibold capitalize px-6 rounded-lg"
+    class="flex text-3xl md:text-base font-normal flex-col md:flex-row items-center h-full md:font-semibold capitalize"
   >
     <li
       v-for="({ name, path, sub }, index) in nav_links"
       :key="`${name}/${index}`"
-      class="relative md:h-full flex md:items-center items-end w-full group md:w-auto h-16 justify-end md:justify-center border-b md:border-b-0 border-pri px-2 py-0.5"
+      class="relative md:h-full flex md:items-center items-end w-full group md:w-auto justify-end md:justify-center border-b md:border-b-0 border-pri"
       @mouseenter="setActiveIndexWithDelay(index)"
       @mouseleave="resetActiveIndexWithDelay"
     >
-      <NuxtLink :to="path" class="relative center space-x-1 ">
+      <NuxtLink
+        :to="path"
+        class="relative center space-x-1 md:px-6 md:py-5 py-2.5 px-3"
+      >
         <span>{{ name }}</span>
         <Icon
           v-if="sub"
@@ -23,30 +26,34 @@
         v-if="sub && activeIndex === index"
         class="absolute top-[100%] left-0"
       >
-        <ul class="border w-max">
+        <ul class="w-max bg-offWhite text-secondary font-normal">
           <li
             v-for="({ name, path: subpath, sub: l1sub }, subIndex) in sub"
             :key="`${name}/${subIndex}`"
-            class="relative px-4 py-2 border-b w-full"
+            class="relative border-b w-full"
             @mouseenter="setSubActiveIndexWithDelay(subIndex)"
             @mouseleave="resetSubActiveIndexWithDelay"
           >
-            <NuxtLink :to="`${path}/${subpath}`">{{ name }}</NuxtLink>
+            <NuxtLink :to="`${path}/${subpath}`" class="px-4 py-2">{{
+              name
+            }}</NuxtLink>
 
             <!-- Level 2 Nest -->
             <div
               v-if="l1sub && subActiveIndex == subIndex"
               class="absolute top-0 right-full"
             >
-              <ul class="border w-max">
+              <ul class="bg-offWhite w-max">
                 <li
                   v-for="({ name, path: subsubpath }, subSubIndex) in l1sub"
                   :key="`${name}${subSubIndex}`"
-                  class="px-4 py-2 border-b relative"
+                  class="border-b relative"
                 >
-                  <NuxtLink :to="`${path}${subpath}${subsubpath}`">{{
-                    name
-                  }}</NuxtLink>
+                  <NuxtLink
+                    :to="`${path}${subpath}${subsubpath}`"
+                    class="px-4 py-2"
+                    >{{ name }}</NuxtLink
+                  >
                 </li>
               </ul>
             </div>
@@ -60,40 +67,32 @@
 ul > li a {
   position: relative;
   display: inline-block;
-  transition: filter 150ms ease-in-out;
+  transition: all 150ms var(--ease);
 }
 
-ul > li > a::before,
-ul li div li::before {
+ul > li > a::before {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 1px;
-  background-color: var(--primary-color);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 150ms ease-in-out;
-  z-index: 1;
-}
-ul li div li::before {
-  right: 0;
   height: 100%;
-  transform: scaleX(0);
-  transform-origin: right;
-  z-index: -10;
-}
-ul > li > a:hover::before,
-ul li div li:hover:before {
-  transform: scaleX(1);
+  background-color: var(--primary-color);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 200ms var(--ease);
+  z-index: -1;
 }
 
-ul > li ul li > a {
-  position: relative;
-  display: inline-flex;
-  transition: filter 150ms ease-in-out;
+
+
+ul > li > a:hover::before{
+  transform: scaleY(1);
 }
+ul li a:hover {
+  color: white;
+}
+
 
 ul > li ul li > a:hover::before {
   transform: scaleX(1);
@@ -255,6 +254,6 @@ onMounted(() => {
     const element = document.querySelectorAll(".nav-links > ul > li");
     animateSocialelements(element);
   }
-  animate_nav_links();
+  // animate_nav_links();
 });
 </script>

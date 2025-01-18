@@ -24,7 +24,7 @@
   height: 100%;
   transform: scaleY(0);
   transform-origin: bottom;
-  transition: transform 150ms ease-in-out;
+  transition: transform 150ms var(--ease);;
 }
 a#custom_btn_1.without_border::before {
   background-color: var(--secondary-color);

@@ -1,11 +1,6 @@
 <template>
-  <header class="z-50 relative text-white">
-    <nav class="left-0 w-full navbar py-8 side_padding flex justify-between">
-      <div class="logo">
-        <div class="">
-          <NuxtImg class="h-12" src="/img/logo.png" />
-        </div>
-      </div>
+  <div class="z-50 relative text-black bg-offWhite">
+    <nav class=" w-full navbar side_padding flex justify-end">
       <div
         class="hamburger-btn md:hidden h-full w-8 my-auto"
         @click="isOpen = true"
@@ -45,7 +40,7 @@
         <NavLinks />
       </div>
     </nav>
-  </header>
+  </div>
 </template>
 
 <script setup>

@@ -149,9 +149,9 @@ const sections = [
   {
     title: "Contact Us",
     links: [
-      { text: "Email: john@doe.com", url: "/" },
+      { text: "Email: example@gmail.com", url: "/" },
       { text: "Phone: 0123456789", url: "/" },
-      { text: "Address: 213 Lane, London, UK", url: "/" },
+      { text: "somewhere in noida i think", url: "/" },
     ],
   },
 ];

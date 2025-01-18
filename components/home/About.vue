@@ -1,6 +1,6 @@
 <template>
   <div
-    class="continer side_padding xl:py-20 md:py-14 py-8 bg-secondary text-white"
+    class="container side_padding xl:py-20 md:py-14 py-8 bg-secondary text-white"
   >
     <div
       class="grid lg:grid-cols-2 lg:grid-rows-1 grid-rows-6 md:grid-rows-2 gap-4 lg:p-2"

@@ -1,0 +1,13 @@
+  <div class="social-links hidden md:block">
+          <ul class="flex space-x-2 h-full items-center">
+            <li
+              v-for="(link, index) in links"
+              :key="index"
+              class="invert w-7 lg:w-10 p-1 transition-opacity duration-150"
+            >
+              <a :href="link.href"
+                ><NuxtImg :src="link.svg" class="w-full" />
+              </a>
+            </li>
+          </ul>
+        </div>

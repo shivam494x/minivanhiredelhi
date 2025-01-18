@@ -1,8 +1,10 @@
 <template>
-  <div class="continer side_padding section_padding bg-secondary text-white">
-    <div class="xlspace-y-12 md:space-y-10 space-y-4">
+  <div class="container side_padding section_padding bg-white text-secondary">
+    <div class="xl:space-y-12 md:space-y-10 space-y-4">
       <div class="headinngs capitalize center flex-col md:space-y-2">
-        <h5 class="text-base md:text-lg tracking-wide center">come with us</h5>
+        <h5 class="text-base md:text-lg tracking-wide center text-pri">
+          come with us
+        </h5>
         <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">
           hot offers
         </h2>
@@ -38,18 +40,16 @@
               type,
             } in filteredVehicles"
             :key="name"
-            class="border-2 border-[#5f5f5f96] max-w-96"
+            class="border-2 border-[#c5c7ce96] max-w-96"
             :data-type="type"
           >
-            <div class="grid grid-rows-4 md:grid-rows-9 h-full pt-4">
-              <div class="w-full object-fill center row-span-4 px-4">
+            <div class="grid h-full vehicle-wrapper md:px-8 md:py-4 py-2 px-4">
+              <div class="w-full object-fill center px-4">
                 <NuxtImg :src="`/img/about/${img}`" class="max-h-full" />
               </div>
-              <div
-                class="center flex-col gap-2 p-0 md:p-4 xl:px-8 row-span-5 space-y-2"
-              >
+              <div class="center flex-col gap-2 space-y-2">
                 <div>
-                  <h2 class="text-3xl tracking-tighter capitalize">
+                  <h2 class="text-2xl tracking-wide capitalize font-medium">
                     {{ name }}
                   </h2>
                 </div>
@@ -58,7 +58,7 @@
                   <span class="text-pri">/Day</span>
                 </div>
                 <div
-                  class="center space-x-1 details justify-between text-sm text-slate-300 tracking-wide"
+                  class="center space-x-1 details justify-between text-sm text-slate-600 tracking-wide"
                 >
                   <div>
                     <span>
@@ -80,17 +80,9 @@
                   </div>
                 </div>
                 <div class="btns w-full">
-                  <div class="grid grid-cols-2 border border-pri">
-                    <UtilityButton1
-                      class="capitalize w-full py-2 px-6"
-                      title="read more"
-                      :border="false"
-                    />
-                    <UtilityButton1
-                      class="capitalize w-full py-2 px-6"
-                      title="hire now"
-                      :border="true"
-                    />
+                  <div class="grid grid-cols-2 border">
+                    <NuxtLink class="before">rent now</NuxtLink>
+                    <NuxtLink class="before">Details</NuxtLink>
                   </div>
                 </div>
               </div>
@@ -113,9 +105,13 @@
   background-color: var(--primary-color);
   transform: scaleY(0);
   transform-origin: bottom;
-  transition: transform 140ms ease-out;
+  transition: transform 140ms var(--ease);;
   z-index: 0;
 }
+.categories > ul > li.active {
+  color: white;
+}
+
 .categories > ul > li.active::before,
 .categories > ul > li:hover::before {
   transform: scaleY(1);
@@ -128,6 +124,35 @@
 }
 .vehicles li .details > div span {
   margin: 0 2px;
+}
+.vehicle-wrapper {
+  height: 25rem;
+  grid-template-rows: 1fr 1.4fr;
+}
+.btns > .grid a {
+  text-transform: capitalize;
+  height: 2.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  color: var(--offWhite-color);
+  z-index: 1;
+}
+.btns > .grid a:first-child:before {
+  background-color: var(--secondary-color);
+}
+.btns > .grid a:last-child:before {
+  background-color: var(--primary-color);
+}
+.btns > .grid a:hover:before {
+  transform: scaleY(0);
+  
+}
+.btns > .grid a:hover {
+  color: var(--secondary-color);
 }
 </style>
 <script setup>

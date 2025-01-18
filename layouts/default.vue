@@ -1,34 +1,15 @@
 <template>
-  <div class="text-white overflow-visible relative max-h-20 h-16">
-    <div class="info overflow-y-visible">
+  <header class="text-white  overflow-hidden relative">
+    <div
+      class="absolute hidden top-0 left-0 -translate-x-1/2 w-3/5 h-[70%] lg:block bg-pri z-10 skew-x-[45deg]"
+    ></div>
+    <div class="info">
       <div
-        class="absolute -left-20 -top-5 w-[70%] sm:w-[50%] md:w-[40%] lg:w-[35%] 2xl:w-[30%] h-[150%] bg-pri z-10 skew-x-[45deg]"
-      ></div>
-      <div
-        class="flex justify-between items-center px-3 sm:px-4 md:px-8 lg:px-10 xl:px-14 lg:py-3 py-1 bg-secondary mb-4 h-16 text-sm md:text-base"
+        class="flex justify-between items-center side_padding lg:py-4 py-1 bg-secondary text-sm md:text-base"
       >
-        <div class="contact flex z-10 space-x-1">
-          <div class="flex items-end flex-col">
-            Need help?
-            <div class="flex justify-between w-full items-center">
-              <span
-                class="center aspect-square h-4 lg:h-6 lg:p-[3px] p-[2px] xl:mx-2 rounded-full bg-white"
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  class="h-full"
-                >
-                  <path
-                    fill="#FF9000"
-                    d="M21.384,17.752a2.108,2.108,0,0,1-.522,3.359,7.543,7.543,0,0,1-5.476.642C10.5,20.523,3.477,13.5,2.247,8.614a7.543,7.543,0,0,1,.642-5.476,2.108,2.108,0,0,1,3.359-.522L8.333,4.7a2.094,2.094,0,0,1,.445,2.328A3.877,3.877,0,0,1,8,8.2c-2.384,2.384,5.417,10.185,7.8,7.8a3.877,3.877,0,0,1,1.173-.781,2.092,2.092,0,0,1,2.328.445Z"
-                  />
-                </svg>
-              </span>
-              call us:
-            </div>
-          </div>
-          <div class="flex space-x-2 items-end flex-col">
-            <span>9999317846</span><span>9810817846</span>
+        <div class="logo z-10">
+          <div class="">
+            <NuxtImg class="h-12" src="/img/logo.png" />
           </div>
         </div>
         <div class="location_timing space-x-4 hidden lg:flex">
@@ -73,26 +54,43 @@
             </div>
           </div>
         </div>
-        <div class="social-links hidden md:block">
-          <ul class="flex space-x-2 h-full items-center">
-            <li
-              v-for="(link, index) in links"
-              :key="index"
-              class="invert w-7 lg:w-10 p-1 transition-opacity duration-150"
-            >
-              <a :href="link.href"
-                ><NuxtImg :src="link.svg" class="w-full" />
-              </a>
-            </li>
-          </ul>
+        <div class="contact space-x-1 hidden md:flex">
+          <div class="flex items-end flex-col">
+            Need help?
+            <div class="flex justify-between w-full items-center">
+              <span
+                class="center aspect-square h-4 lg:h-6 lg:p-[5px] p-[2px] xl:mx-2 rounded-full border "
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="h-full"
+                >
+                  <path
+                    fill="#FAF9F6"
+                    d="M21.384,17.752a2.108,2.108,0,0,1-.522,3.359,7.543,7.543,0,0,1-5.476.642C10.5,20.523,3.477,13.5,2.247,8.614a7.543,7.543,0,0,1,.642-5.476,2.108,2.108,0,0,1,3.359-.522L8.333,4.7a2.094,2.094,0,0,1,.445,2.328A3.877,3.877,0,0,1,8,8.2c-2.384,2.384,5.417,10.185,7.8,7.8a3.877,3.877,0,0,1,1.173-.781,2.092,2.092,0,0,1,2.328.445Z"
+                  />
+                </svg>
+              </span>
+              call us:
+            </div>
+          </div>
+          <div class="flex space-x-2 items-end flex-col">
+            <span>9999317846</span><span>9810817846</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="z-[9] relative">
+      <Header />
+    </div>
+  </header>
 
   <slot />
 </template>
 <style scoped>
+:root {
+  --dull-black: rgba(46, 46, 46, 0.825);
+}
 nav.navbar {
   top: calc(100% - 1rem);
 }
@@ -119,11 +117,11 @@ nav.navbar {
 .location > div > span:last-child,
 .timing div > span:last-child {
   font-size: 0.75rem;
-  color: rgba(220, 220, 220, 0.8);
+  color: var(--dull-black);
 }
 .contact > div:nth-child(2) {
   text-decoration: underline;
-  text-decoration-color: rgba(240, 248, 255, 0.562);
+  text-decoration-color: var(--dull-black);
 }
 .social-links li.hovered:hover {
   opacity: 1;

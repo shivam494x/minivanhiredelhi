@@ -6,8 +6,12 @@
   @apply flex justify-center items-center;
 }
 .side_padding {
-  @apply px-6 sm:px-14 md:px-16 lg:px-20 xl:px-24;
+  @apply px-10 sm:px-16 md:px-24 lg:px-28 xl:px-32;
 }
+
 .section_padding {
   @apply xl:py-20 md:py-14 py-8;
+}
+.nav-li {
+  @apply relative md:h-full flex md:items-center items-end w-full md:w-auto h-16 justify-end md:justify-center border-b md:border-b-0 border-pri px-2 py-0.5;
 }
