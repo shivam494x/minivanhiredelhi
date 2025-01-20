@@ -43,7 +43,7 @@
             hidden: !(sub && activeIndex === index) && !isSubOpened,
             block: (sub && activeIndex === index) || isSubOpened,
           }"
-          class="absolute top-full md:left-0 right-0 z-50 w-full md:w-max h-64 md:h-auto overflow-scroll md:overflow-hidden"
+          class="absolute top-full md:left-0 right-0 z-50 w-full md:w-max h-64 md:h-auto overflow-scroll md:overflow-visible"
         >
           <ul class="md:w-max w-full bg-offWhite text-secondary font-normal">
             <li
@@ -66,7 +66,7 @@
                     hidden: !(l1sub && subActiveIndex === subIndex),
                     block: l1sub && subActiveIndex === subIndex,
                   }"
-                  class="absolute top-0 right-full"
+                  class="absolute top-0 right-full h-64 md:h-auto"
                 >
                   <ul class="bg-offWhite w-max">
                     <li
@@ -144,7 +144,7 @@ const { $gsap: gsap } = useNuxtApp();
 
 const activeIndex = ref(null);
 const subActiveIndex = ref(null);
-const isTouch = ref(false);
+const isTouch = ref(null);
 const isSubOpened = ref(false);
 
 let menuHideTimer = null;
@@ -205,6 +205,24 @@ const nav_links = [
         ],
       },
       {
+        name: "Kia Carnival Limousine",
+        path: "/kia-carnival-limousine",
+        sub: [
+          {
+            name: "6 Seater Kia Carnival Car",
+            path: "/kia-carnival-limousine/6-seater",
+          },
+          {
+            name: "7 Seater Kia Carnival Car",
+            path: "/kia-carnival-limousine/7-seater",
+          },
+          {
+            name: "Carnival Kia Luxury Car",
+            path: "/kia-carnival-limousine/carnival-luxury",
+          },
+        ],
+      },
+      {
         name: "Mercedes V Class",
         path: "/mercedes-v-class",
         sub: [
@@ -214,6 +232,24 @@ const nav_links = [
           },
           { name: "6 Seater Mercedes Van", path: "/mercedes-v-class/6-seater" },
           { name: "Mercedes V Class", path: "/mercedes-v-class/v-class" },
+        ],
+      },
+      {
+        name: "Kia Carnival Limousine",
+        path: "/kia-carnival-limousine",
+        sub: [
+          {
+            name: "6 Seater Kia Carnival Car",
+            path: "/kia-carnival-limousine/6-seater",
+          },
+          {
+            name: "7 Seater Kia Carnival Car",
+            path: "/kia-carnival-limousine/7-seater",
+          },
+          {
+            name: "Carnival Kia Luxury Car",
+            path: "/kia-carnival-limousine/carnival-luxury",
+          },
         ],
       },
       {
@@ -305,26 +341,45 @@ const nav_links = [
 ];
 
 onMounted(() => {
-  function updateInputClass(event) {
-    if (event.type === "touchstart") {
+  const detectInput = () => {
+    const istouch =
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia("(pointer: coarse)").matches;
+
+    if (istouch) {
       isTouch.value = true;
     } else {
       isTouch.value = false;
     }
-  }
+  };
+
+  detectInput();
+
+  window.addEventListener(
+    "pointerdown",
+    (e) => {
+      const newInputType = e.pointerType === "touch" ? "touch" : "mouse";
+      if (newInputType === "touch") {
+        isTouch.value = true;
+      } else {
+        isTouch.value = false;
+      }
+    },
+    { once: true }
+  );
 
   let links;
   const list_height = 64;
   const ease = "cubic-bezier(0.84, 0.08, 0.23, 0.68)";
   if (isTouch.value) {
     links = document.querySelectorAll(".mobile .lv0");
-
     links.forEach((link) => {
       link.addEventListener("click", function (e) {
         const parent_li = e.target.parentElement.parentElement;
-        isSubOpened.value = !isSubOpened.value;
         const previous_clicked = document.querySelector(".clicked");
-        if (!isSubOpened.value || previous_clicked) {
+        isSubOpened.value = !isSubOpened.value;
+        if (!isSubOpened.value) {
           parent_li.classList.remove("clicked");
           const outAnimation = {
             height: list_height,
@@ -337,6 +392,7 @@ onMounted(() => {
           gsap.to(parent_li, outAnimation);
         } else {
           parent_li.classList.add("clicked");
+          console.log("ola");
           const lists = parent_li.querySelectorAll("div > ul > li.lv1");
           const height = (lists.length + 1) * list_height;
           const inAnimation = {
@@ -350,11 +406,5 @@ onMounted(() => {
       });
     });
   }
-  window.addEventListener("touchstart", updateInputClass, { once: true });
-
-  // Cleanup listener on unmount
-  onBeforeUnmount(() => {
-    window.removeEventListener("touchstart", updateInputClass);
-  });
 });
 </script>
