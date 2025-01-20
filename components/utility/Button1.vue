@@ -38,9 +38,7 @@ a#custom_btn_1.with_border::before {
 .without_border:hover {
   color: white;
 }
-.with_border:hover {
-  color: black;
-}
+
 .with_border {
   border: 1px solid var(--primary-color);
   color: white;

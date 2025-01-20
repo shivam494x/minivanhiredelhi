@@ -1,94 +1,98 @@
 <template>
-  <div class="container side_padding section_padding bg-white text-secondary">
-    <div class="xl:space-y-12 md:space-y-10 space-y-4">
-      <div class="headinngs capitalize center flex-col md:space-y-2">
-        <h5 class="text-base md:text-lg tracking-wide center text-pri">
-          come with us
-        </h5>
-        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">
-          hot offers
-        </h2>
-      </div>
-      <div class="categories uppercase center">
-        <ul
-          class="center capitalize text-lg w-full md:w-max flex-col md:flex md:flex-row"
-        >
-          <li
-            v-for="(item, index) in vehicleTypes"
-            :key="item.type"
-            :class="{ active: item.active }"
-            class="w-full md:w-max cursor-pointer px-4 py-2 lg:px-6 relative md:border-b-0 border-r border-b border-pri"
-            @click="setActive(index)"
+  <div class="side_padding section_padding bg-offWhite text-secondary">
+    <div class="container">
+      <div class="xl:space-y-12 md:space-y-10 space-y-4">
+        <div class="headinngs capitalize center flex-col md:space-y-2">
+          <h5 class="text-base md:text-lg tracking-wide center text-pri">
+            come with us
+          </h5>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">
+            hot offers
+          </h2>
+        </div>
+        <div class="categories uppercase center">
+          <ul
+            class="center capitalize text-lg w-full md:w-max flex-col md:flex md:flex-row"
           >
-            <div class="center">
-              <span class="relative">
-                {{ item.type }}
-              </span>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="vehicles">
-        <ul class="w-full flex flex-wrap gap-8 justify-center">
-          <li
-            v-for="{
-              img,
-              name,
-              pricing,
-              details: { model, mileage, gear_type },
-              details_link,
-              type,
-            } in filteredVehicles"
-            :key="name"
-            class="border-2 border-[#c5c7ce96] max-w-96"
-            :data-type="type"
-          >
-            <div class="grid h-full vehicle-wrapper md:px-8 md:py-4 py-2 px-4">
-              <div class="w-full object-fill center px-4">
-                <NuxtImg :src="`/img/about/${img}`" class="max-h-full" />
+            <li
+              v-for="(item, index) in vehicleTypes"
+              :key="item.type"
+              :class="{ active: item.active }"
+              class="w-full md:w-max cursor-pointer px-4 py-2 lg:px-6 relative md:border-b-0 border-r border-b border-pri"
+              @click="setActive(index)"
+            >
+              <div class="center">
+                <span class="relative">
+                  {{ item.type }}
+                </span>
               </div>
-              <div class="center flex-col gap-2 space-y-2">
-                <div>
-                  <h2 class="text-2xl tracking-wide capitalize font-medium">
-                    {{ name }}
-                  </h2>
+            </li>
+          </ul>
+        </div>
+        <div class="vehicles">
+          <ul class="w-full flex flex-wrap gap-8 justify-center">
+            <li
+              v-for="{
+                img,
+                name,
+                pricing,
+                details: { model, mileage, gear_type },
+                details_link,
+                type,
+              } in filteredVehicles"
+              :key="name"
+              class="border-2 border-[#c5c7ce96] max-w-96"
+              :data-type="type"
+            >
+              <div
+                class="grid h-full vehicle-wrapper md:px-8 md:py-4 py-2 px-4"
+              >
+                <div class="w-full object-fill center px-4">
+                  <NuxtImg :src="`/img/about/${img}`" class="max-h-full" />
                 </div>
-                <div class="text-lg tracking-tight">
-                  <span class="">{{ pricing }}</span>
-                  <span class="text-pri">/Day</span>
-                </div>
-                <div
-                  class="center space-x-1 details justify-between text-sm text-slate-600 tracking-wide"
-                >
+                <div class="center flex-col gap-2 space-y-2">
                   <div>
-                    <span>
-                      <UIcon name="el:car" class="bg-pri" />
-                    </span>
-                    <span>{{ model }}</span>
+                    <h2 class="text-2xl tracking-wide capitalize font-medium">
+                      {{ name }}
+                    </h2>
                   </div>
-                  <div>
-                    <span>
-                      <UIcon name="fa:cogs" class="bg-pri" />
-                    </span>
-                    <span>{{ gear_type }}</span>
+                  <div class="text-lg tracking-tight">
+                    <span class="">{{ pricing }}</span>
+                    <span class="text-pri">/Day</span>
                   </div>
-                  <div>
-                    <span>
-                      <UIcon name="mdi:speedometer" class="bg-pri" />
-                    </span>
-                    <span>{{ mileage }}</span>
+                  <div
+                    class="center space-x-1 details justify-between text-sm text-slate-600 tracking-wide"
+                  >
+                    <div>
+                      <span>
+                        <UIcon name="el:car" class="bg-pri" />
+                      </span>
+                      <span>{{ model }}</span>
+                    </div>
+                    <div>
+                      <span>
+                        <UIcon name="fa:cogs" class="bg-pri" />
+                      </span>
+                      <span>{{ gear_type }}</span>
+                    </div>
+                    <div>
+                      <span>
+                        <UIcon name="mdi:speedometer" class="bg-pri" />
+                      </span>
+                      <span>{{ mileage }}</span>
+                    </div>
                   </div>
-                </div>
-                <div class="btns w-full">
-                  <div class="grid grid-cols-2 border">
-                    <NuxtLink class="before">rent now</NuxtLink>
-                    <NuxtLink class="before">Details</NuxtLink>
+                  <div class="btns w-full">
+                    <div class="grid grid-cols-2 border">
+                      <NuxtLink class="before">rent now</NuxtLink>
+                      <NuxtLink class="before">Details</NuxtLink>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -105,7 +109,7 @@
   background-color: var(--primary-color);
   transform: scaleY(0);
   transform-origin: bottom;
-  transition: transform 140ms var(--ease);;
+  transition: transform 140ms var(--ease);
   z-index: 0;
 }
 .categories > ul > li.active {
@@ -149,7 +153,6 @@
 }
 .btns > .grid a:hover:before {
   transform: scaleY(0);
-  
 }
 .btns > .grid a:hover {
   color: var(--secondary-color);

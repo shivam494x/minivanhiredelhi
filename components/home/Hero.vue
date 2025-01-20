@@ -40,7 +40,7 @@
           </div>
         </div> -->
         <div
-          class="content w-full md:w-[70vw] lg:w-[50vw] z-20 relative top-1/2 lg:[45%] -translate-y-1/2 left-1/2 sm:pl-2 sm:left-14 md:left-24 lg:left-28 xl:left-36 -translate-x-1/2 sm:-translate-x-0"
+          class="content w-full md:w-[70vw] lg:w-[50vw] z-20 relative top-1/2 lg:[45%] -translate-y-1/2 left-1/2 sm:pl-2 md:left-24 lg:left-28 xl:left-36 -translate-x-1/2 md:-translate-x-0"
         >
           <div class="h-full center flex-col md:items-start">
             <div

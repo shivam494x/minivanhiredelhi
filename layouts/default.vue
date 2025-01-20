@@ -1,13 +1,13 @@
 <template>
-  <header class="text-white  overflow-hidden relative">
+  <header class="text-white  relative">
     <div
-      class="absolute hidden top-0 left-0 -translate-x-1/2 w-3/5 h-[70%] lg:block bg-pri z-10 skew-x-[45deg]"
+      class="absolute hidden top-0 left-0 -translate-x-1/2 w-3/5 h-[70%] lg:block bg-pri z-50 skew-x-[45deg]"
     ></div>
     <div class="info">
       <div
         class="flex justify-between items-center side_padding lg:py-4 py-1 bg-secondary text-sm md:text-base"
       >
-        <div class="logo z-10">
+        <div class="logo z-[60]">
           <div class="">
             <NuxtImg class="h-12" src="/img/logo.png" />
           </div>
@@ -80,7 +80,7 @@
         </div>
       </div>
     </div>
-    <div class="z-[9] relative">
+    <div class="z-40 relative">
       <Header />
     </div>
   </header>

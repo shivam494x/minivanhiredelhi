@@ -1,5 +1,6 @@
 <template>
-  <div class="container side_padding section_padding bg-offWhite text-secondary">
+  <div class="side_padding section_padding bg-offWhite text-secondary">
+    <div class="container">
     <div class="xl:space-y-20 md:space-y-14 space-y-10">
       <div class="headinngs uppercase center flex-col md:space-y-2">
         <h5 class="text-base md:text-lg tracking-wide center text-pri">
@@ -44,6 +45,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 <style scoped>
 .container {

@@ -1,6 +1,6 @@
 <template>
   <ul
-    class="flex text-3xl md:text-base font-normal flex-col md:flex-row items-center h-full md:font-semibold capitalize"
+    class="flex text-3xl md:text-base font-normal flex-col md:flex-row items-center h-full md:font-semibold capitalize z-50"
   >
     <li
       v-for="({ name, path, sub }, index) in nav_links"
@@ -11,7 +11,8 @@
     >
       <NuxtLink
         :to="path"
-        class="relative center space-x-1 md:px-6 md:py-5 py-2.5 px-3"
+        v-if="!isTouch"
+        class="relative justify-end items-center space-x-1 md:px-4 md:py-5 py-2.5 px-3 md:w-max w-full"
       >
         <span>{{ name }}</span>
         <Icon
@@ -21,7 +22,20 @@
         />
       </NuxtLink>
 
+      <a
+        v-else
+        role="button"
+        class="relative justify-end items-center space-x-1 md:px-4 md:py-5 py-2.5 px-3 md:w-max w-full"
+      >
+        <span>{{ name }}</span>
+        <Icon
+          v-if="sub"
+          class="text-sm rotate-45 transform transition-transform duration-300 group-hover:rotate-0"
+          name="ep:close"
+        />
+      </a>
       <!-- Level 1 Nest -->
+
       <div
         v-if="sub && activeIndex === index"
         class="absolute top-[100%] left-0"
@@ -34,9 +48,14 @@
             @mouseenter="setSubActiveIndexWithDelay(subIndex)"
             @mouseleave="resetSubActiveIndexWithDelay"
           >
-            <NuxtLink :to="`${path}/${subpath}`" class="px-4 py-2">{{
-              name
-            }}</NuxtLink>
+            <NuxtLink
+              :to="`${subpath}`"
+              class="relative justify-end md:justify-start space-x-1 md:px-4 md:py-3 py-2.5 px-3 w-full"
+            >
+              <span>
+                {{ name }}
+              </span>
+            </NuxtLink>
 
             <!-- Level 2 Nest -->
             <div
@@ -50,10 +69,13 @@
                   class="border-b relative"
                 >
                   <NuxtLink
-                    :to="`${path}${subpath}${subsubpath}`"
-                    class="px-4 py-2"
-                    >{{ name }}</NuxtLink
+                    :to="`${subsubpath}`"
+                    class="relative justify-end md:justify space-x-1 md:px-4 md:py-3 py-2.5 px-3 w-full"
                   >
+                    <span>
+                      {{ name }}
+                    </span>
+                  </NuxtLink>
                 </li>
               </ul>
             </div>
@@ -66,7 +88,7 @@
 <style scoped>
 ul > li a {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   transition: all 150ms var(--ease);
 }
 
@@ -81,29 +103,17 @@ ul > li > a::before {
   transform: scaleY(0);
   transform-origin: bottom;
   transition: transform 200ms var(--ease);
-  z-index: -1;
+  z-index: 0;
 }
-
-
-
-ul > li > a:hover::before{
+ul > li > a > span {
+  z-index: 10;
+  position: relative;
+}
+ul > li > a:hover::before {
   transform: scaleY(1);
 }
 ul li a:hover {
   color: white;
-}
-
-
-ul > li ul li > a:hover::before {
-  transform: scaleX(1);
-}
-
-li.hovered:hover > a {
-  filter: brightness(100%) opacity(1);
-}
-
-li.hovered:not(:hover) > a {
-  filter: brightness(75%) opacity(0.6);
 }
 
 ul > li ul li:last-child {
@@ -111,12 +121,19 @@ ul > li ul li:last-child {
 }
 </style>
 <script setup>
+import { ref, onMounted, onBeforeUnmount } from "vue";
+
 const activeIndex = ref(null);
 const subActiveIndex = ref(null);
+const isTouch = ref(null);
+const isSubOpened = ref(false);
 
 let menuHideTimer = null;
 let subMenuHideTimer = null;
 
+const handleLinkClick = () => {
+  setActiveIndexWithDelay();
+};
 const setActiveIndexWithDelay = (index) => {
   clearTimeout(menuHideTimer);
   activeIndex.value = index;
@@ -158,15 +175,15 @@ const nav_links = [
         sub: [
           {
             name: "6 Seater Toyota Vellfire",
-            path: "/6-seater",
+            path: "/toyota-vellfire/6-seater",
           },
           {
             name: "7 Seater Toyota Vellfire",
-            path: "/7-seater",
+            path: "/toyota-vellfire/7-seater",
           },
           {
             name: "Vellfire Toyota Van",
-            path: "/vellfire-toyota-van",
+            path: "/toyota-vellfire/vellfire-toyota-van",
           },
         ],
       },
@@ -176,13 +193,10 @@ const nav_links = [
         sub: [
           {
             name: "5 Seater Mercedes Viano",
-            path: "/5-seater",
+            path: "/mercedes-v-class/5-seater",
           },
-          {
-            name: "6 Seater Mercedes Van",
-            path: "/6-seater",
-          },
-          { name: "Mercedes V Class", path: "/v-class" },
+          { name: "6 Seater Mercedes Van", path: "/mercedes-v-class/6-seater" },
+          { name: "Mercedes V Class", path: "/mercedes-v-class/v-class" },
         ],
       },
       {
@@ -191,15 +205,15 @@ const nav_links = [
         sub: [
           {
             name: "6 Seater Kia Carnival Car",
-            path: "/6-seater",
+            path: "/kia-carnival-limousine/6-seater",
           },
           {
             name: "7 Seater Kia Carnival Car",
-            path: "/7-seater",
+            path: "/kia-carnival-limousine/7-seater",
           },
           {
             name: "Carnival Kia Luxury Car",
-            path: "/carnival-luxury",
+            path: "/kia-carnival-limousine/carnival-luxury",
           },
         ],
       },
@@ -209,23 +223,23 @@ const nav_links = [
         sub: [
           {
             name: "5 Seater Toyota Luxury Van",
-            path: "/5-seater",
+            path: "/toyota-hiace/5-seater",
           },
           {
             name: "6 Seater Luxury Toyota Van",
-            path: "/6-seater",
+            path: "/toyota-hiace/6-seater",
           },
           {
             name: "7 Seater Toyota Luxury Van",
-            path: "/7-seater",
+            path: "/toyota-hiace/7-seater",
           },
           {
             name: "8 Seater Toyota Luxury Van",
-            path: "/8-seater",
+            path: "/toyota-hiace/8-seater",
           },
           {
             name: "9 Seater Toyota Luxury Van",
-            path: "/9-seater",
+            path: "/toyota-hiace/9-seater",
           },
         ],
       },
@@ -249,11 +263,21 @@ const nav_links = [
   },
 ];
 
+// Detect touch or mouse input
 onMounted(() => {
-  function animate_nav_links() {
-    const element = document.querySelectorAll(".nav-links > ul > li");
-    animateSocialelements(element);
+  function updateInputClass(event) {
+    if (event.type === "touchstart") {
+      isTouch.value = true;
+    } else if (event.type === "mousemove") {
+      isTouch.value = false;
+    }
   }
-  // animate_nav_links();
+
+  // Add event listeners
+  window.addEventListener("touchstart", updateInputClass, { once: true });
+  // Cleanup listener on unmount
+  onBeforeUnmount(() => {
+    window.removeEventListener("touchstart", updateInputClass);
+  });
 });
 </script>
