@@ -48,7 +48,7 @@
                 class="grid h-full vehicle-wrapper md:px-8 md:py-4 py-2 px-4"
               >
                 <div class="w-full object-fill center px-4">
-                  <NuxtImg :src="`/img/about/${img}`" class="max-h-full" />
+                  <NuxtImg :src="`/img/offers/${img}`" class="max-h-full" />
                 </div>
                 <div class="center flex-col gap-2 space-y-2">
                   <div>
@@ -56,10 +56,10 @@
                       {{ name }}
                     </h2>
                   </div>
-                  <div class="text-lg tracking-tight">
+                  <!-- <div class="text-lg tracking-tight">
                     <span class="">{{ pricing }}</span>
                     <span class="text-pri">/Day</span>
-                  </div>
+                  </div> -->
                   <div
                     class="center space-x-1 details justify-between text-sm text-slate-600 tracking-wide"
                   >
@@ -130,7 +130,7 @@
   margin: 0 2px;
 }
 .vehicle-wrapper {
-  height: 25rem;
+  height: 23rem;
   grid-template-rows: 1fr 1.4fr;
 }
 .btns > .grid a {
@@ -164,15 +164,15 @@ const vehicles_type = {
   car: "car",
   van: "van",
   bus: "bus",
-  tempo: "tempo",
+  "Airport Transfer": "Airport Transfer",
 };
 
 const vehicles = [
   {
-    img: "mercedes-sprinter.png",
-    name: "Mercedes Sprinter",
+    img: "mercedes-v-class.png",
+    name: "mercedes v class",
     pricing: "100rs",
-    type: vehicles_type.car,
+    type: vehicles_type.van,
     details: {
       model: "Model X",
       gear_type: "Automatic",
@@ -181,10 +181,10 @@ const vehicles = [
     details_link: "/#",
   },
   {
-    img: "mercedes-sprinter.png",
-    name: "Mercedes V-Class",
+    img: "40 Seater Bus.png",
+    name: "40 Seater Bus",
     pricing: "200rs",
-    type: vehicles_type.tempo,
+    type: vehicles_type.bus,
     details: {
       model: "Model Y",
       gear_type: "Manual",
@@ -193,8 +193,32 @@ const vehicles = [
     details_link: "/#",
   },
   {
-    img: "mercedes-sprinter.png",
-    name: "Toyota HiAce",
+    img: "Jaguar XF Car.png",
+    name: "Jaguar XF Car",
+    pricing: "150rs",
+    type: vehicles_type.car,
+    details: {
+      model: "Model Z",
+      gear_type: "Automatic",
+      mileage: "22kmpl",
+    },
+    details_link: "/#",
+  },
+  {
+    img: "12 Seater Traveler Van.png",
+    name: "12 Seater Traveler Van",
+    pricing: "150rs",
+    type: vehicles_type.van,
+    details: {
+      model: "Model Z",
+      gear_type: "Automatic",
+      mileage: "22kmpl",
+    },
+    details_link: "/#",
+  },
+  {
+    img: "42 Seater Volvo Bus.png",
+    name: "42 Seater Volvo Bus",
     pricing: "150rs",
     type: vehicles_type.bus,
     details: {
@@ -205,22 +229,10 @@ const vehicles = [
     details_link: "/#",
   },
   {
-    img: "mercedes-sprinter.png",
-    name: "Toyota HiAce",
+    img: "Luxury Van.png",
+    name: "Luxury Van",
     pricing: "150rs",
-    type: vehicles_type.car,
-    details: {
-      model: "Model Z",
-      gear_type: "Automatic",
-      mileage: "22kmpl",
-    },
-    details_link: "/#",
-  },
-  {
-    img: "mercedes-sprinter.png",
-    name: "Toyota HiAce",
-    pricing: "150rs",
-    type: vehicles_type.car,
+    type: vehicles_type['Airport Transfer'],
     details: {
       model: "Model Z",
       gear_type: "Automatic",
@@ -235,7 +247,7 @@ const vehicleTypes = ref([
   { type: "car", active: false },
   { type: "van", active: false },
   { type: "bus", active: false },
-  { type: "tempo", active: false },
+  { type: "Airport Transfer", active: false },
 ]);
 
 function setActive(index) {

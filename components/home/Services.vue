@@ -1,5 +1,5 @@
 <template>
-  <div class="side_padding section_padding bg-offWhite text-secondary">
+  <div class="side_padding section_padding bg-white text-secondary">
     <div class="container">
     <div class="xl:space-y-20 md:space-y-14 space-y-10">
       <div class="headinngs uppercase center flex-col md:space-y-2">

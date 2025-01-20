@@ -10,10 +10,13 @@
           </div>
 
           <p
-            class="max-w-md mx-auto mt-6 leading-relaxed text-center text-gray-400 sm:max-w-xs sm:mx-0 sm:text-left"
+            class="max-w-md mx-auto mt-6 text-center text-gray-400 sm:max-w-xs sm:mx-0 sm:text-left leading-snug"
           >
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
-            consequuntur amet culpa cum itaque neque.
+            Minivan Hire Delhi- is a service provider of imported luxury vans,
+            Volvo bus & Mercedes coach, luxury car on rental in all major cities
+            of India such as Delhi, Noida, Gurugram, Mumbai, Goa, Pune, Chennai,
+            Hyderabad, Kochi, Cochin, Bengaluru, Ahmedabad, Agra, Jaipur,
+            Udaipur, Kolkata, Bagdogra, Chandigarh and other adjoining cities.
           </p>
 
           <ul class="flex justify-center gap-6 mt-8 md:gap-8 sm:justify-start">
@@ -60,22 +63,13 @@
       <div class="pt-6 mt-12 border-t border-gray-800">
         <div class="text-center sm:flex sm:justify-between sm:text-left">
           <p class="text-sm text-gray-400 space-x-0.5">
-            <span class="block sm:inline">All rights reserved. </span>
+            <span class="block sm:inline">Designed and developed by </span>
 
             <a
               class="inline-block text-teal-500 underline transition hover:text-teal-500/75"
               href="/"
             >
-              Terms & Conditions
-            </a>
-
-            <span>&middot;</span>
-
-            <a
-              class="inline-block text-teal-500 underline transition hover:text-teal-500/75"
-              href="/"
-            >
-              Privacy Policy
+              Kanak Drishti Infotech Pvt. Ltd.
             </a>
           </p>
 
@@ -96,62 +90,62 @@ const socialLinks = [
     icon: "mdi-facebook",
   },
   {
-    name: "Instagram",
+    name: "google-plus",
     url: "/",
-    icon: "mdi-instagram",
+    icon: "mdi:google-plus",
   },
   {
-    name: "Twitter",
+    name: "You tube",
     url: "/",
-    icon: "mdi-twitter",
+    icon: "mdi:youtube",
   },
   {
-    name: "GitHub",
+    name: "Linked-in",
     url: "/",
-    icon: "mdi-github",
+    icon: "mdi-linkedin",
   },
   {
-    name: "Dribbble",
-    url: "/",
-    icon: "mdi-dribbble",
+    name: "Blog",
+    url: "/blog",
+    icon: "mdi:pencil",
   },
 ];
 const sections = [
   {
     title: "About Us",
     links: [
-      { text: "Company History", url: "/" },
-      { text: "Meet the Team", url: "/" },
-      { text: "Employee Handbook", url: "/" },
-      { text: "Careers", url: "/" },
+      { text: "About Us", url: "/" },
+      { text: "Why Travel With Us", url: "/" },
     ],
   },
   {
     title: "Our Services",
     links: [
-      { text: "Web Development", url: "/" },
-      { text: "Web Design", url: "/" },
-      { text: "Marketing", url: "/" },
-      { text: "Google Ads", url: "/" },
+      { text: "Monuments & Entry Fee", url: "/" },
+      { text: "Complimentary Guide", url: "/" },
+      { text: "About Indian Drivers & Chauffeur", url: "/" },
+      { text: "Vehicle Breakdown Services", url: "/" },
+      { text: "Van Operator in India", url: "/" },
     ],
   },
   {
     title: "Helpful Links",
     links: [
-      { text: "FAQs", url: "/" },
-      { text: "Support", url: "/" },
-      {
-        text: "Live Chat",
-        url: "/",
-      },
+      { text: "Terms & Conditions", url: "/" },
+      { text: "Privacy Policy", url: "/" },
+      { text: "Travel Tips", url: "/" },
     ],
   },
   {
     title: "Contact Us",
     links: [
-      { text: "Email: example@gmail.com", url: "/" },
-      { text: "Phone: 0123456789", url: "/" },
-      { text: "somewhere in noida i think", url: "/" },
+      { text: "Email: sales@asparkholidays.com", url: "/" },
+      { text: "Phone: +91 9999317846", url: "/" },
+      { text: "Phone: +91 9810817846", url: "/" },
+      {
+        text: " 561A 1st Floor Chirag Delhi (Near Oriental Bank of Commerce) New Delhi (India) 110017",
+        url: "/",
+      },
     ],
   },
 ];

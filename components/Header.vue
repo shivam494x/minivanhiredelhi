@@ -1,6 +1,6 @@
 <template>
   <div class="z-50 relative text-black bg-offWhite">
-    <nav class=" w-full navbar side_padding flex justify-end">
+    <nav class="w-full navbar side_padding flex justify-end">
       <div
         class="hamburger-btn md:hidden py-2.5 h-full w-8 my-auto"
         @click="isOpen = true"
@@ -31,13 +31,13 @@
               padded
               @click="isOpen = false"
             />
-            <div class="absolute top-1/2 -translate-y-1/2 w-full left-0">
+            <div class="absolute top-20 w-full left-0 mobile">
               <NavLinks />
             </div>
           </div>
         </USlideover>
       </div>
-      <div class="nav-links hidden md:block">
+      <div class="nav-links hidden md:block max-h-16">
         <NavLinks />
       </div>
     </nav>
