@@ -76,7 +76,7 @@ const services = [
       "In omni memoria patriae religionis sunt diri undead historiarum. Golums, zombies et fascinati.",
   },
   {
-    icon: "mdi:monitor-mouse",
+    icon: "mdi:autorenew",
     heading: "Free Cancellation",
     paragraph:
       "In omni memoria patriae religionis sunt diri undead historiarum. Golums, zombies et fascinati.",

@@ -10,7 +10,7 @@
           </div>
 
           <p
-            class="max-w-md mx-auto mt-6 text-center text-gray-400 sm:max-w-xs sm:mx-0 sm:text-left leading-snug"
+            class="max-w-md mx-auto mt-6 text-gray-400 sm:max-w-xs sm:mx-0 leading-snug text-justify"
           >
             Minivan Hire Delhi- is a service provider of imported luxury vans,
             Volvo bus & Mercedes coach, luxury car on rental in all major cities
