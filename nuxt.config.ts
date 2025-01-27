@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     viewer: true,
     exposeConfig: false,
   },
+  ui: {
+    global: true
+  },
   plugins: ["~/plugins/gsap.js"],
   css: ["~/assets/css/global.css"],
   image: {
