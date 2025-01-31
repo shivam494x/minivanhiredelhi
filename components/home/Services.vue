@@ -1,7 +1,7 @@
 <template>
   <div class="side_padding section_padding bg-white text-secondary">
     <div class="container">
-    <div class="xl:space-y-20 md:space-y-14 space-y-10">
+    <div class="xl:space-y-15 md:space-y-11 space-y-6">
       <div class="headinngs uppercase center flex-col md:space-y-2">
         <h5 class="text-base md:text-lg tracking-wide center text-pri">
           services
@@ -12,25 +12,25 @@
           providing amazing services to our clients
         </h2>
       </div>
-      <div class="services lg:px-16 md:px-12 px-8">
+      <div class="services lg:px-24 md:px-16 px-8">
         <ul
-          class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-items-center gap-10 gap-y-14"
+          class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-items-center gap-2 gap-y-10"
         >
-          <li class="max-w-80" v-for="(service, index) in services">
+          <li class="max-w-60" v-for="(service, index) in services">
             <div class="flex flex-col">
               <div class="icon">
                 <div
-                  class="border relative border-dashed rounded-full p-9 m-auto w-max center border-pink-900"
+                  class="border relative border-dashed rounded-full p-5 m-auto w-max center border-pink-900"
                 >
                   <span
-                    class="absolute top-0 right-0 w-8 h-8 rounded-full bg-pri text-offWhite center -translate-x-1"
+                    class="absolute top-0 right-0 w-6 h-6 text-sm rounded-full bg-pri text-offWhite center translate-x-1 -translate-y-1"
                     >{{ formatToTwoDigits(index + 1) }}</span
                   >
-                  <UIcon :name="service.icon" class="w-10 h-10" />
+                  <UIcon :name="service.icon" class="w-5 h-5" />
                 </div>
               </div>
-              <div class="heading center text-center my-4 font-semibold">
-                <NuxtLink class="py-4 before relative">{{
+              <div class="heading center text-center mb-4 font-semibold">
+                <NuxtLink class="py-2 before relative">{{
                   service.heading
                 }}</NuxtLink>
               </div>
@@ -48,9 +48,7 @@
 </div>
 </template>
 <style scoped>
-.container {
-  padding: 3rem 0;
-}
+
 .before::before {
   height: 1px;
   width: 3rem;

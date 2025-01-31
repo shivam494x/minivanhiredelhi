@@ -7,9 +7,6 @@
       </section>
       <!-- section two -->
 
-      <!-- <section id="about-us">
-          <HomeAbout />
-        </section> -->
       <section id="services">
         <HomeServices />
       </section>
@@ -17,7 +14,7 @@
       <section id="offers">
         <HomeOffers />
       </section>
-      <Footer />
+
     </main>
   </div>
 </template>

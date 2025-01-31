@@ -6,7 +6,7 @@
           <h5 class="text-base md:text-lg tracking-wide center text-pri">
             come with us
           </h5>
-          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">
+          <h2 class="text-3xl md:text-5xl font-semibold tracking-tight">
             hot offers
           </h2>
         </div>
@@ -232,7 +232,7 @@ const vehicles = [
     img: "Luxury Van.png",
     name: "Luxury Van",
     pricing: "150rs",
-    type: vehicles_type['Airport Transfer'],
+    type: vehicles_type["Airport Transfer"],
     details: {
       model: "Model Z",
       gear_type: "Automatic",
@@ -248,6 +248,7 @@ const vehicleTypes = ref([
   { type: "van", active: false },
   { type: "bus", active: false },
   { type: "Airport Transfer", active: false },
+  { type: "other cities", active: false },
 ]);
 
 function setActive(index) {

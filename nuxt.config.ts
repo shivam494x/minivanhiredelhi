@@ -11,7 +11,8 @@ export default defineNuxtConfig({
     exposeConfig: false,
   },
   ui: {
-    global: true
+    global: true,
+    
   },
   plugins: ["~/plugins/gsap.js"],
   css: ["~/assets/css/global.css"],
@@ -26,4 +27,5 @@ export default defineNuxtConfig({
       "2xl": 1536,
     },
   },
+  serverDir:"./server"
 });

@@ -1,5 +1,5 @@
 <template>
-  <header class="text-white  relative">
+  <header class="text-white relative">
     <div
       class="absolute hidden top-0 left-0 -translate-x-1/2 w-3/5 h-[70%] lg:block bg-pri z-50 skew-x-[45deg]"
     ></div>
@@ -59,7 +59,7 @@
             Need help?
             <div class="flex justify-between w-full items-center">
               <span
-                class="center aspect-square h-4 lg:h-6 lg:p-[5px] p-[2px] xl:mx-2 rounded-full border "
+                class="center aspect-square h-4 lg:h-6 lg:p-[5px] p-[2px] xl:mx-2 rounded-full border"
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -84,8 +84,8 @@
       <Header />
     </div>
   </header>
-
   <slot />
+  <UtilityFooter />
 </template>
 <style scoped>
 :root {
@@ -133,6 +133,7 @@ nav.navbar {
 </style>
 
 <script setup>
+
 const links = [
   { href: "https://www.facebook.com/asparkholiday", svg: "/svg/fb.svg" },
   { href: "https://minivanhiredelhi.com/#", svg: "/svg/linkedin.svg" },

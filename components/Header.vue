@@ -32,18 +32,19 @@
               @click="isOpen = false"
             />
             <div class="absolute top-20 w-full left-0 mobile">
-              <NavLinks />
+              <UtilityNavLinks />
             </div>
           </div>
         </USlideover>
       </div>
       <div class="nav-links hidden md:block max-h-16">
-        <NavLinks />
+        <UtilityNavLinks />
       </div>
     </nav>
   </div>
 </template>
 
 <script setup>
+
 const isOpen = ref(false);
 </script>
