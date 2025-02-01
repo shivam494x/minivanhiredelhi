@@ -6,7 +6,7 @@
   @apply flex justify-center items-center;
 }
 .side_padding {
-  @apply px-10 sm:px-16 md:px-24 lg:px-28 xl:px-32;
+  @apply px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32;
 }
 
 .section_padding {

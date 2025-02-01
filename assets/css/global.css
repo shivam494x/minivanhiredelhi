@@ -27,3 +27,6 @@ section#hero {
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill{
   background: var(--primary-color) !important;
 }
+.swiper-pagination-fraction{
+  color: white !important;
+}

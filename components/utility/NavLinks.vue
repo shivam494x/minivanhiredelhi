@@ -133,7 +133,7 @@ ul > li > div ul li:last-child {
                   class="absolute top-full md:top-0 md:right-full right-0 z-50 w-full md:w-max h-64 md:h-auto overflow-scroll md:overflow-visible"
                 >
                   <ul
-                    class="bg-offWhite md:w-max w-full md:text-sm text-base text-gray-500 px-4 md:px-0"
+                    class="bg-offWhite md:w-max w-full md:text-sm text-base text-gray-500 md:text-inherit px-4 md:px-0"
                   >
                     <li
                       v-for="({ name, path: subsubpath }, subSubIndex) in l1sub"

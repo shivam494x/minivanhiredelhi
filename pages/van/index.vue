@@ -1,12 +1,12 @@
 <template>
     <section class="container grid gap-10 grid-cols-5">
-      <div class="content col-span-3 px-4 py-4">
+      <div class="content col-span-3">
         <div
-          class="heading font-semibold text-5xl capitalize py-4 tracking-tighter"
+          class="heading font-semibold text-5xl capitalize p-4 border-b tracking-tighter"
         >
           <h2 class="">van</h2>
         </div>
-        <div class="desc tracking-tight">
+        <div class="desc tracking-tight py-6 px-4 text-gray-800">
           <p>
             Minivan hire company provides an Imported Luxury VIP van rental
             service in major cities across India. Rent a super luxury traveler
