@@ -3,7 +3,10 @@
     <div class="swiper-container px-12">
       <swiper
         :pagination="{ type: 'progressbar' }"
-        :navigation="{ nextEl: '.van .custom-next', prevEl: '.van .custom-prev' }"
+        :navigation="{
+          nextEl: '.van .custom-next',
+          prevEl: '.van .custom-prev',
+        }"
         :modules="modules"
         :space-between="20"
         :breakpoints="{
@@ -13,7 +16,7 @@
         }"
         class="mySwiper"
       >
-        <swiper-slide v-for="{ name, img, details,desc } in arr" :key="name">
+        <swiper-slide v-for="({ name, img, details, desc,path },index) in arr" :key="name">
           <div class="card border border-gray-200 flex flex-col">
             <div class="img h-56">
               <NuxtImg
@@ -25,9 +28,10 @@
               <div class="text-xl font-medium capitalize tracking-tight flex-1">
                 {{ name }}
               </div>
-              
-            <div v-if="desc"
-            class="text-sm text-gray-600 center text-center px-4 py-2"
+
+              <div
+                v-if="desc"
+                class="text-sm text-gray-600 center text-center px-4 py-2"
               >
                 {{ desc }}
               </div>
@@ -36,6 +40,7 @@
                   class="capitalize w-max py-1 px-6"
                   title="view more"
                   :border="false"
+                  :to="path"
                 />
               </div>
               <div

@@ -17,6 +17,8 @@
                   prevEl: '.img .custom-prev',
                 }"
                 :loop="true"
+                :grab-cursor="false"
+                :grab="false"
                 :modules="modules"
                 :space-between="20"
                 :slides-per-view="1"
@@ -44,7 +46,7 @@
           <div class="max-h-96 mini">
             <div class="swiper-container h-[28rem]">
               <swiper
-                :pagination="{ type: 'fraction' }"
+                :pagination="false"
                 :navigation="{
                   nextEl: '.img .custom-next',
                   prevEl: '.img .custom-prev',
@@ -52,7 +54,7 @@
                 :loop="true"
                 :direction="'vertical'"
                 :modules="modules"
-                :space-between="20"
+                :space-between="40"
                 :slides-per-view="4"
                 class="mySwiper h-96 p-4"
               >
@@ -154,7 +156,9 @@
         </div>
       </div>
       <div>
-        <div class="capitalize mx-3 text-lg font-medium pb-3 text-center border-b">
+        <div
+          class="capitalize mx-3 text-lg font-medium pb-3 text-center border-b"
+        >
           <h4>why travel with us</h4>
         </div>
         <ul class="p-4 space-y-6">

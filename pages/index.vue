@@ -14,7 +14,6 @@
       <section id="offers">
         <HomeOffers />
       </section>
-
     </main>
   </div>
 </template>

@@ -4,6 +4,7 @@
       <div class="current-location py-4 px-4 border-b border-t">
         <UBreadcrumb :links="breadcrumbLinks" class="text-black" />
       </div>
+      
       <slot></slot>
     </main>
   </BaseLayout>

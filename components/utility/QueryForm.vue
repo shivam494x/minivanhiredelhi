@@ -71,10 +71,7 @@
         </div>
 
         <div class="flex justify-start space-x-5 mt-6">
-          <button
-            type="submit"
-            class=""
-          >
+          <button type="submit" class="">
             <span
               class="h-12 flex items-center justify-center uppercase font-semibold px-12 border border-secondary hover:bg-secondary hover:text-white transition duration-500 ease-in-out"
               >submit</span
@@ -93,6 +90,7 @@
 </template>
 
 <script>
+const captchaCode = Math.floor(Math.random() * 1000);
 export default {
   data() {
     return {
@@ -108,7 +106,7 @@ export default {
         requirements: "",
         captcha: "",
       },
-      captchaCode: "825",
+      captchaCode,
       errors: {},
       fields: [
         {

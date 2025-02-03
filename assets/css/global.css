@@ -24,9 +24,12 @@ section#hero {
   transform-origin: bottom;
   transition: all 150ms ease-out;
 }
-.swiper-pagination-progressbar .swiper-pagination-progressbar-fill{
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
   background: var(--primary-color) !important;
 }
-.swiper-pagination-fraction{
+.swiper-pagination-fraction {
   color: white !important;
+}
+.desc {
+  word-spacing: 1.5px;
 }
