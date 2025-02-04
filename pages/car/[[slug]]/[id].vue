@@ -1,146 +1,155 @@
 <template>
-  <section class="container grid gap-10 grid-cols-3 pt-20">
-    <div class="col-span-2 img">
-      <div class="img grid grid-cols-1 grid-rows-3 h-[28rem] gap-4">
-        <div class="row-span-2 relative">
-          <div class="swiper-container">
-            <swiper
-              :pagination="{ type: 'fraction' }"
-              :navigation="{
-                nextEl: '.img .custom-next',
-                prevEl: '.img .custom-prev',
-              }"
-              :draggable="false"
-              :loop="true"
-              :grab-cursor="false"
-              :grab="false"
-              :modules="modules"
-              :space-between="20"
-              :allow-touch-move="false"
-              :slides-per-view="1"
-              class="mySwiper"
-            >
-              <swiper-slide v-for="img in carData.img" :key="img">
-                <div class="card border border-gray-200 flex flex-col">
-                  <div class="img h-72 m-auto">
-                    <NuxtImg
-                      class="w-full h-full object-cover"
-                      :src="`${img}`"
-                    />
+  <div class="side_padding">
+    <section class="container grid gap-10 grid-cols-3 pt-20">
+      <div class="col-span-2 img">
+        <div class="img grid grid-cols-1 grid-rows-3 h-[28rem] gap-4">
+          <div class="row-span-2 relative">
+            <div class="swiper-container">
+              <swiper
+                :pagination="{ type: 'fraction' }"
+                :navigation="{
+                  nextEl: '.img .custom-next',
+                  prevEl: '.img .custom-prev',
+                }"
+                :draggable="false"
+                :loop="true"
+                :grab-cursor="false"
+                :grab="false"
+                :modules="modules"
+                :space-between="20"
+                :allow-touch-move="false"
+                :slides-per-view="1"
+                class="mySwiper"
+              >
+                <swiper-slide v-for="img in carData.img" :key="img">
+                  <div class="card border border-gray-200 flex flex-col">
+                    <div class="img h-72 m-auto">
+                      <NuxtImg
+                        class="w-full h-full object-cover"
+                        :src="`${img}`"
+                      />
+                    </div>
                   </div>
-                </div>
-              </swiper-slide>
-            </swiper>
+                </swiper-slide>
+              </swiper>
+            </div>
+            <div class="custom-prev group">
+              <div
+                class="w-2 h-2 border-t-2 border-l-2 border-gray-400 -rotate-45 group-hover:border-pri duration-150"
+              ></div>
+            </div>
+            <div class="custom-next group">
+              <div
+                class="w-2 h-2 border-t-2 border-r-2 border-gray-400 rotate-45 group-hover:border-pri duration-150"
+              ></div>
+            </div>
           </div>
-          <div class="custom-prev group">
-            <div
-              class="w-2 h-2 border-t-2 border-l-2 border-gray-400 -rotate-45 group-hover:border-pri duration-150"
-            ></div>
-          </div>
-          <div class="custom-next group">
-            <div
-              class="w-2 h-2 border-t-2 border-r-2 border-gray-400 rotate-45 group-hover:border-pri duration-150"
-            ></div>
-          </div>
-        </div>
-        <div class="h-full mini">
-          <div class="swiper-container h-32">
-            <swiper
-              :pagination="false"
-              :navigation="{
-                nextEl: '.img .custom-next',
-                prevEl: '.img .custom-prev',
-              }"
-              :draggable="false"
-              :loop="true"
-              :direction="'horizontal'"
-              :modules="modules"
-              :space-between="40"
-              :allow-touch-move="false"
-              :slides-per-view="4"
-              class="mySwiper h-32 p-4"
-            >
-              <swiper-slide v-for="img in carData.img" :key="img">
-                <div class="card border border-gray-200 flex flex-col gap-4">
-                  <div class="img h-24 aspect-square">
-                    <NuxtImg
-                      class="w-full h-full object-cover"
-                      :src="`${img}`"
-                    />
+          <div class="h-full mini">
+            <div class="swiper-container h-32">
+              <swiper
+                :pagination="false"
+                :navigation="{
+                  nextEl: '.img .custom-next',
+                  prevEl: '.img .custom-prev',
+                }"
+                :draggable="false"
+                :loop="true"
+                :direction="'horizontal'"
+                :modules="modules"
+                :space-between="40"
+                :allow-touch-move="false"
+                :slides-per-view="4"
+                class="mySwiper h-32 p-4"
+              >
+                <swiper-slide v-for="img in carData.img" :key="img">
+                  <div class="card border border-gray-200 flex flex-col gap-4">
+                    <div class="img h-24 aspect-square">
+                      <NuxtImg
+                        class="w-full h-full object-cover"
+                        :src="`${img}`"
+                      />
+                    </div>
                   </div>
-                </div>
-              </swiper-slide>
-            </swiper>
+                </swiper-slide>
+              </swiper>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="info col-span-1">
-      <div class="border border-gray-300 h-max px-8 py-4 max-w-80">
-        <div class="w-full text-start font-medium text-lg mb-4">
-          <h3>
-            {{ carData.name }}
-          </h3>
+      <div class="info col-span-1 max-w-[21rem]">
+        <div class="border border-red-300 h-max px-8 py-4 w-full">
+          <div class="w-full text-start text-lg mb-4">
+            <h3>
+              {{ carData.name }}
+            </h3>
+          </div>
+          <ul class="">
+            <li
+              v-for="(key, value) in carData.features"
+              class="py-2 text-sm capitalize flex justify-between max-w-48"
+            >
+              <span class="text-gray-600">
+                {{ value }}
+              </span>
+              <span class="text-pri"> {{ key }} </span>
+            </li>
+          </ul>
         </div>
-        <ul class="">
-          <li
-            v-for="(key, value) in carData.features"
-            class="py-2 text-sm capitalize flex justify-between max-w-48"
-          >
-            <span class="text-gray-600">
-              {{ key }}
-            </span>
-            <span class="text-pri"> {{ value }} </span>
-          </li>
-        </ul>
+        <div
+          class="btn mx-auto uppercase font-bold w-full mt-4 py-4 center rounded-full bg-pri text-white hover:bg-white hover:text-pri border border-pri duration-150 cursor-pointer"
+        >
+          Rent a car
+        </div>
       </div>
-      <div
-        class="btn max-w-80 mt-4 py-4 center rounded-full bg-pri text-white hover:bg-white hover:text-pri border border-pri duration-150 cursor-pointer"
-      >
-        Rent Now
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="container my-12 py-4">
-    <div class="heading text-xl tracking-tight py-4 border-b">
-      <h4>Vehical overview</h4>
-    </div>
-    <div class="desc text-gray-600 text-sm py-5 leading-loose">
-      <p v-for="p in carData.description.overall">
-        {{ p }}
-      </p>
-    </div>
-    <div class="grid grid-cols-2 gap-4 text-gray-600 text-sm my-4">
-      <div class="vid w-full h-72 relative">
-        <div class="brightness-50 aspect-[1/0.5] w-full h-full">
-          <NuxtImg
-            class="w-full h-full object-contain"
-            src="https://minivanhiredelhi.com/uploads/72057_Land-Range%20Rover%20Vogue.jpeg"
-          />
-        </div>
+    <section class="container my-12 py-4">
+      <div
+        class="heading text-xl tracking-tight py-4 border-b border-red-300 text-pri"
+      >
+        <h4>Vehical overview</h4>
       </div>
-      <div class="grid grid-rows-2">
-        <ul class="h-full flex flex-col justify-around">
-          <li
-            v-for="l in carData.description.bullet_points"
-            class="flex justify-start space-x-3 py-1 items-center"
+      <div class="desc text-gray-600 text-sm py-5 leading-loose">
+        <p v-for="p in carData.description.overall">
+          {{ p }}
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-4 text-gray-600 text-sm my-4">
+        <div class="vid w-full m-auto h-72 relative">
+          <div class="brightness-50 aspect-[1/0.5] w-full h-full">
+            <NuxtImg
+              class="w-full h-full object-contain"
+              src="https://minivanhiredelhi.com/uploads/72057_Land-Range%20Rover%20Vogue.jpeg"
+            />
+          </div>
+          <div
+            class="absolute top-1/2 center left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 z-10 cursor-pointer"
           >
-            <Icon name="lucide:arrow-right-circle" />
-            <p>{{ l }}</p>
-          </li>
-        </ul>
-        <div class="desc center my-5">
-          <p v-for="p in carData.description.bottom">
-            {{ p }}
-          </p>
+            <Icon name="ei:play" class="h-full w-full text-5xl font-bold text-pri"/>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <ul class="h-full flex flex-col justify-around">
+            <li
+              v-for="l in carData.description.bullet_points"
+              class="flex justify-start space-x-3 py-1 items-center"
+            >
+              <Icon name="lucide:arrow-right-circle" class="text-pri" />
+              <p>{{ l }}</p>
+            </li>
+          </ul>
+          <div class="desc center my-5">
+            <p v-for="p in carData.description.bottom">
+              {{ p }}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="query border-t border-pri w-3/5">
-    <UtilityQueryForm />
-  </section>
+    </section>
+    <section class="query border-t border-pri w-3/5">
+      <UtilityQueryForm />
+    </section>
+  </div>
 </template>
 
 <script setup>
@@ -181,10 +190,14 @@ const getCarData = () => {
         "5 Seater Range Rover Vogue Van is trendy for family tours, corporate travel and small group tours. Aspark Holidays offer safe and reliable imported vans on hire. Because of the new launch Range Rover Vogue Van is currently accessible in Delhi, Gurugram, and Noida. Luxury Range Rover Vogue is competent to hold 5 passengers, perfect for corporate tour, family travel, business meetings, airport transfers and sightseeing tours.",
       ],
       bullet_points: [
-        "The tiny ship was lost the min ting a maximum security road the minnow",
-        "Ting a maximum security road and back stock",
-        "Back stock a against ade lost the minnow the min ting",
-        "Minnow weather started getting rough the tiny",
+        "5 Luxurious seats with seat belts for comfort and safety",
+        "Forward-thinking exterior design",
+        "Innovative Pixel LED Headlights with signature DRL",
+        "Plug-in electric hybrid (PHEV) with rapid DC charging capability",
+        "Contemporary Interior",
+        "Intuitive and innovative technologies",
+        "On and off-road handling",
+        "All-weather capability",
       ],
       bottom: [
         "The weather started getting rough the tiny ship was lost the min ting a maxum security road and back stock a against ade lost the minnow weather started ting rough the tiny ship was lost the min ting a maximum security road and back at stock a against ade lost the minnow the min ting a maximum.",

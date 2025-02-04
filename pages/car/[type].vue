@@ -1,45 +1,99 @@
 <template>
-  <section class="container grid gap-10 grid-cols-5">
-    <div class="content col-span-3">
+  <section>
+    <div
+      class="heading font-semibold text-3xl relative capitalize h-56 tracking-wide text-center px-8"
+    >
       <div
-        class="heading font-semibold text-5xl capitalize p-4 border-b tracking-tighter"
+        :style="{ backgroundImage: `url('/img/car2.png')` }"
+        class="absolute left-0 top-0 z-10 h-full w-full"
+      ></div>
+
+      <div
+        class="z-20 relative h-full flex flex-col justify-center items-center"
       >
-        <h2 class="">{{ title }}</h2>
+        <h2 class="text-white uppercase font-bold">Luxury Car On Rental</h2>
       </div>
-      <div class="desc tracking-tight py-6 px-4 text-gray-800">
-        <p>
-          Minivan hire company provides an Imported Luxury VIP van rental
-          service in major cities across India. Rent a super luxury traveler van
-          that embodies versatility, innovation, and customization. The imported
-          VIP van can accommodate 5 to 15 passengers comfortably for
-          long-distance travel and tourism.
-        </p>
-        <p>
-          Our fleet includes Toyota Vellfire, Toyota Alphard, Toyota Hiace,
-          Toyota Commuter, Mercedes V Class, Hyundai H1, KIA Carnival Limousine,
-          and more. Online booking is available for airport transfers, city
-          tours, and outstation trips.
-        </p>
-      </div>
-    </div>
-    <div class="nav py-8 max-h-80 col-span-2">
-      <OthersNav2 :nav="carsNav" />
     </div>
   </section>
-  <section class="container grid grid-cols-2 gap-8 w-3/5">
-    <div v-for="i in 5">
-      <CarCard1
-        :name="cardData.heading"
-        :img="cardData.img"
-        :details="cardData.carDetails"
-        :path="cardData.path"
-        :key="cardData.heading"
-        :grid="true"
+  <UDivider
+    label="Introduction"
+    class="uppercase w-4/5 m-auto mt-12 mb-4"
+    :ui="{
+      label: 'text-pri dark:text-pri',
+    }"
+  />
+  <section class="container grid gap-10 side_padding">
+    <div class="content px-4">
+      <div>
+        <div class="desc tracking-tight py-6 px-4 space-y-4">
+          <p>
+            Jaguar, Mercedes, BMW, Audi, Toyota luxury car is usually regarded
+            as one of the top producers of finest luxury cars in the world. The
+            luxury car is comfortable, stylish, durable and most certainly ahead
+            of its time. All luxury car models include fully synchronized manual
+            and automatic transmissions as standard features. Minivan hire
+            delhi- is a service provider of Jaguar, Range Rover Vogue, Mercedes,
+            BMW, Audi, Toyota luxury cars rental service in metro cities of
+            Delhi, Mumbai, Chennai, Hyderabad, Kochi, Bengaluru and adjoining
+            cities. Book a super luxury car that embodies the versatility,
+            innovation and customization that has become a hallmark in the past
+            decade. The luxury car on rent can move of 2 to 6 passengers
+            comfortably across long distances and allow people to explore new
+            places through tourism. Reservation of luxurious car can be done for
+            Leisure Trips, VIP Meetings & Conventions, Business Trip & Corporate
+            Travel. Online Booking of luxury car is available for Airport Pick
+            Up and Drop Service, Local Run, City Tour and Outstation Trips such
+            as Agra Jaipur Tour, Shimla Manali Tour, Haridwar Rishikesh Tours,
+            Char Dham Yatra, Kerala Tour, Goa Tour, Varanasi Khajuraho Trip,
+            South India Tour, Himachal Tour, Uttarakhand Tour, North India Tour,
+            Rajasthan Tour, Gujarat Tour and many more.
+          </p>
+        </div>
+      </div>
+      <UDivider
+        label="Luxury Car"
+        class="uppercase w-4/6 mr-auto my-12"
+        :ui="{
+          label: 'text-pri dark:text-pri',
+        }"
       />
+      <section class="container px-2 py-4 grid grid-cols-3 gap-5">
+        <ul class="col-span-2 grid grid-cols-2 gap-8">
+          <li v-for="{ heading, img, carDetails } in cardData">
+            <CarCard1
+              class="shadow-lg"
+              :name="heading"
+              :img="img"
+              :details="carDetails"
+              :path="getPath(carsNav, heading)"
+              :key="heading"
+              :grid="true"
+            />
+          </li>
+        </ul>
+        <div class="info">
+          <!-- <UtilityQueryForm /> -->
+          <div class="h-max bg-[#39227F] text-white">
+            <UtilityNeedHelp />
+          </div>
+        </div>
+      </section>
     </div>
   </section>
 </template>
-
+<style scoped>
+.heading > div:first-child {
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav span.iconify:where(.i-heroicons\:chevron-right-20-solid) {
+  background-color: white !important;
+}
+</style>
 <script setup>
 definePageMeta({
   layout: "van",
@@ -59,17 +113,48 @@ const getNav = async () => {
   }
 };
 const getCardData = async () => {
-  const data = {
-    heading: "Luxury Car On Rental",
-    img: "https://minivanhiredelhi.com/uploads/27685_Luxury%20Car%20Rental%20Service.jpg",
-    carDetails: [
-      { label: "Style", value: "Sedan" },
-      { label: "Class", value: "Luxury" },
-      { label: "Air Condition", value: "Yes" },
-      { label: "Transmission", value: "Automatic" },
-    ],
-    path: "/car/luxury-car",
-  };
+  const data = [
+    {
+      heading: "Range Rover Vogue",
+      img: "https://minivanhiredelhi.com/uploads/72057_Land-Range Rover Vogue.jpeg",
+      carDetails: [
+        { label: "Style", value: "SUV", icon: "mdi-car-sports" },
+        { label: "Class", value: "Luxury", icon: "mdi-crown" },
+        { label: "Air Condition", value: "Yes", icon: "mdi-air-conditioner" },
+        { label: "Transmission", value: "Automatic", icon: "mdi-car-cog" },
+      ],
+      description:
+        "5 Seater the latest 2023 model Range Rover Vogue Luxury car on rent is available in Delhi, Noida, Gurugram.",
+      path: "/luxury-car/range-rover-vogue",
+    },
+    {
+      heading: "Jaguar XF Car",
+      img: "https://minivanhiredelhi.com/uploads/34893_Jaguar_XF-exterior-to-edit.jpg",
+      carDetails: [
+        { label: "Style", value: "Sedan", icon: "mdi-car" },
+        { label: "Class", value: "Luxury", icon: "mdi-crown" },
+        { label: "Air Condition", value: "Yes", icon: "mdi-air-conditioner" },
+        { label: "Transmission", value: "Automatic", icon: "mdi-car-cog" },
+      ],
+      description:
+        "Jaguar XF luxury car rental service in metro cities of Delhi, Mumbai, Chennai, Hyderabad, Kochi, Bengaluru and adjoining cities.",
+      path: "/luxury-car/jaguar-xf-car",
+    },
+    {
+      heading: "Jaguar XJ L",
+      img: "https://minivanhiredelhi.com/uploads/63371_Jaguar-XJ-img-2.jpg",
+      carDetails: [
+        { label: "Style", value: "Sedan", icon: "mdi-car" },
+        { label: "Class", value: "Luxury", icon: "mdi-crown" },
+        { label: "Air Condition", value: "Yes", icon: "mdi-air-conditioner" },
+        { label: "Transmission", value: "Automatic", icon: "mdi-car-cog" },
+      ],
+      description:
+        "Booking of luxurious Jaguar car can be done for Leisure Trips, VIP Meetings & Conventions, Business Trip & Corporate Travel.",
+      path: "/luxury-car/jaguar-xj-l",
+    },
+  ];
+
   cardData.value = data;
 };
 getCardData();

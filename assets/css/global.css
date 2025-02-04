@@ -32,6 +32,7 @@ section#hero {
 }
 .desc {
   word-spacing: 1.5px;
+  color: rgb(64, 64, 60);
 }
 #__nuxt{
   background-color: var(--offWhite-color);

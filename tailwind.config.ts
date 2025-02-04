@@ -8,6 +8,7 @@ export default <Partial<Config>>{
         pri: "#ec3323",
         secondary: "#14181c",
         offWhite: "#FAF9F6",
+        complementary: "#1e2a47"
       },
     },
   },

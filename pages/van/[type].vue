@@ -1,27 +1,29 @@
 <template>
-  <section class="container grid gap-10 grid-cols-5">
-    <div class="content col-span-3">
-      <div
-        class="heading font-semibold text-5xl capitalize p-4 border-b tracking-tighter"
-      >
-        <h2 class="">
-          {{ data.title }}
-        </h2>
+  <div class="side_padding">
+    <section class="container grid gap-10 grid-cols-5">
+      <div class="content col-span-3">
+        <div
+          class="heading font-semibold text-5xl capitalize p-4 border-b tracking-tighter"
+        >
+          <h2 class="">
+            {{ data.title }}
+          </h2>
+        </div>
+        <div class="desc tracking-tight py-6 px-4 text-gray-800">
+          <p v-for="p in data.paragraph">
+            {{ p }}
+          </p>
+        </div>
       </div>
-      <div class="desc tracking-tight py-6 px-4 text-gray-800">
-        <p v-for="p in data.paragraph">
-          {{ p }}
-        </p>
+      <div class="nav py-8 min-h-80 max-h-96 col-span-2">
+        <OthersNav2 :nav="van_links" />
       </div>
-    </div>
-    <div class="nav py-8 min-h-80 max-h-96 col-span-2">
-      <OthersNav2 :nav="van_links" />
-    </div>
-  </section>
+    </section>
 
-  <section class="container section_padding relative">
-    <UtilityVanSlider :arr="vans" :phase="2" :nav="van_links" />
-  </section>
+    <section class="container section_padding relative">
+      <UtilityVanSlider :arr="vans" :phase="2" :nav="van_links" />
+    </section>
+  </div>
 </template>
 
 <script setup>

@@ -1,8 +1,9 @@
 <template>
-  <section class="container grid gap-10 grid-cols-5">
+  <div class="side_padding">
+  <section class="container grid gap-10 grid-cols-5 ">
     <div class="content col-span-3">
       <div
-        class="heading font-semibold text-5xl capitalize p-4 border-b tracking-tighter"
+        class="heading font-semibold text-5xl capitalize p-4 border-b border-red-300 tracking-tighter"
       >
         <h2 class="">van</h2>
       </div>
@@ -27,9 +28,10 @@
     </div>
   </section>
 
-  <section class="container section_padding relative">
+  <section class="container section_padding relative ">
     <UtilityVanSlider :arr="vans" :phase="1" :nav="van_links" />
   </section>
+</div>
 </template>
 
 <script setup>

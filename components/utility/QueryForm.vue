@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-100 p-4 sm:p-12">
     <div class="mx-auto w-full px-6 py-6 bg-white shadow-lg">
       <h1
-        class="text-xl font-bold pb-6 mb-4 text-center border-b text-secondary p-2"
+        class="text-2xl font-bold pb-6 mb-4 border-red-400 text-center border-b text-secondary p-2"
       >
         Enquiry Form
       </h1>
@@ -73,13 +73,13 @@
         <div class="flex justify-start space-x-5 mt-6">
           <button type="submit" class="">
             <span
-              class="h-12 flex items-center justify-center uppercase font-semibold px-12 border border-secondary hover:bg-secondary hover:text-white transition duration-500 ease-in-out"
+              class="h-12 flex items-center justify-center uppercase font-semibold px-12 border border-pri hover:bg-pri hover:text-white transition duration-500 ease-in-out"
               >submit</span
             >
           </button>
           <button type="reset" class="border" @click="resetForm">
             <span
-              class="h-12 flex items-center justify-center uppercase text-white font-semibold px-12 border bg-secondary border-secondary hover:text-black hover:bg-white transition duration-500 ease-in-out"
+              class="h-12 flex items-center justify-center uppercase text-white font-semibold px-12 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
               >Reset</span
             >
           </button>
