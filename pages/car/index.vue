@@ -39,10 +39,10 @@
         <ul class="space-y-10">
           <li v-for="i in 5">
             <CarCard1
-              :heading="data.heading"
+              :name="data.heading"
               :img="data.img"
               :details="data.carDetails"
-              :path="data.path"
+              :path="getPath(carsNav, data.heading)"
               :key="data.heading"
             />
           </li>
@@ -50,7 +50,7 @@
       </section>
     </div>
     <div class="nav py-8 max-h-96 col-span-2">
-      <OthersNav2 :nav="cars" />
+      <OthersNav2 :nav="carsNav" />
     </div>
   </section>
 </template>
@@ -59,10 +59,11 @@
 definePageMeta({
   layout: "van",
 });
-const cars = ref([{}]);
+const { getPath } = useUtility();
+const carsNav = ref([{}]);
 const { data: navData, error } = await useFetch("/api/nav/car");
 if (navData) {
-  cars.value = navData.value.sub;
+  carsNav.value = navData.value.sub;
 } else {
   console.error(error);
 }

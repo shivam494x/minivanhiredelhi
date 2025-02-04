@@ -23,13 +23,13 @@
       </div>
     </div>
     <div class="nav py-8 max-h-80 col-span-2">
-      <OthersNav2 :nav="cars" />
+      <OthersNav2 :nav="carsNav" />
     </div>
   </section>
-  <section class="container grid grid-cols-2 gap-8 w-3/5 ">
+  <section class="container grid grid-cols-2 gap-8 w-3/5">
     <div v-for="i in 5">
       <CarCard1
-        :heading="cardData.heading"
+        :name="cardData.heading"
         :img="cardData.img"
         :details="cardData.carDetails"
         :path="cardData.path"
@@ -47,12 +47,13 @@ definePageMeta({
 
 const route = useRoute();
 const title = ref();
-const cars = ref([{}]);
+const carsNav = ref([{}]);
 const cardData = ref([{}]);
+const { getPath } = useUtility();
 const getNav = async () => {
   const { data: navData, error } = await useFetch("/api/nav/car");
   if (navData) {
-    cars.value = navData.value.sub;
+    carsNav.value = navData.value.sub;
   } else {
     console.error(error);
   }

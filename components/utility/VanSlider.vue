@@ -7,6 +7,7 @@
           nextEl: '.van .custom-next',
           prevEl: '.van .custom-prev',
         }"
+        :loop="true"
         :modules="modules"
         :space-between="20"
         :breakpoints="{
@@ -16,7 +17,10 @@
         }"
         class="mySwiper"
       >
-        <swiper-slide v-for="({ name, img, details, desc,path },index) in arr" :key="name">
+        <swiper-slide
+          v-for="({ name, img, details, desc, path }, index) in arr"
+          :key="name"
+        >
           <div class="card border border-gray-200 flex flex-col">
             <div class="img h-56">
               <NuxtImg
@@ -40,7 +44,7 @@
                   class="capitalize w-max py-1 px-6"
                   title="view more"
                   :border="false"
-                  :to="path"
+                  :to="getPath(nav, name)"
                 />
               </div>
               <div
@@ -117,10 +121,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 
+const { getPath } = useUtility();
 const props = defineProps({
   arr: Array,
   phase: Number,
+  nav: Array,
 });
-
 const modules = [Pagination, Navigation];
 </script>

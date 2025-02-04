@@ -111,10 +111,13 @@
         {{ p }}
       </p>
     </div>
-    <div class="grid grid-cols-2 gap-4 text-gray-600 text-sm my-4 ">
+    <div class="grid grid-cols-2 gap-4 text-gray-600 text-sm my-4">
       <div class="vid w-full h-72 relative">
         <div class="brightness-50 aspect-[1/0.5] w-full h-full">
-          <NuxtImg class="w-full h-full object-contain" src="https://minivanhiredelhi.com/uploads/72057_Land-Range%20Rover%20Vogue.jpeg" />
+          <NuxtImg
+            class="w-full h-full object-contain"
+            src="https://minivanhiredelhi.com/uploads/72057_Land-Range%20Rover%20Vogue.jpeg"
+          />
         </div>
       </div>
       <div class="grid grid-rows-2">
@@ -134,6 +137,9 @@
         </div>
       </div>
     </div>
+  </section>
+  <section class="query border-t border-pri w-3/5">
+    <UtilityQueryForm />
   </section>
 </template>
 

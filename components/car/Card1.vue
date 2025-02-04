@@ -3,7 +3,7 @@
   :class="grid ? 'grid-rows-2' : 'grid-cols-2'">
     <div
     class="w-full aspect-square overflow-hidden ">
-      <NuxtLink class="w-full h-full overflow-hidden" to="halo">
+      <NuxtLink class="w-full h-full overflow-hidden" :to="path">
         <NuxtImg
           class="w-full object-contain hover:rotate-3 hover:scale-110 duration-300 ease-in overflow-hidden"
           :src="img"
@@ -13,7 +13,7 @@
     <div class="p-4 flex flex-col">
       <div class="pb-4 border-b mx-2 flex justify-start items-center px-2">
         <h3 class="text-xl font-medium capitalize tracking-tight">
-          <span> {{ heading }} </span>
+          <span> {{ name }} </span>
         </h3>
       </div>
       <ul class="flex-grow flex flex-col justify-around pt-4 px-4 text-sm">
@@ -27,7 +27,7 @@
 </template>
 <script setup>
 const props = defineProps({
-  heading: String,
+  name: String,
   path: String,
   details: Array,
   img: String,

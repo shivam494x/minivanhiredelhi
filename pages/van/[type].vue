@@ -1,7 +1,9 @@
 <template>
   <section class="container grid gap-10 grid-cols-5">
     <div class="content col-span-3">
-      <div class="heading font-semibold text-5xl capitalize p-4 border-b tracking-tighter" >
+      <div
+        class="heading font-semibold text-5xl capitalize p-4 border-b tracking-tighter"
+      >
         <h2 class="">
           {{ data.title }}
         </h2>
@@ -13,12 +15,12 @@
       </div>
     </div>
     <div class="nav py-8 min-h-80 max-h-96 col-span-2">
-      <OthersNav2 :nav="data.nav" />
+      <OthersNav2 :nav="van_links" />
     </div>
   </section>
 
   <section class="container section_padding relative">
-    <UtilityVanSlider :arr="vans" :phase="2" />
+    <UtilityVanSlider :arr="vans" :phase="2" :nav="van_links" />
   </section>
 </template>
 
@@ -28,134 +30,23 @@ import { useRoute } from "vue-router";
 definePageMeta({
   layout: "van",
 });
+
 const route = useRoute();
+const title = ref();
+const van_links = ref([{}]);
+
+const { data: navData, error } = await useFetch("/api/nav/van");
+if (navData) {
+  van_links.value = navData.value.sub;
+} else {
+  console.error(error);
+}
+
 const data = computed(() => ({
-  title: "title",
+  title,
   paragraph: [
     "If you are looking for 100% Comfort, VIP Style, and Luxurious Feel, then Toyota Vellfire imported van is the best choice. With multiple design modes and thoughtful design, choose this classic model for your sophisticated journey. We assure to provide contactless delivery and pick-up of the luxury van with 100% sanitization, safety and hygiene practices. Moreover, you are free to take away the luxury VIP van with no limits and zero hidden charges.",
     "We offer Toyota Vellfire imported luxury van on hire in Delhi, Gurugram, Noida, Agra, and Jaipur at the best price. You can rent a Toyota Vellfire VIP luxury van for local personal use, business trips for corporate clients, and outstation trips in India. Rent a 6 & 7-seater Toyota Vellfire imported luxurious VIP Van for leisure trips like VIP meetings & conventions, business travel, weddings, corporate meetings, video shoots, celebrity travel, and outstation trips. Get the best deals on Toyota Vellfire imported van rental services. Online booking is available for airport pickup and drop-off service, local runs, city tours, and outstation trips such as Agra Jaipur Tour, Shimla Manali Tour, Haridwar Rishikesh Tours, Himachal Tour, Uttarakhand Tour, North India Tour, Rajasthan Tour, and many more.",
-  ],
-  nav: [
-    {
-      name: "Toyota Vellfire",
-      path: "/van/toyota-vellfire",
-      sub: [
-        {
-          name: "6 Seater Toyota Vellfire",
-          path: "/van/toyota-vellfire/6-seater-toyota-vellfire",
-        },
-        {
-          name: "7 Seater Toyota Vellfire",
-          path: "/van/toyota-vellfire/7-seater-toyota-vellfire",
-        },
-        {
-          name: "Vellfire Toyota Van",
-          path: "/van/toyota-vellfire/vellfire-toyota-van",
-        },
-      ],
-    },
-    {
-      name: "Mercedes V Class",
-      path: "/van/mercedes-van",
-      sub: [
-        {
-          name: "5 Seater Mercedes Viano",
-          path: "/van/mercedes-van/5-seater-mercedes-viano",
-        },
-        {
-          name: "6 Seater Mercedes Van",
-          path: "/van/mercedes-van/6-seater-mercedes-van",
-        },
-        {
-          name: "Mercedes V Class",
-          path: "/van/mercedes-van/mercedes-v-class",
-        },
-      ],
-    },
-    {
-      name: "Kia Carnival Limousine",
-      path: "/van/kia-carnival-limousine",
-      sub: [
-        {
-          name: "6 Seater Kia Carnival Car",
-          path: "/van/kia-carnival-limousine/6-seater-kia-carnival-car",
-        },
-        {
-          name: "7 Seater Kia Carnival Car",
-          path: "/van/kia-carnival-limousine/7-seater-kia-carnival-car",
-        },
-        {
-          name: "Carnival Kia Luxury Car",
-          path: "/van/kia-carnival-limousine/carnival-kia-luxury-car",
-        },
-      ],
-    },
-    {
-      name: "Toyota Hiace",
-      path: "/van/toyota-hiace",
-      sub: [
-        {
-          name: "5 Seater Toyota Luxury Van",
-          path: "/van/toyota-hiace/5-seater-toyota-luxury-van",
-        },
-        {
-          name: "6 Seater Luxury Toyota Van",
-          path: "/van/toyota-hiace/6-seater-luxury-toyota-van",
-        },
-        {
-          name: "7 Seater Toyota Luxury Van",
-          path: "/van/toyota-hiace/7-seater-toyota-luxury-van",
-        },
-        {
-          name: "8 Seater Toyota Luxury Van",
-          path: "/van/toyota-hiace/8-seater-toyota-luxury-van",
-        },
-        {
-          name: "9 Seater Toyota Luxury Van",
-          path: "/van/toyota-hiace/9-seater-toyota-luxury-van",
-        },
-      ],
-    },
-    {
-      name: "Toyota Alphard",
-      path: "/van/toyota-alphard",
-      sub: [
-        {
-          name: "5 Seater Toyota Alphard Van",
-          path: "/van/toyota-alphard/5-seater-toyota-alphard-van",
-        },
-        {
-          name: "6 Seater Toyota Alphard Van",
-          path: "/van/toyota-alphard/6-seater-toyota-alphard-van",
-        },
-        {
-          name: "7 Seater Toyota Alphard",
-          path: "/van/toyota-alphard/7-seater-toyota-alphard",
-        },
-      ],
-    },
-    {
-      name: "Mercedes Sprinter",
-      path: "/van/mercedes-sprinter",
-      sub: [
-        {
-          name: "8 Seater Mercedes Van",
-          path: "/van/mercedes-sprinter/8-seater-mercedes-van",
-        },
-        {
-          name: "9 Seater Mercedes Van",
-          path: "/van/mercedes-sprinter/9-seater-mercedes-van",
-        },
-        {
-          name: "10 Seater Mercedes Van",
-          path: "/van/mercedes-sprinter/10-seater-mercedes-van",
-        },
-        {
-          name: "11 Seater Sprinter Van",
-          path: "/van/mercedes-sprinter/11-seater-sprinter-van",
-        },
-      ],
-    },
   ],
 }));
 
@@ -180,6 +71,7 @@ const vans = [
   },
 ];
 
-
-
+onMounted(() => {
+  title.value = route.params.type;
+});
 </script>

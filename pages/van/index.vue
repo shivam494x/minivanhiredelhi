@@ -28,7 +28,7 @@
   </section>
 
   <section class="container section_padding relative">
-    <UtilityVanSlider :arr="vans" :phase="1" :links="nav" />
+    <UtilityVanSlider :arr="vans" :phase="1" :nav="van_links" />
   </section>
 </template>
 
@@ -43,6 +43,7 @@ if (navData) {
 } else {
   console.error(error);
 }
+
 const vans = [
   {
     name: "Kia Carnival Limousine",
@@ -137,127 +138,4 @@ const vans = [
     ],
   },
 ];
-
-// const nav = [
-//   {
-//     name: "Toyota Vellfire",
-//     path: "/van/toyota-vellfire",
-//     sub: [
-//       {
-//         name: "6 Seater Toyota Vellfire",
-//         path: "/van/toyota-vellfire/6-seater-toyota-vellfire",
-//       },
-//       {
-//         name: "7 Seater Toyota Vellfire",
-//         path: "/van/toyota-vellfire/7-seater-toyota-vellfire",
-//       },
-//       {
-//         name: "Vellfire Toyota Van",
-//         path: "/van/toyota-vellfire/vellfire-toyota-van",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Mercedes V Class",
-//     path: "/van/mercedes-van",
-//     sub: [
-//       {
-//         name: "5 Seater Mercedes Viano",
-//         path: "/van/mercedes-van/5-seater-mercedes-viano",
-//       },
-//       {
-//         name: "6 Seater Mercedes Van",
-//         path: "/van/mercedes-van/6-seater-mercedes-van",
-//       },
-//       {
-//         name: "Mercedes V Class",
-//         path: "/van/mercedes-van/mercedes-v-class",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Kia Carnival Limousine",
-//     path: "/van/kia-carnival-limousine",
-//     sub: [
-//       {
-//         name: "6 Seater Kia Carnival Car",
-//         path: "/van/kia-carnival-limousine/6-seater-kia-carnival-car",
-//       },
-//       {
-//         name: "7 Seater Kia Carnival Car",
-//         path: "/van/kia-carnival-limousine/7-seater-kia-carnival-car",
-//       },
-//       {
-//         name: "Carnival Kia Luxury Car",
-//         path: "/van/kia-carnival-limousine/carnival-kia-luxury-car",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Toyota Hiace",
-//     path: "/van/toyota-hiace",
-//     sub: [
-//       {
-//         name: "5 Seater Toyota Luxury Van",
-//         path: "/van/toyota-hiace/5-seater-toyota-luxury-van",
-//       },
-//       {
-//         name: "6 Seater Luxury Toyota Van",
-//         path: "/van/toyota-hiace/6-seater-luxury-toyota-van",
-//       },
-//       {
-//         name: "7 Seater Toyota Luxury Van",
-//         path: "/van/toyota-hiace/7-seater-toyota-luxury-van",
-//       },
-//       {
-//         name: "8 Seater Toyota Luxury Van",
-//         path: "/van/toyota-hiace/8-seater-toyota-luxury-van",
-//       },
-//       {
-//         name: "9 Seater Toyota Luxury Van",
-//         path: "/van/toyota-hiace/9-seater-toyota-luxury-van",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Toyota Alphard",
-//     path: "/van/toyota-alphard",
-//     sub: [
-//       {
-//         name: "5 Seater Toyota Alphard Van",
-//         path: "/van/toyota-alphard/5-seater-toyota-alphard-van",
-//       },
-//       {
-//         name: "6 Seater Toyota Alphard Van",
-//         path: "/van/toyota-alphard/6-seater-toyota-alphard-van",
-//       },
-//       {
-//         name: "7 Seater Toyota Alphard",
-//         path: "/van/toyota-alphard/7-seater-toyota-alphard",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Mercedes Sprinter",
-//     path: "/van/mercedes-sprinter",
-//     sub: [
-//       {
-//         name: "8 Seater Mercedes Van",
-//         path: "/van/mercedes-sprinter/8-seater-mercedes-van",
-//       },
-//       {
-//         name: "9 Seater Mercedes Van",
-//         path: "/van/mercedes-sprinter/9-seater-mercedes-van",
-//       },
-//       {
-//         name: "10 Seater Mercedes Van",
-//         path: "/van/mercedes-sprinter/10-seater-mercedes-van",
-//       },
-//       {
-//         name: "11 Seater Sprinter Van",
-//         path: "/van/mercedes-sprinter/11-seater-sprinter-van",
-//       },
-//     ],
-//   },
-// ];
 </script>
