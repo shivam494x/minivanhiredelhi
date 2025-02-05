@@ -85,10 +85,10 @@
         <div class="flex justify-start space-x-5 mt-6">
           <button type="submit" class="">
             <div
-              class="h-12 relative group overflow-hidden flex items-center justify-center uppercase font-semibold px-8 border border-pri hover:bg-pri hover:text-white transition duration-200 ease-in-out"
+              class="h-12 relative group overflow-hidden flex items-center justify-center uppercase font-semibold px-12 border border-pri hover:bg-pri hover:text-white transition duration-200 ease-in-out"
             >
               <span class="duration-300 group-hover:-translate-y-16"
-                >read more</span
+                >submit</span
               >
               <span
                 class="absolute duration-300 group-hover:translate-y-0 group-hover:translate-x-0 translate-y-16 -translate-x-16 center"
@@ -98,7 +98,7 @@
           </button>
           <button type="reset" class="border" @click="resetForm">
             <div
-              class="h-12 group space-x-3 flex items-center justify-center uppercase text-white font-semibold px-8 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
+              class="h-12 group space-x-3 flex items-center justify-center uppercase text-white font-semibold px-6 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
             >
               <span>reset</span>
               <Icon name="material-symbols:restart-alt" class="text-xl group-hover:-rotate-180 duration-300" />
