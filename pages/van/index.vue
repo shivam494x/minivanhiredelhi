@@ -42,7 +42,14 @@
       <div class="query col-span-2">
         <UtilityQueryForm />
       </div>
-      <div class="help"><UtilityNeedHelp /></div>
+      <div class="help space-y-8">
+        <div class="">
+          <!-- <OthersNav2 :nav="van_links" /> -->
+        </div>
+        <div>
+          <UtilityNeedHelp />
+        </div>
+      </div>
     </section>
   </div>
 </template>

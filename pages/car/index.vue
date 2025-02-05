@@ -7,7 +7,6 @@
         :style="{ backgroundImage: `url('/img/car.png')` }"
         class="absolute left-0 top-0 z-10 h-full w-full"
       ></div>
-
       <div class="z-20 relative h-full flex flex-col justify-end items-center">
         <h2 class="text-white uppercase font-bold">Cars</h2>
       </div>
@@ -83,18 +82,23 @@
 .heading > div:first-child {
   background-size: cover;
   background-position: center;
-  filter: brightness(0.3);
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.heading > div:first-child::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background: linear-gradient(0deg, rgba(2,1,13,1) 0%, rgba(87,227,255,0) 100%);
+}
 .heading .uppercase {
   color: transparent;
-  background: linear-gradient(
-    0deg,
-    #1e2a47 0%,
-    rgba(255, 255, 255,0.7) 140%
-  );
+  background: linear-gradient(0deg, #1e2a47 0%, rgba(255, 255, 255, 0.9) 190%);
   background-clip: text;
 }
 </style>

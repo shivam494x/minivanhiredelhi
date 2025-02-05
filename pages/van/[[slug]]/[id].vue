@@ -94,7 +94,9 @@
             </div>
             <div class="details text-pri border-b py-6 px-4">
               <h4 class="capitalize font-medium pb-4">details</h4>
-              <ul class="pl-6 text-sm capitalize text-gray-700">
+              <ul
+                class="text-sm capitalize text-gray-700 flex justify-between border-[10px] border-complementary p-4"
+              >
                 <li
                   v-for="(
                     { manufacturer, style, detail, icon }, key
@@ -102,27 +104,23 @@
                   :key="key"
                   class="py-1 flex space-x-3"
                 >
-                  <Icon
-                    v-if="icon"
-                    :name="icon"
-                    class="text-complementary text-xl"
-                  />
+                  <Icon v-if="icon" :name="icon" class="text-pri text-xl" />
                   <span class="center">
                     <span v-if="manufacturer" class=""
                       >Manufacturer:
-                      <span class="text-pri px-2">
+                      <span class="text-black px-2">
                         {{ manufacturer }}
                       </span>
                     </span>
                     <span v-if="style" class=""
                       >Style:
-                      <span class="text-pri px-2">
+                      <span class="text-black px-2">
                         {{ style }}
                       </span>
                     </span>
                     <span v-if="detail" class=""
                       >Capacity:
-                      <span class="text-pri px-2">
+                      <span class="text-black px-2">
                         {{ detail }}
                       </span>
                     </span>
@@ -132,18 +130,17 @@
             </div>
             <div class="features text-pri border-b py-6 px-4">
               <h4 class="capitalize font-medium pb-4">features</h4>
-              <ul class="pl-6 text-sm capitalize text-gray-700">
+              <ul
+                class="pl-6 text-sm capitalize text-gray-700 grid grid-cols-2 gap-4 justify-between border-[10px] border-complementary p-4"
+              >
                 <li
                   v-for="(value, key) in data.features.list"
                   :key="key"
                   v-if="data.features"
                   class="py-1 space-x-3 flex"
                 >
-                  <span v-if="value.icon">
-                    <Icon
-                      :name="value.icon"
-                      class="text-complementary text-xl"
-                    />
+                  <span v-if="value.icon" class="center">
+                    <Icon :name="value.icon" class="text-pri text-xl" />
                   </span>
                   <span class="h-full center">
                     {{ value.feature }}
@@ -159,7 +156,12 @@
               </div>
             </div>
             <div class="note text-pri border-b py-6 px-4">
-              <h4 class="capitalize font-medium pb-4">Please Note</h4>
+              <h4
+                class="capitalize font-medium pb-4 flex items-center space-x-2"
+              >
+                <span>Please Note</span>
+                <Icon name="mdi:information-outline" class="text-pri text-xl" />
+              </h4>
               <ul class="list-disc pl-11 text-sm capitalize text-gray-700">
                 <li
                   v-for="(value, key) in data.additional_notes"
@@ -265,6 +267,26 @@ const modules = [Pagination, Navigation];
   cursor: pointer;
   z-index: 10;
   border: 2px solid white;
+}
+@keyframes moveGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 40px; /* Moves by the grid size */
+  }
+}
+.features ul,
+.details ul {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px; /* Adjust grid size */
+  animation: moveGrid 3s linear infinite;
 }
 .swiper-slide {
   filter: brightness(0.4);

@@ -205,7 +205,6 @@ onMounted(() => {
     } else {
       height = list_height * 5;
     }
-    console.log(height);
     inAnimation.height = height;
     gsap.to(parent_li, inAnimation);
   }

@@ -10,7 +10,7 @@
         </div>
       </div>
       <h1
-        class="text-2xl capitalize space-x-3 font-bold mb-4 flex items-end justify-center border-red-400 border-b text-secondary py-2 mx-3"
+        class="text-2xl capitalize space-x-3 font-bold mb-4 flex items-end justify-center border-red-400 border-b-4 text-secondary py-2 mx-3"
       >
         <span> query form </span>
         <div class="text-sm font-normal center w-max space-x-1 pb-1 text-pri">
@@ -69,13 +69,13 @@
           class="block w-full mt-5 p-2 border-b-2 border-gray-300 bg-white"
         ></textarea>
 
-        <div class="flex items-center mt-5">
+        <div class="flex items-center mt-5 focus-visible:border-0">
           <input
             type="number"
             name="captcha"
             v-model="form.captcha"
             placeholder="Enter Code"
-            class="block w-full p-2 border-b-2 border-gray-300 bg-white"
+            class="block w-full p-2 border-b-2 border-gray-300 bg-white focus:border-red-500 focus:ring-0"
           />
           <span class="bg-gray-200 py-2 px-8 ml-2 text-black font-bold">{{
             captchaCode
@@ -91,7 +91,7 @@
                 >read more</span
               >
               <span
-                class="absolute duration-300 group-hover:translate-y-0 translate-y-16 center"
+                class="absolute duration-300 group-hover:translate-y-0 group-hover:translate-x-0 translate-y-16 -translate-x-16 center"
                 ><Icon name="i-fa:send"
               /></span>
             </div>
@@ -101,7 +101,7 @@
               class="h-12 group space-x-3 flex items-center justify-center uppercase text-white font-semibold px-8 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
             >
               <span>reset</span>
-              <Icon name="material-symbols:restart-alt" class="text-xl" />
+              <Icon name="material-symbols:restart-alt" class="text-xl group-hover:-rotate-180 duration-300" />
             </div>
           </button>
         </div>
