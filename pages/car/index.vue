@@ -1,16 +1,14 @@
 <template>
   <section>
     <div
-      class="heading font-semibold text-3xl relative capitalize h-56 tracking-wide text-center px-8"
+      class="heading font-semibold text-8xl relative capitalize h-56 tracking-wide text-end px-8"
     >
       <div
         :style="{ backgroundImage: `url('/img/car.png')` }"
         class="absolute left-0 top-0 z-10 h-full w-full"
       ></div>
 
-      <div
-        class="z-20 relative h-full flex flex-col justify-center items-center"
-      >
+      <div class="z-20 relative h-full flex flex-col justify-end items-center">
         <h2 class="text-white uppercase font-bold">Cars</h2>
       </div>
     </div>
@@ -90,7 +88,15 @@
   align-items: center;
   justify-content: center;
 }
-
+.heading .uppercase {
+  color: transparent;
+  background: linear-gradient(
+    0deg,
+    #1e2a47 0%,
+    rgba(255, 255, 255,0.7) 140%
+  );
+  background-clip: text;
+}
 </style>
 <script setup>
 definePageMeta({

@@ -1,10 +1,22 @@
 <template>
-  <div class="min-h-screen bg-gray-100 p-4 sm:p-12">
-    <div class="mx-auto w-full px-6 py-6 bg-white shadow-lg">
+  <div
+    class="min-h-screen bg-gray-100 p-4 sm:p-12 form-wrapper overflow-hidden"
+  >
+    <div class="mx-auto w-full px-6 py-6 bg-white shadow-lg relative">
+      <div class="absolute left-0 right-0 top-0 bottom-0 h-full w-full z-10 bg pointer-events-none">
+        <div class="relative left-0 right-0 top-0 bottom-0 h-full w-full">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
       <h1
-        class="text-2xl font-bold pb-6 mb-4 border-red-400 text-center border-b text-secondary p-2"
+        class="text-2xl capitalize space-x-3 font-bold mb-4 flex items-end justify-center border-red-400 border-b text-secondary py-2 mx-3"
       >
-        Enquiry Form
+        <span> query form </span>
+        <div class="text-sm font-normal center w-max space-x-1 pb-1 text-pri">
+          <span> Let us help you! </span>
+          <Icon name="tabler:headset" class="text-lg" />
+        </div>
       </h1>
       <form @submit.prevent="submitForm">
         <div
@@ -18,7 +30,7 @@
             v-model="form[field.name]"
             placeholder=" "
             required
-            class="pt-3 pb-2 block w-full px-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-300"
+            class="pt-3 pb-2 block w-full px-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-red-300 border-gray-300"
           />
           <label
             :for="field.name"
@@ -72,16 +84,25 @@
 
         <div class="flex justify-start space-x-5 mt-6">
           <button type="submit" class="">
-            <span
-              class="h-12 flex items-center justify-center uppercase font-semibold px-12 border border-pri hover:bg-pri hover:text-white transition duration-500 ease-in-out"
-              >submit</span
+            <div
+              class="h-12 relative group overflow-hidden flex items-center justify-center uppercase font-semibold px-8 border border-pri hover:bg-pri hover:text-white transition duration-200 ease-in-out"
             >
+              <span class="duration-300 group-hover:-translate-y-16"
+                >read more</span
+              >
+              <span
+                class="absolute duration-300 group-hover:translate-y-0 translate-y-16 center"
+                ><Icon name="i-fa:send"
+              /></span>
+            </div>
           </button>
           <button type="reset" class="border" @click="resetForm">
-            <span
-              class="h-12 flex items-center justify-center uppercase text-white font-semibold px-12 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
-              >Reset</span
+            <div
+              class="h-12 group space-x-3 flex items-center justify-center uppercase text-white font-semibold px-8 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
             >
+              <span>reset</span>
+              <Icon name="material-symbols:restart-alt" class="text-xl" />
+            </div>
           </button>
         </div>
       </form>
@@ -174,6 +195,25 @@ export default {
 </script>
 
 <style scoped>
+.form-wrapper .bg span {
+  position: absolute;
+  width: 20rem;
+  height: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  background-color: var(--primary-color);
+  top: 2%;
+}
+
+.form-wrapper .bg span:first-child {
+  left: 5%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.form-wrapper .bg span:nth-child(2) {
+  right: 5%;
+
+  transform: translate(50%, -50%) rotate(45deg);
+}
 .origin-0 {
   transform-origin: 0%;
 }
@@ -182,7 +222,6 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 input:focus ~ label,
 input:not(:placeholder-shown) ~ label {
   --tw-scale-x: 0.75;

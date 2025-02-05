@@ -2,13 +2,19 @@
   <BaseLayout>
     <main class="bg-offWhite text-black">
       <div class="current-location py-4 px-4 border-b border-t side_padding">
-        <UBreadcrumb :links="breadcrumbLinks" class="text-black" />
+        <UBreadcrumb
+          :links="breadcrumbLinks"
+          class="text-black"
+          :ui="{
+            inactive: 'hover:text-pri dark:hover:text-pri',
+          }"
+        />
       </div>
 
       <slot></slot>
     </main>
     <div
-      class="whatsapp h-12 bg-[#40c351] rounded-full px-5 py-2 aspect-square fixed bottom-8 right-8 flex space-x-4 shadow-lg cursor-pointer"
+      class="whatsapp z-[999] h-12 bg-[#40c351] rounded-full px-5 py-2 aspect-square fixed bottom-8 right-8 flex space-x-4 shadow-lg cursor-pointer"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

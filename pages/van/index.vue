@@ -1,37 +1,50 @@
 <template>
   <div class="side_padding">
-  <section class="container grid gap-10 grid-cols-5 ">
-    <div class="content col-span-3">
-      <div
-        class="heading font-semibold text-5xl capitalize p-4 border-b border-red-300 tracking-tighter"
-      >
-        <h2 class="">van</h2>
+    <section class="container">
+      <div class="content">
+        <div
+          class="heading font-semibold text-5xl capitalize p-4 border-b border-red-300 tracking-tighter center"
+        >
+          <h2 class="">van</h2>
+        </div>
+        <div class="desc tracking-tight py-6 px-4 text-gray-800">
+          <p>
+            Minivan hire company provide a Imported Luxury VIP vans rental
+            service in Delhi, Mumbai, Goa, Pune, Chennai, Hyderabad, Kochi,
+            Bengaluru and adjoining cities in India. Rent a super luxury
+            traveler van that embodies the versatility, innovation and
+            customization that has become a hallmark in the past decade. The
+            imported VIP van on hire can move groups of 5 to 15 passengers
+            comfortably across long distances and allow people to explore new
+            places through tourism. Reservation of luxurious vans can be done
+            for Leisure Trips, VIP Meetings & Conventions, Business & Corporate
+            Travel. Mini Van Hire fleet of imported luxury van includes Toyota
+            Vellfire. Toyota Alphard, Toyota Hiace, Toyota Commuter, Toyota
+            Coaster, Force Urbania Minivan, Mercedes V Class, Mercedes Sprinter
+            Van, Hyundai H1, Foton Van, KIA Carnival Limousine and Force Tempo
+            Traveller. Online Booking of Van is available for Airport Pick Up
+            and Drop Service, Local Run, City Tour and Outstation Tripsips.
+          </p>
+        </div>
       </div>
-      <div class="desc tracking-tight py-6 px-4 text-gray-800">
-        <p>
-          Minivan hire company provides an Imported Luxury VIP van rental
-          service in major cities across India. Rent a super luxury traveler van
-          that embodies versatility, innovation, and customization. The imported
-          VIP van can accommodate 5 to 15 passengers comfortably for
-          long-distance travel and tourism.
-        </p>
-        <p>
-          Our fleet includes Toyota Vellfire, Toyota Alphard, Toyota Hiace,
-          Toyota Commuter, Mercedes V Class, Hyundai H1, KIA Carnival Limousine,
-          and more. Online booking is available for airport transfers, city
-          tours, and outstation trips.
-        </p>
+    </section>
+    <UDivider
+      label="our van collection"
+      class="uppercase text-pri"
+      :ui="{
+        label: 'text-pri dark:text-pri',
+      }"
+    />
+    <section class="container section_padding relative">
+      <UtilityVanSlider :arr="vans" :phase="1" :nav="van_links" />
+    </section>
+    <section class="container section_padding grid grid-cols-3 gap-20">
+      <div class="query col-span-2">
+        <UtilityQueryForm />
       </div>
-    </div>
-    <div class="nav py-8 max-h-80 col-span-2">
-      <OthersNav2 :nav="van_links" />
-    </div>
-  </section>
-
-  <section class="container section_padding relative ">
-    <UtilityVanSlider :arr="vans" :phase="1" :nav="van_links" />
-  </section>
-</div>
+      <div class="help"><UtilityNeedHelp /></div>
+    </section>
+  </div>
 </template>
 
 <script setup>
@@ -49,7 +62,7 @@ if (navData) {
 const vans = [
   {
     name: "Kia Carnival Limousine",
-    img: "van/Kia Carnival Limousine.png",
+    img: "img/van/Kia Carnival Limousine.png",
     path: "/van/kia-carnival-limousine",
     details: [
       {
@@ -61,7 +74,7 @@ const vans = [
         quality: "Diesel",
       },
       {
-        icon: "mdi:car-shift-automatic",
+        icon: "fa6-solid:a",
         quality: "Auto",
       },
       {
@@ -72,7 +85,7 @@ const vans = [
   },
   {
     name: "Mercedes V Class",
-    img: "van/Mercedes V Class.png",
+    img: "img/van/Mercedes V Class.png",
     path: "/van/mercedes-van",
     details: [
       {
@@ -84,7 +97,7 @@ const vans = [
         quality: "Petrol",
       },
       {
-        icon: "mdi:car-shift-automatic",
+        icon: "fa6-solid:a",
         quality: "Auto",
       },
       {
@@ -95,7 +108,7 @@ const vans = [
   },
   {
     name: "Toyota Hiace",
-    img: "van/Toyota Hiace.png",
+    img: "img/van/Toyota Hiace.png",
     path: "/van/toyota-hiace",
     details: [
       {
@@ -107,7 +120,7 @@ const vans = [
         quality: "Diesel",
       },
       {
-        icon: "mdi:car-shift-manual",
+        icon: "fa6-solid:m",
         quality: "Manual",
       },
       {
@@ -118,7 +131,7 @@ const vans = [
   },
   {
     name: "Toyota Vellfire",
-    img: "van/Toyota Vellfire.png",
+    img: "img/van/Toyota Vellfire.png",
     path: "/van/toyota-vellfire",
     details: [
       {
@@ -130,7 +143,7 @@ const vans = [
         quality: "Hybrid",
       },
       {
-        icon: "mdi:car-shift-automatic",
+        icon: "fa6-solid:a",
         quality: "Auto",
       },
       {

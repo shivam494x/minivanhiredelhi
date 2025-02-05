@@ -1,27 +1,36 @@
 <template>
   <div class="side_padding">
-    <section class="container grid gap-10 grid-cols-5">
-      <div class="content col-span-3">
+    <section class="container">
+      <div class="content">
         <div
-          class="heading font-semibold text-5xl capitalize p-4 border-b tracking-tighter"
+          class="heading font-semibold text-5xl capitalize p-4 border-b border-pri tracking-tighter"
         >
-          <h2 class="">
+          <h2 class="center">
             {{ data.title }}
           </h2>
         </div>
-        <div class="desc tracking-tight py-6 px-4 text-gray-800">
+        <div class="desc tracking-tight py-6 px-4 text-gray-800 space-y-3">
           <p v-for="p in data.paragraph">
             {{ p }}
           </p>
         </div>
       </div>
-      <div class="nav py-8 min-h-80 max-h-96 col-span-2">
-        <OthersNav2 :nav="van_links" />
-      </div>
     </section>
-
+    <UDivider
+      :label="`our ${data.title.value} collection`"
+      class="capitalize text-pri text-xl"
+      :ui="{
+        label: 'text-pri dark:text-pri text-xl',
+      }"
+    />
     <section class="container section_padding relative">
       <UtilityVanSlider :arr="vans" :phase="2" :nav="van_links" />
+    </section>
+    <section class="container section_padding grid grid-cols-3 gap-20">
+      <div class="query col-span-2">
+        <UtilityQueryForm />
+      </div>
+      <div class="help"><UtilityNeedHelp /></div>
     </section>
   </div>
 </template>
@@ -36,8 +45,8 @@ definePageMeta({
 const route = useRoute();
 const title = ref();
 const van_links = ref([{}]);
-
 const { data: navData, error } = await useFetch("/api/nav/van");
+
 if (navData) {
   van_links.value = navData.value.sub;
 } else {
@@ -55,22 +64,23 @@ const data = computed(() => ({
 const vans = [
   {
     name: "6 Seater Toyota Vellfire",
-    img: "van/Kia Carnival Limousine.png",
+    img: "https://minivanhiredelhi.com/uploads/8496_vellfire-toyota%20van.jpg",
     desc: "Toyota Vellfire luxury van hire for Local Run, Personal Uses, Business Trip for Corporate clients and Outstation Trip.",
     path: "/van/toyota-vellfire/6-seater-toyota-vellfire",
   },
   {
     name: "7 Seater Toyota Vellfire",
-    img: "van/Mercedes V Class.png",
+    img: "https://minivanhiredelhi.com/uploads/95275_21.jpg",
     desc: "Rent a Toyota Vellfire luxury Van in Delhi, Gurugram, Noida, Agra, Jaipur Mumbai, Bengaluru and Hyderabad.",
     path: "/van/toyota-vellfire/7-seater-toyota-vellfire",
   },
   {
     name: "Vellfire Toyota Van",
-    img: "van/Toyota Hiace.png",
+    img: "https://minivanhiredelhi.com/uploads/7061_Toyota%20Vellfire%20On%20Rent.PNG",
     desc: "Toyota Vellfire imported luxury van rental service Delhi, Noida, Gurugram, Agra Jaipur and Major cities in India",
     path: "/van/toyota-vellfire/vellfire-toyota-van",
   },
+  
 ];
 
 onMounted(() => {

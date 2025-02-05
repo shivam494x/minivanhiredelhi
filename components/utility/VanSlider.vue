@@ -10,6 +10,7 @@
         :loop="true"
         :modules="modules"
         :space-between="20"
+        :autoplay="true"
         :breakpoints="{
           0: { slidesPerView: 1 }, // Small screens (default)
           768: { slidesPerView: 2 }, // 'sm:' screens (640px and up)
@@ -20,17 +21,19 @@
         <swiper-slide
           v-for="({ name, img, details, desc, path }, index) in arr"
           :key="name"
+          class=""
         >
           <div class="card border border-gray-200 flex flex-col">
-            <div class="img h-56">
-              <NuxtImg
-                class="w-full h-full object-cover"
-                :src="`/img/${img}`"
-              />
+            <div class="img h-48">
+              <NuxtImg class="w-full h-full object-cover" :src="`${img}`" />
             </div>
-            <div class="content pt-3 row-span-1 flex flex-col center">
-              <div class="text-xl font-medium capitalize tracking-tight flex-1">
-                {{ name }}
+            <div class="content row-span-1 flex flex-col center">
+              <div
+                class="text-xl py-4 font-medium capitalize tracking-tight flex-1"
+              >
+                <span class="before relative">
+                  {{ name }}
+                </span>
               </div>
 
               <div
@@ -39,13 +42,22 @@
               >
                 {{ desc }}
               </div>
-              <div class="btn center w-full text-white my-3">
-                <UtilityButton1
-                  class="capitalize w-max py-1 px-6"
-                  title="view more"
-                  :border="false"
+              <div class="btn center w-full my-3 space-x-6 capitalize text-sm">
+                <NuxtLink
                   :to="getPath(nav, name)"
-                />
+                  class="center space-x-3 px-4 py-2 bg-pri border border-pri hover:bg-white hover:text-black text-white duration-150 cursor-pointer"
+                >
+                  <span v-if="desc">View details</span>
+                  <span v-else> Read more </span>
+                  <Icon name="fa:send" />
+                </NuxtLink>
+                <NuxtLink
+                  :to="getPath(nav, name)"
+                  class="center space-x-3 px-4 py-2 bg-complementary border border-complementary hover:bg-white hover:text-black text-white duration-150 cursor-pointer"
+                >
+                  <span>book now</span>
+                  <Icon name="mdi:ticket-confirmation" />
+                </NuxtLink>
               </div>
               <div
                 v-if="details"
@@ -55,10 +67,12 @@
                   v-for="{ icon, quality } in details"
                   class="border-r center gap-2"
                 >
-                  <div class="icon">
+                  <div class="icon text-pri">
                     <Icon :name="icon" />
                   </div>
-                  <div class="content text-sm">{{ quality }}</div>
+                  <div class="content text-sm text-complementary">
+                    {{ quality }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -68,10 +82,10 @@
     </div>
 
     <!-- Custom Navigation Buttons -->
-    <div class="custom-prev">
+    <div class="custom-prev btn">
       <div class="w-1/2 h-1/2 border-t-2 border-l-2 border-black"></div>
     </div>
-    <div class="custom-next">
+    <div class="custom-next btn">
       <div class="w-1/2 h-1/2 border-t-2 border-r-2 border-black"></div>
     </div>
   </div>
@@ -81,9 +95,20 @@
   width: 100%;
   height: max-content;
 }
+.card .content span.before::before {
+  width: 90%;
+  height: 1px;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-color);
+}
 .swiper-container {
   position: relative;
   padding: 0 80px;
+}
+.swiper-button-lock {
+  cursor: not-allowed !important;
 }
 .custom-prev,
 .custom-next {
@@ -92,13 +117,18 @@
   transform: translateY(-50%);
   width: 30px;
   height: 30px;
-
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 10;
-  border: 2px solid black;
+  transition: filter 150ms ease-in-out;
+  border: 3px solid black;
+}
+.custom-prev:hover,
+.custom-next:hover {
+  /* border-color: var(--); */
+  filter: invert(1);
 }
 .custom-prev {
   left: 2rem;
@@ -128,4 +158,13 @@ const props = defineProps({
   nav: Array,
 });
 const modules = [Pagination, Navigation];
+onMounted(() => {
+  const btns = document.querySelectorAll(".van .btn");
+  btns.forEach((b) => {
+    if (b.classList.contains("swiper-button-lock")) {
+      const newBtn = b.cloneNode(true); 
+      b.parentNode.replaceChild(newBtn, b);
+    }
+  });
+});
 </script>

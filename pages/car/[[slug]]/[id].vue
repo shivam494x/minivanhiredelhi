@@ -76,9 +76,9 @@
           </div>
         </div>
       </div>
-      <div class="info col-span-1 max-w-[21rem]">
-        <div class="border border-red-300 h-max px-8 py-4 w-full">
-          <div class="w-full text-start text-lg mb-4">
+      <div class="info col-span-1 max-w-[21rem] ">
+        <div class="border border-red-300 h-max px-8 py-4 w-full shadow-2xl">
+          <div class="w-full text-start text-lg mb-4 border-b border-pri py-3">
             <h3>
               {{ carData.name }}
             </h3>
@@ -96,9 +96,12 @@
           </ul>
         </div>
         <div
-          class="btn mx-auto uppercase font-bold w-full mt-4 py-4 center rounded-full bg-pri text-white hover:bg-white hover:text-pri border border-pri duration-150 cursor-pointer"
+          class="btn mx-auto uppercase font-bold space-x-4 w-full mt-4 py-4 center rounded-full bg-pri text-white hover:bg-white hover:text-pri border border-pri duration-150 cursor-pointer"
         >
-          Rent a car
+        <span>
+          Rent now
+        </span>
+        <Icon name="mdi:car-key" class="text-xl"/>
         </div>
       </div>
     </section>

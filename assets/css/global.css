@@ -2,6 +2,7 @@
   --primary-color: #ec3323;
   --secondary-color: #14181c;
   --offWhite-color: #faf9f6;
+  --complementary-color: #1e2a47;
   --ease: cubic-bezier(0.84, 0.08, 0.23, 0.68);
 }
 
@@ -34,6 +35,6 @@ section#hero {
   word-spacing: 1.5px;
   color: rgb(64, 64, 60);
 }
-#__nuxt{
+#__nuxt {
   background-color: var(--offWhite-color);
 }

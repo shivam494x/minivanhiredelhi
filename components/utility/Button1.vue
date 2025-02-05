@@ -35,13 +35,10 @@ a#custom_btn_1.with_border::before {
 #custom_btn_1:hover::before {
   transform: scaleY(1);
 }
-.without_border:hover {
-  color: white;
-}
+
 
 .with_border {
   border: 1px solid var(--primary-color);
-  color: white;
 }
 </style>
 

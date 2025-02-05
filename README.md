@@ -73,3 +73,5 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+Covik Sans Mono Web,-apple-system,BlinkMacSystemFont,sans-serif,"Noto Sans Symbols 2
