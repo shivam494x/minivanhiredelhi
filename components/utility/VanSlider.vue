@@ -43,20 +43,33 @@
                 {{ desc }}
               </div>
               <div class="btn center w-full my-3 space-x-6 capitalize text-sm">
-                <NuxtLink
-                  :to="getPath(nav, name)"
-                  class="center space-x-3 px-4 py-2 bg-pri border border-pri hover:bg-white hover:text-black text-white duration-150 cursor-pointer"
-                >
-                  <span v-if="desc">View details</span>
-                  <span v-else> Read more </span>
-                  <Icon name="fa:send" />
+                <NuxtLink :to="getPath(nav, name)" class="">
+                  <div
+                    class="h-9 relative group overflow-hidden center px-5 border border-pri hover:bg-pri hover:text-white transition duration-200 ease-in-out"
+                  >
+                    <span class="duration-300 group-hover:-translate-y-16">
+                      <span v-if="desc">View details</span>
+                      <span v-else> Read more </span></span
+                    >
+                    <span
+                      class="absolute duration-300 group-hover:translate-y-0 group-hover:translate-x-0 translate-y-16 -translate-x-16 center"
+                      ><Icon name="i-fa:send"
+                    /></span>
+                  </div>
                 </NuxtLink>
-                <NuxtLink
-                  :to="getPath(nav, name)"
-                  class="center space-x-3 px-4 py-2 bg-complementary border border-complementary hover:bg-white hover:text-black text-white duration-150 cursor-pointer"
-                >
-                  <span>book now</span>
-                  <Icon name="mdi:ticket-confirmation" />
+                <NuxtLink :to="getPath(nav, name)" class="">
+                  <div
+                    class="h-9 text-white relative group overflow-hidden bg-complementary center px-5 border border-complementary hover:bg-white hover:text-black transition duration-200 ease-in-out"
+                  >
+                    <span class="duration-300 group-hover:-translate-y-16">
+                      <span>book now</span></span
+                    >
+                    <span
+                      class="absolute duration-300 group-hover:translate-y-0 translate-y-16  center"
+                    >
+                      <Icon name="mdi:ticket-confirmation"
+                    /></span>
+                  </div>
                 </NuxtLink>
               </div>
               <div
@@ -162,7 +175,7 @@ onMounted(() => {
   const btns = document.querySelectorAll(".van .btn");
   btns.forEach((b) => {
     if (b.classList.contains("swiper-button-lock")) {
-      const newBtn = b.cloneNode(true); 
+      const newBtn = b.cloneNode(true);
       b.parentNode.replaceChild(newBtn, b);
     }
   });
