@@ -1,7 +1,7 @@
 <template>
   <section>
     <div
-      class="heading font-semibold text-3xl relative capitalize h-56 tracking-wide text-center px-8"
+      class="heading font-semibold text-5xl relative capitalize h-56 tracking-wide text-center px-8"
     >
       <div
         :style="{ backgroundImage: `url('/img/car2.png')` }"
@@ -11,7 +11,7 @@
       <div
         class="z-20 relative h-full flex flex-col justify-center items-center"
       >
-        <h2 class="text-white uppercase font-bold">Luxury Car On Rental</h2>
+        <h2 class="text-white font-bold">Luxury Car On Rental</h2>
       </div>
     </div>
   </section>
@@ -19,7 +19,7 @@
     label="Introduction"
     class="uppercase w-4/5 m-auto mt-12 mb-4"
     :ui="{
-      label: 'text-pri dark:text-pri',
+      label: 'text-pri dark:text-pri text-xl',
     }"
   />
   <section class="container grid gap-10 side_padding">
@@ -51,30 +51,39 @@
         </div>
       </div>
       <UDivider
-        label="Luxury Car"
-        class="uppercase w-4/6 mr-auto my-12"
+        :label="`our ${title} collection`"
+        class="uppercase w-full mr-auto my-12"
         :ui="{
-          label: 'text-pri dark:text-pri',
+          label: 'text-pri dark:text-pri text-xl',
         }"
       />
-      <section class="container px-2 py-4 grid grid-cols-3 gap-5">
-        <ul class="col-span-2 grid grid-cols-2 gap-8">
-          <li v-for="{ heading, img, carDetails } in cardData">
-            <CarCard1
-              class="shadow-lg"
-              :name="heading"
-              :img="img"
-              :details="carDetails"
-              :path="getPath(carsNav, heading)"
-              :key="heading"
-              :grid="true"
-            />
-          </li>
-        </ul>
-        <div class="info">
-          <!-- <UtilityQueryForm /> -->
-          <div class="h-max bg-[#39227F] text-white">
-            <UtilityNeedHelp />
+      <section class="container px-2 py-4 ">
+        <div class="w-full space-y-10">
+          <ul class="grid grid-cols-3 gap-8 h-max w-full">
+            <li v-for="{ heading, img, description } in cardData">
+              <CarCard1
+                class="shadow-lg"
+                :name="heading"
+                :img="img"
+                :description="description"
+                :key="heading"
+                :grid="true"
+                :btn="'view details'"
+              />
+            </li>
+          </ul>
+          <div class="grid grid-cols-3 gap-10 ">
+            <div class="col-span-2">
+              <UtilityQueryForm :title="title" />
+            </div>
+            <div class="info space-y-10 ">
+              <div class="max-w-80 w-full">
+                <OthersNav2 :nav="carsNav" />
+              </div>
+              <div class="max-w-80 w-full">
+                <UtilityNeedHelp />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -103,7 +112,6 @@ const route = useRoute();
 const title = ref();
 const carsNav = ref([{}]);
 const cardData = ref([{}]);
-const { getPath } = useUtility();
 const getNav = async () => {
   const { data: navData, error } = await useFetch("/api/nav/car");
   if (navData) {
@@ -143,6 +151,13 @@ const getCardData = async () => {
     {
       heading: "Jaguar XJ L",
       img: "https://minivanhiredelhi.com/uploads/63371_Jaguar-XJ-img-2.jpg",
+      description:
+        "Booking of luxurious Jaguar car can be done for Leisure Trips, VIP Meetings & Conventions, Business Trip & Corporate Travel.",
+      path: "/luxury-car/jaguar-xj-l",
+    },
+    {
+      heading: "Mercedes S Class",
+      img: "https://minivanhiredelhi.com/uploads/60329_mercedes-s-500car%20on%20rent.jpg",
       carDetails: [
         { label: "Style", value: "Sedan", icon: "mdi-car" },
         { label: "Class", value: "Luxury", icon: "mdi-crown" },
@@ -150,8 +165,8 @@ const getCardData = async () => {
         { label: "Transmission", value: "Automatic", icon: "mdi-car-cog" },
       ],
       description:
-        "Booking of luxurious Jaguar car can be done for Leisure Trips, VIP Meetings & Conventions, Business Trip & Corporate Travel.",
-      path: "/luxury-car/jaguar-xj-l",
+        "Rent a super luxury imported Mercedes S-500 and S-350 car that embodies the versatility, innovation and customization that",
+      path: "/luxury-car//mercedes-s-class",
     },
   ];
 

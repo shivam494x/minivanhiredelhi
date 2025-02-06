@@ -19,13 +19,13 @@
         class="mySwiper"
       >
         <swiper-slide
-          v-for="({ name, img, details, desc, path }, index) in arr"
+          v-for="({ name, img, details, desc }, index) in arr"
           :key="name"
           class=""
         >
           <div class="card border border-gray-200 flex flex-col">
             <div class="img h-48">
-              <NuxtImg class="w-full h-full object-cover" :src="`${img}`" />
+              <NuxtImg class="w-full h-full object-cover" :src="`${img}`" alt="img" />
             </div>
             <div class="content row-span-1 flex flex-col center">
               <div
@@ -42,35 +42,11 @@
               >
                 {{ desc }}
               </div>
-              <div class="btn center w-full my-3 space-x-6 capitalize text-sm">
-                <NuxtLink :to="getPath(nav, name)" class="">
-                  <div
-                    class="h-9 relative group overflow-hidden center px-5 border border-pri hover:bg-pri hover:text-white transition duration-200 ease-in-out"
-                  >
-                    <span class="duration-300 group-hover:-translate-y-16">
-                      <span v-if="desc">View details</span>
-                      <span v-else> Read more </span></span
-                    >
-                    <span
-                      class="absolute duration-300 group-hover:translate-y-0 group-hover:translate-x-0 translate-y-16 -translate-x-16 center"
-                      ><Icon name="i-fa:send"
-                    /></span>
-                  </div>
-                </NuxtLink>
-                <NuxtLink :to="getPath(nav, name)" class="">
-                  <div
-                    class="h-9 text-white relative group overflow-hidden bg-complementary center px-5 border border-complementary hover:bg-white hover:text-black transition duration-200 ease-in-out"
-                  >
-                    <span class="duration-300 group-hover:-translate-y-16">
-                      <span>book now</span></span
-                    >
-                    <span
-                      class="absolute duration-300 group-hover:translate-y-0 translate-y-16  center"
-                    >
-                      <Icon name="mdi:ticket-confirmation"
-                    /></span>
-                  </div>
-                </NuxtLink>
+              <div
+                class="btn flex justify-start space-x-6 items-center w-max m-auto my-3 capitalize text-sm"
+              >
+                <UtilityBtn2 phase="0" :title="btn" :path="getPath(name)" />
+                <UtilityBtn2 phase="1" title="Book now" :path="getPath(name)" />
               </div>
               <div
                 v-if="details"
@@ -168,7 +144,7 @@ const { getPath } = useUtility();
 const props = defineProps({
   arr: Array,
   phase: Number,
-  nav: Array,
+  btn: String,
 });
 const modules = [Pagination, Navigation];
 onMounted(() => {

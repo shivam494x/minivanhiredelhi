@@ -25,6 +25,7 @@
                   <div class="card border border-gray-200 flex flex-col">
                     <div class="img h-72 m-auto">
                       <NuxtImg
+                        alt="img"
                         class="w-full h-full object-cover"
                         :src="`${img}`"
                       />
@@ -67,6 +68,7 @@
                       <NuxtImg
                         class="w-full h-full object-cover"
                         :src="`${img}`"
+                        alt="img"
                       />
                     </div>
                   </div>
@@ -76,17 +78,20 @@
           </div>
         </div>
       </div>
-      <div class="info col-span-1 max-w-[21rem] ">
-        <div class="border border-red-300 h-max px-8 py-4 w-full shadow-2xl">
-          <div class="w-full text-start text-lg mb-4 border-b border-pri py-3">
-            <h3>
-              {{ carData.name }}
-            </h3>
+      <div class="info col-span-1 max-w-[21rem]">
+        <div class="border border-red-300 h-max py-2 w-full shadow-2xl grid_bg">
+          <div class="w-full py-3">
+            <UDivider
+              :label="carData.name"
+              :ui="{
+                label: 'text-lg text-pri',
+              }"
+            />
           </div>
-          <ul class="">
+          <ul class="px-6 max-w-64 m-auto">
             <li
               v-for="(key, value) in carData.features"
-              class="py-2 text-sm capitalize flex justify-between max-w-48"
+              class="py-2 text-sm capitalize flex justify-between w-full"
             >
               <span class="text-gray-600">
                 {{ value }}
@@ -96,21 +101,19 @@
           </ul>
         </div>
         <div
-          class="btn mx-auto uppercase font-bold space-x-4 w-full mt-4 py-4 center rounded-full bg-pri text-white hover:bg-white hover:text-pri border border-pri duration-150 cursor-pointer"
+          class="btn shadow-inner shadow-red-400 mx-auto uppercase font-bold space-x-4 w-full mt-4 py-4 center rounded-full bg-pri text-white hover:bg-white hover:text-pri border border-pri duration-150 cursor-pointer"
         >
-        <span>
-          Rent now
-        </span>
-        <Icon name="mdi:car-key" class="text-xl"/>
+          <span> Rent now </span>
+          <Icon name="mdi:car-key" class="text-xl" />
         </div>
       </div>
     </section>
 
     <section class="container my-12 py-4">
       <div
-        class="heading text-xl tracking-tight py-4 border-b border-red-300 text-pri"
+        class="heading text-3xl capitalize font-medium tracking-tight border-b border-red-300 text-pri"
       >
-        <h4>Vehical overview</h4>
+        <h4 class="bg-red-50 shadow-inner w-max px-8 py-4">Vehical overview</h4>
       </div>
       <div class="desc text-gray-600 text-sm py-5 leading-loose">
         <p v-for="p in carData.description.overall">
@@ -120,7 +123,7 @@
       <div class="grid grid-cols-2 gap-4 text-gray-600 text-sm my-4">
         <div class="vid w-full m-auto h-72 relative">
           <div class="brightness-50 aspect-[1/0.5] w-full h-full">
-            <NuxtImg
+            <NuxtImg alt="img"
               class="w-full h-full object-contain"
               src="https://minivanhiredelhi.com/uploads/72057_Land-Range%20Rover%20Vogue.jpeg"
             />
@@ -128,7 +131,10 @@
           <div
             class="absolute top-1/2 center left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 z-10 cursor-pointer"
           >
-            <Icon name="ei:play" class="h-full w-full text-5xl font-bold text-pri"/>
+            <Icon
+              name="ei:play"
+              class="h-full w-full text-5xl font-bold text-pri"
+            />
           </div>
         </div>
         <div class="flex flex-col">

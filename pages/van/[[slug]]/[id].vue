@@ -28,6 +28,7 @@
                     <div class="card border border-gray-200 flex flex-col">
                       <div class="img h-96">
                         <NuxtImg
+                          alt="img"
                           class="w-full h-full object-cover"
                           :src="`${img}`"
                         />
@@ -69,6 +70,7 @@
                     >
                       <div class="img h-24 aspect-square">
                         <NuxtImg
+                          alt="img"
                           class="w-full h-full object-cover"
                           :src="`${img}`"
                         />
@@ -179,7 +181,8 @@
           <UtilityQueryForm />
         </section>
       </div>
-      <aside class="border border-gray-300 w-full h-max my-20">
+      <aside class="w-full h-max my-20 space-y-10">
+        <OthersNav2 :nav="van_links" />
         <UtilityNeedHelp />
       </aside>
     </div>
@@ -195,7 +198,14 @@ definePageMeta({
   layout: "van",
 });
 const route = useRoute();
-// const title = route.params.type.replace(/-/g, " ");
+const van_links = ref();
+const { data: navData, error } = await useFetch("/api/nav/van");
+if (navData) {
+  van_links.value = navData.value.sub;
+} else {
+  console.error(error);
+}
+
 const data = {
   title: "6-seater-toyota-vellfire",
   img: [

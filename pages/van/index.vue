@@ -32,19 +32,23 @@
       label="our van collection"
       class="uppercase text-pri"
       :ui="{
-        label: 'text-pri dark:text-pri',
+        label: 'text-pri dark:text-pri text-xl',
       }"
     />
     <section class="container section_padding relative">
-      <UtilityVanSlider :arr="vans" :phase="1" :nav="van_links" />
+      <UtilityVanSlider
+        :arr="vans"
+        :phase="1"
+        btn="read more"
+      />
     </section>
     <section class="container section_padding grid grid-cols-3 gap-20">
       <div class="query col-span-2">
-        <UtilityQueryForm />
+        <UtilityQueryForm title="van" />
       </div>
       <div class="help space-y-8">
         <div class="">
-          <!-- <OthersNav2 :nav="van_links" /> -->
+          <OthersNav2 :nav="van_links" />
         </div>
         <div>
           <UtilityNeedHelp />

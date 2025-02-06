@@ -1,23 +1,23 @@
 export default function useUtility() {
-    function getPath(links: Array<any>, name: string): string | undefined {
-        if (links.length === 0) return;
-        let result;
-        const x = links.find(link => link.name === name);
-        if (x) {
-            result = x.path;
-        } else {
+    const links = useNav(); 
+    function getPath(name: string): string | undefined {
+        function findPath(name: string, links: any[]): string | undefined {
+            if (!links || links.length === 0) return;
             for (const link of links) {
-                if(Array.isArray(link.sub)){
-                    const y = link.sub.find((l: any) => l.name === name)
-                    if (y) {
-                        result = y.path;
+                if (link.name === name) {
+                    return link.path;
+                }
+                if (Array.isArray(link.sub)) {
+                    const result = findPath(name, link.sub);
+                    if (result) {
+                        return result;
                     }
                 }
             }
+            return undefined;
         }
-        return result;
+        return findPath(name, links);
     }
-
 
     return { getPath };
 }

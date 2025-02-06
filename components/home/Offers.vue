@@ -3,12 +3,12 @@
     <div class="container">
       <div class="xl:space-y-12 md:space-y-10 space-y-4">
         <div class="headinngs capitalize center flex-col md:space-y-2">
-          <h5 class="text-base md:text-lg tracking-wide center text-pri">
+          <h6 class="text-base md:text-lg tracking-wide center text-pri">
             come with us
-          </h5>
-          <h2 class="text-3xl md:text-5xl font-semibold tracking-tight">
+          </h6>
+          <h1 class="text-3xl md:text-5xl font-semibold tracking-tight">
             hot offers
-          </h2>
+          </h1>
         </div>
         <div class="categories uppercase center">
           <ul
@@ -48,7 +48,7 @@
                 class="grid h-full vehicle-wrapper md:px-8 md:py-4 py-2 px-4"
               >
                 <div class="w-full object-fill center px-4">
-                  <NuxtImg :src="`/img/offers/${img}`" class="max-h-full" />
+                  <NuxtImg :src="`/img/offers/${img}`" class="max-h-full" alt="img" />
                 </div>
                 <div class="center flex-col gap-2 space-y-2">
                   <div>

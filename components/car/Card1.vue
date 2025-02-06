@@ -1,5 +1,8 @@
 <template>
-  <div class="flex w-full border max-h-[30rem] h-full" :class="grid ? 'flex-col' : ''">
+  <div
+    class="flex w-full border max-h-[30rem] h-full"
+    :class="grid ? 'flex-col' : ''"
+  >
     <div
       class="aspect-square overflow-hidden"
       :class="grid ? 'h-56' : ' w-1/2'"
@@ -8,20 +11,31 @@
         <NuxtImg
           class="w-full h-full object-cover hover:rotate-3 hover:scale-110 duration-300 ease-in overflow-hidden"
           :src="img"
+          alt="img"
         />
       </NuxtLink>
     </div>
-    <div class="p-4 flex flex-col"
-      :class="grid ? 'w-full' : ' w-1/2'"
-    >
+    <div class="p-2 flex flex-col" :class="grid ? 'w-full' : ' w-1/2'">
       <div
         class="pb-4 border-b border-red-300 mx-2 flex justify-start items-center px-2"
       >
         <h3 class="text-xl font-medium capitalize tracking-tight">
-          <span> {{ name }} </span>
+          <NuxtLink class="w-full h-full overflow-hidden" :to="path">
+            <span> {{ name }} </span>
+          </NuxtLink>
         </h3>
       </div>
+      <div v-if="description" class="p-3 text-sm text-gray-700 space-y-6">
+        <p>{{ description }}</p>
+        <div
+          class="btn flex justify-start space-x-6 items-center w-full my-3 capitalize text-sm"
+        >
+          <UtilityBtn2 phase="0" :title="btn" :path="getPath(name)" />
+          <UtilityBtn2 phase="1" title="Book now" :path="getPath(name)" />
+        </div>
+      </div>
       <ul
+        v-else
         class="flex-grow flex flex-col justify-around pt-4 px-4 text-sm max-w-72"
       >
         <li
@@ -48,11 +62,13 @@
   </div>
 </template>
 <script setup>
+const { getPath } = useUtility();
 const props = defineProps({
   name: String,
-  path: String,
+  description: String,
   details: Array,
   img: String,
   grid: Boolean,
+  btn: String,
 });
 </script>

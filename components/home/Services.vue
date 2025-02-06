@@ -30,9 +30,9 @@
                 </div>
               </div>
               <div class="heading center text-center mb-4 font-semibold">
-                <NuxtLink class="py-2 before relative">{{
+                <h3 class="py-2 before relative">{{
                   service.heading
-                }}</NuxtLink>
+                }}</h3>
               </div>
               <div class="txt center text-center text-sm text-gray-500">
                 <p>

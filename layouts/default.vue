@@ -9,7 +9,7 @@
       >
         <div class="logo z-[60]">
           <div class="">
-            <NuxtImg class="h-12" src="/img/logo.png" />
+            <NuxtImg class="h-12" src="/img/logo.png" alt="logo" />
           </div>
         </div>
         <div class="location_timing space-x-4 hidden lg:flex">
@@ -134,13 +134,6 @@ nav.navbar {
 
 <script setup>
 
-const links = [
-  { href: "https://www.facebook.com/asparkholiday", svg: "/svg/fb.svg" },
-  { href: "https://minivanhiredelhi.com/#", svg: "/svg/linkedin.svg" },
-  { href: "https://minivanhiredelhi.com/#", svg: "/svg/g+.svg" },
-  { href: "https://www.youtube.com/user/IndianCarRental", svg: "/svg/yt.svg" },
-  { href: "https://minivanhiredelhi.com/#", svg: "/svg/blog.svg" },
-];
 
 onMounted(() => {
   const links = document.querySelectorAll(".social-links li");

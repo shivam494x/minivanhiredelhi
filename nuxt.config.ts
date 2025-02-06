@@ -12,7 +12,18 @@ export default defineNuxtConfig({
   },
   ui: {
     global: true,
-    
+  },
+  app: {
+    head: {
+      title: "Mini Van Hire Delhi",
+      htmlAttrs: {
+        lang: 'en'
+      },
+      meta: [
+        { name: 'description', content: 'Affordable and reliable mini van hire services in Delhi for all your travel needs.' },
+        { name: 'robots', content: 'index, follow' }
+      ]
+    }
   },
   plugins: ["~/plugins/gsap.js"],
   css: ["~/assets/css/global.css"],
@@ -27,5 +38,5 @@ export default defineNuxtConfig({
       "2xl": 1536,
     },
   },
-  serverDir:"./server"
+  serverDir: "./server"
 });

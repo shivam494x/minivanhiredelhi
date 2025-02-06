@@ -16,7 +16,7 @@
     label="Introduction"
     class="uppercase w-4/5 m-auto mt-12 mb-4"
     :ui="{
-      label: 'text-pri dark:text-pri',
+      label: 'text-pri dark:text-pri text-xl',
     }"
   />
   <section class="container grid gap-10 side_padding">
@@ -52,14 +52,23 @@
       </div>
       <UDivider
         label="Our cars"
-        class="uppercase w-4/6 mr-auto my-12"
+        class="uppercase w-full mr-auto my-12"
         :ui="{
-          label: 'text-pri dark:text-pri',
+          label: 'text-pri dark:text-pri text-xl',
         }"
       />
-      <section class="container px-2 py-4 grid grid-cols-3 gap-5">
+      <!-- <UDivider
+        label="Our cars"
+        class="uppercase w-4/6 mr-auto my-12"
+        :ui="{
+          label: 'text-pri dark:text-pri text-xl',
+        }"
+      /> -->
+      <!-- <section class="container px-2 py-4 grid grid-cols-3 gap-5">
         <ul class="space-y-10 col-span-2">
-          <li v-for="{ heading, img, carDetails } in carData">
+          <li
+          class="hover:shadow-xl hover:-translate-y-3 shadow-pri duration-150"
+          v-for="{ heading, img, carDetails } in carData">
             <CarCard1
               class="shadow-lg"
               :name="heading"
@@ -70,9 +79,44 @@
             />
           </li>
         </ul>
-        <div class="info">
-          <!-- <UtilityQueryForm /> -->
-          <UtilityNeedHelp />
+        <div class="help space-y-8 flex flex-col items-center">
+          <div class="max-w-80 w-full">
+
+            <OthersNav2 :nav="carsNav" />
+          </div>
+          <div class="max-w-80 w-full">
+            <UtilityNeedHelp />
+          </div>
+        </div>
+      </section> -->
+      <section class="container px-2 py-4 space-y-10">
+        <ul class="grid grid-cols-2 gap-10">
+          <li
+            class="hover:shadow-xl hover:-translate-y-3 shadow-pri duration-150"
+            v-for="{ heading, img, carDetails, path } in carData"
+          >
+            <CarCard1
+              class="shadow-lg"
+              :name="heading"
+              :img="img"
+              :details="carDetails"
+              :path="path"
+              :key="heading"
+            />
+          </li>
+        </ul>
+        <div class="grid grid-cols-3">
+          <div class="query col-span-2">
+            <UtilityQueryForm :title="'car'" />
+          </div>
+          <div class="help space-y-8 flex flex-col items-center">
+            <div class="max-w-80 w-full">
+              <OthersNav2 :nav="carsNav" />
+            </div>
+            <div class="max-w-80 w-full">
+              <UtilityNeedHelp />
+            </div>
+          </div>
         </div>
       </section>
     </div>
@@ -94,7 +138,11 @@
   left: 0;
   top: 0;
   position: absolute;
-  background: linear-gradient(0deg, rgba(2,1,13,1) 0%, rgba(87,227,255,0) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(2, 1, 13, 1) 0%,
+    rgba(87, 227, 255, 0) 100%
+  );
 }
 .heading .uppercase {
   color: transparent;

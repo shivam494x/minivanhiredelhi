@@ -8,8 +8,9 @@
           <NuxtImg
             v-for="({ img }, i) in content"
             :key="i"
+            
             :src="`/img/hero/${img}`"
-            alt=""
+            alt="img"
             class="h-full pointer-events-none w-full brightness-50 absolute left-0 top-0 object-cover"
             :id="`hero-img-${i}`"
           />
@@ -49,16 +50,16 @@
               <div
                 class="heading text-4xl md:text-5xl xl:text-6xl font-semibold mb-4 overflow-x-hidden overflow-hidden py-3 tracking-tight"
               >
-                <h2>
+                <h1>
                   {{ content[content.length - 1].title }}
-                </h2>
+                </h1>
               </div>
               <div
                 class="sub md:text-lg brightness-[90%] mb-8 overflow-x-hidden overflow-hidden w-3/5 tracking-normal"
               >
-                <h5>
+                <p>
                   {{ content[content.length - 1].sub }}
-                </h5>
+                </p>
               </div>
               <UtilityButton1
                 class="capitalize w-max py-2 px-6"

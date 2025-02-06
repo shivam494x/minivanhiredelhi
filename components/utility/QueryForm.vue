@@ -1,48 +1,53 @@
 <template>
-  <div
-    class="min-h-screen bg-gray-100 p-4 sm:p-12 form-wrapper overflow-hidden"
-  >
+  <div class="min-h-screen bg-red-50 p-4 sm:p-12 form-wrapper overflow-hidden">
     <div class="mx-auto w-full px-6 py-6 bg-white shadow-lg relative">
-      <div class="absolute left-0 right-0 top-0 bottom-0 h-full w-full z-10 bg pointer-events-none">
+      <div
+        class="absolute left-0 right-0 top-0 bottom-0 h-full w-full z-10 bg pointer-events-none"
+      >
         <div class="relative left-0 right-0 top-0 bottom-0 h-full w-full">
           <span></span>
           <span></span>
         </div>
       </div>
       <h1
-        class="text-2xl capitalize space-x-3 font-bold mb-4 flex items-end justify-center border-red-400 border-b-4 text-secondary py-2 mx-3"
+        class="text-2xl capitalize space-x-6 font-bold mb-4 flex items-end justify-center border-red-400 border-b-4 text-secondary py-2 mx-3"
       >
-        <span> query form </span>
-        <div class="text-sm font-normal center w-max space-x-1 pb-1 text-pri">
+        <div>
+          <span class="">{{ title }}</span>
+          <span class=""> query form </span>
+        </div>
+
+        <div class="text-base font-normal center w-max space-x-1 text-pri">
           <span> Let us help you! </span>
           <Icon name="tabler:headset" class="text-lg" />
         </div>
       </h1>
       <form @submit.prevent="submitForm">
-        <div
-          v-for="field in fields"
-          :key="field.name"
-          class="relative z-0 w-full mb-5 px-3"
-        >
-          <input
-            :type="field.type"
-            :name="field.name"
-            v-model="form[field.name]"
-            placeholder=" "
-            required
-            class="pt-3 pb-2 block w-full px-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-red-300 border-gray-300"
-          />
-          <label
-            :for="field.name"
-            class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+        <div class="md:grid grid-cols-2">
+          <div
+            v-for="field in fields"
+            :key="field.name"
+            class="relative z-0 w-full mb-5 px-3"
           >
-            {{ field.label }}
-          </label>
-          <span v-if="errors[field.name]" class="text-sm text-red-600">
-            {{ field.errorMessage }}
-          </span>
+            <input
+              :type="field.type"
+              :name="field.name"
+              v-model="form[field.name]"
+              placeholder=" "
+              required
+              class="pt-3 pb-2 block w-full px-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-red-300 border-gray-300"
+            />
+            <label
+              :for="field.name"
+              class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+            >
+              {{ field.label }}
+            </label>
+            <span v-if="errors[field.name]" class="text-sm text-red-600">
+              {{ field.errorMessage }}
+            </span>
+          </div>
         </div>
-
         <div class="grid grid-cols-2 gap-4">
           <select
             name="adults"
@@ -101,7 +106,10 @@
               class="h-12 group space-x-3 flex items-center justify-center uppercase text-white font-semibold px-6 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
             >
               <span>reset</span>
-              <Icon name="material-symbols:restart-alt" class="text-xl group-hover:-rotate-180 duration-300" />
+              <Icon
+                name="material-symbols:restart-alt"
+                class="text-xl group-hover:-rotate-180 duration-300"
+              />
             </div>
           </button>
         </div>
@@ -168,6 +176,9 @@ export default {
         },
       ],
     };
+  },
+  props: {
+    title: String,
   },
   methods: {
     submitForm() {

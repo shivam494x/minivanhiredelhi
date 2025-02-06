@@ -24,11 +24,11 @@
       }"
     />
     <section class="container section_padding relative">
-      <UtilityVanSlider :arr="vans" :phase="2" :nav="van_links" />
+      <UtilityVanSlider :arr="vans" :phase="2" :nav="van_links"  btn="view details" />
     </section>
     <section class="container section_padding grid grid-cols-3 gap-20">
       <div class="query col-span-2">
-        <UtilityQueryForm />
+        <UtilityQueryForm :title="data.title" />
       </div>
       <div class="help"><UtilityNeedHelp /></div>
     </section>
