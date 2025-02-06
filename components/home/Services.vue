@@ -3,9 +3,9 @@
     <div class="container">
     <div class="xl:space-y-15 md:space-y-11 space-y-6">
       <div class="headinngs uppercase center flex-col md:space-y-2">
-        <h5 class="text-base md:text-lg tracking-wide center text-pri">
+        <h6 class="text-base md:text-lg tracking-wide center text-pri">
           services
-        </h5>
+        </h6>
         <h2
           class="text-2xl md:text-3xl font-semibold tracking-tight capitalize text-center"
         >

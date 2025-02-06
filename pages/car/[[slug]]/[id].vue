@@ -27,7 +27,14 @@
                       <NuxtImg
                         alt="img"
                         class="w-full h-full object-cover"
-                        :src="`${img}`"
+                        :src="img"
+                        format="webp"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
+                        :width="800"
+                        :height="288"
+                        loading="lazy"
+                        placeholder="blur"
+                        priority
                       />
                     </div>
                   </div>
@@ -67,8 +74,15 @@
                     <div class="img h-24 aspect-square">
                       <NuxtImg
                         class="w-full h-full object-cover"
-                        :src="`${img}`"
+                        :src="img"
                         alt="img"
+                        format="webp"
+                        sizes="(max-width: 768px) 100vw, 25vw"
+                        :width="96"
+                        :height="96"
+                        loading="lazy"
+                        placeholder="blur"
+                        priority
                       />
                     </div>
                   </div>
@@ -123,9 +137,16 @@
       <div class="grid grid-cols-2 gap-4 text-gray-600 text-sm my-4">
         <div class="vid w-full m-auto h-72 relative">
           <div class="brightness-50 aspect-[1/0.5] w-full h-full">
-            <NuxtImg alt="img"
+            <NuxtImg
+              alt="img"
               class="w-full h-full object-contain"
               src="https://minivanhiredelhi.com/uploads/72057_Land-Range%20Rover%20Vogue.jpeg"
+              format="webp"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              :width="800"
+              :height="400"
+              loading="lazy"
+              placeholder="blur"
             />
           </div>
           <div
@@ -137,6 +158,7 @@
             />
           </div>
         </div>
+
         <div class="flex flex-col">
           <ul class="h-full flex flex-col justify-around">
             <li

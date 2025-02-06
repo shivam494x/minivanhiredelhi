@@ -6,7 +6,18 @@
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div>
           <div class="flex justify-center text-pri sm:justify-start">
-            <NuxtImg class="h-12" src="/img/logo.png" alt="logo" />
+            <NuxtImg
+              class="h-12"
+              src="/img/logo.png"
+              alt="logo"
+              width="auto"
+              height="48"
+              loading="lazy"
+              quality="75"
+              formats="webp, avif"
+              sizes="(max-width: 600px) 100vw, 50vw"
+              srcset="/img/logo.png 1x, /img/logo@2x.png 2x, /img/logo@3x.png 3x"
+            />
           </div>
 
           <p

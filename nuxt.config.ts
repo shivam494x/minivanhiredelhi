@@ -24,7 +24,9 @@ export default defineNuxtConfig({
         { name: 'robots', content: 'index, follow' }
       ]
     }
+    
   },
+  
   plugins: ["~/plugins/gsap.js"],
   css: ["~/assets/css/global.css"],
   image: {
@@ -39,8 +41,4 @@ export default defineNuxtConfig({
     },
   },
   serverDir: "./server",
-  nitro: {
-
-
-  }
 });

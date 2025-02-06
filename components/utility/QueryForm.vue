@@ -29,14 +29,17 @@
             :key="field.name"
             class="relative z-0 w-full mb-5 px-3"
           >
+            <!-- Add id attribute to each input field to associate it with the label -->
             <input
               :type="field.type"
               :name="field.name"
+              :id="field.name"
               v-model="form[field.name]"
               placeholder=" "
               required
               class="pt-3 pb-2 block w-full px-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-red-300 border-gray-300"
             />
+            <!-- Associate the label using for="field.name" to improve screen reader support -->
             <label
               :for="field.name"
               class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
@@ -52,6 +55,8 @@
           <select
             name="adults"
             v-model="form.adults"
+            id="adults"
+            aria-label="select no. of adults"
             class="block w-full border-b-2 p-2 border-gray-300 bg-white"
           >
             <option value="" disabled selected>- Select Adult -</option>
@@ -60,6 +65,8 @@
           <select
             name="children"
             v-model="form.children"
+            id="children"
+            aria-label="select no. of children"
             class="block w-full border-b-2 p-2 border-gray-300 bg-white"
           >
             <option value="" disabled selected>- Select Children -</option>
@@ -70,6 +77,7 @@
         <textarea
           name="requirements"
           v-model="form.requirements"
+          id="requirements"
           placeholder="Enter Details of Requirements"
           class="block w-full mt-5 p-2 border-b-2 border-gray-300 bg-white"
         ></textarea>
@@ -79,6 +87,7 @@
             type="number"
             name="captcha"
             v-model="form.captcha"
+            id="captcha"
             placeholder="Enter Code"
             class="block w-full p-2 border-b-2 border-gray-300 bg-white focus:border-red-500 focus:ring-0"
           />
@@ -119,7 +128,6 @@
 </template>
 
 <script>
-const captchaCode = Math.floor(Math.random() * 1000);
 export default {
   data() {
     return {
@@ -135,7 +143,7 @@ export default {
         requirements: "",
         captcha: "",
       },
-      captchaCode,
+      captchaCode: null,
       errors: {},
       fields: [
         {
@@ -180,6 +188,9 @@ export default {
   props: {
     title: String,
   },
+  mounted() {
+    this.captchaCode = Math.floor(Math.random() * 1000);
+  },
   methods: {
     submitForm() {
       this.errors = {};
@@ -188,7 +199,10 @@ export default {
           this.errors[field.name] = true;
         }
       });
-      if (!this.form.captcha || this.form.captcha !== this.captchaCode) {
+      if (
+        !this.form.captcha ||
+        this.form.captcha !== String(this.captchaCode)
+      ) {
         this.errors.captcha = "Invalid code";
       }
       if (Object.keys(this.errors).length === 0) {
@@ -222,7 +236,6 @@ export default {
 
 .form-wrapper .bg span:nth-child(2) {
   right: 5%;
-
   transform: translate(50%, -50%) rotate(45deg);
 }
 .origin-0 {

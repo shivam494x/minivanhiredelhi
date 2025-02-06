@@ -1,26 +1,33 @@
 <template>
   <div
     class="flex w-full border max-h-[30rem] h-full"
-    :class="grid ? 'flex-col' : ''"
+    :class="grid ? 'flex-col' : 'md:flex-row'"
   >
     <div
       class="aspect-square overflow-hidden"
-      :class="grid ? 'h-56' : ' w-1/2'"
+      :class="grid ? 'h-56' : 'md:w-1/2'"
     >
-      <NuxtLink class="w-full h-full overflow-hidden" :to="path">
+      <NuxtLink class="w-full h-full overflow-hidden" :to="getPath(name)">
         <NuxtImg
           class="w-full h-full object-cover hover:rotate-3 hover:scale-110 duration-300 ease-in overflow-hidden"
           :src="img"
-          alt="img"
+          alt="Image description"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          :srcset="{
+            '320': img + '?w=320&auto=format',
+            '640': img + '?w=640&auto=format',
+            '1280': img + '?w=1280&auto=format',
+          }"
+          loading="lazy"
         />
       </NuxtLink>
     </div>
-    <div class="p-2 flex flex-col" :class="grid ? 'w-full' : ' w-1/2'">
+    <div class="p-2 flex flex-col" :class="grid ? 'w-full' : 'md:w-1/2'">
       <div
         class="pb-4 border-b border-red-300 mx-2 flex justify-start items-center px-2"
       >
         <h3 class="text-xl font-medium capitalize tracking-tight">
-          <NuxtLink class="w-full h-full overflow-hidden" :to="path">
+          <NuxtLink class="w-full h-full overflow-hidden" :to="getPath(name)">
             <span> {{ name }} </span>
           </NuxtLink>
         </h3>
@@ -61,6 +68,7 @@
     </div>
   </div>
 </template>
+
 <script setup>
 const { getPath } = useUtility();
 const props = defineProps({

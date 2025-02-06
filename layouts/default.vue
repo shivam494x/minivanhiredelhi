@@ -9,7 +9,18 @@
       >
         <div class="logo z-[60]">
           <div class="">
-            <NuxtImg class="h-12" src="/img/logo.png" alt="logo" />
+            <NuxtImg
+              class="h-12"
+              src="/img/logo.png"
+              alt="logo"
+              width="auto"
+              height="48"
+              loading="lazy"
+              quality="75"
+              formats="webp, avif"
+              sizes="(max-width: 600px) 100vw, 50vw"
+              srcset="/img/logo.png 1x, /img/logo@2x.png 2x, /img/logo@3x.png 3x"
+            />
           </div>
         </div>
         <div class="location_timing space-x-4 hidden lg:flex">
@@ -133,8 +144,6 @@ nav.navbar {
 </style>
 
 <script setup>
-
-
 onMounted(() => {
   const links = document.querySelectorAll(".social-links li");
   animateSocialelements(links);

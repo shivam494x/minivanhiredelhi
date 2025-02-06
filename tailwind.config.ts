@@ -5,7 +5,7 @@ export default <Partial<Config>>{
   theme: {
     extend: {
       colors: {
-        pri: "#ec3323",
+        pri: "#CF2317",
         secondary: "#14181c",
         offWhite: "#FAF9F6",
         complementary: "#1e2a47"
