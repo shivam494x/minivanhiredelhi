@@ -38,5 +38,9 @@ export default defineNuxtConfig({
       "2xl": 1536,
     },
   },
-  serverDir: "./server"
+  serverDir: "./server",
+  nitro: {
+
+
+  }
 });

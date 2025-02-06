@@ -48,7 +48,11 @@
                 class="grid h-full vehicle-wrapper md:px-8 md:py-4 py-2 px-4"
               >
                 <div class="w-full object-fill center px-4">
-                  <NuxtImg :src="`/img/offers/${img}`" class="max-h-full" alt="img" />
+                  <NuxtImg
+                    :src="`/img/offers/${img}`"
+                    class="max-h-full"
+                    alt="img"
+                  />
                 </div>
                 <div class="center flex-col gap-2 space-y-2">
                   <div>
@@ -84,8 +88,12 @@
                   </div>
                   <div class="btns w-full">
                     <div class="grid grid-cols-2 border">
-                      <NuxtLink class="before">rent now</NuxtLink>
-                      <NuxtLink class="before">Details</NuxtLink>
+                      <NuxtLink to="/#somewhere" class="before"
+                        >rent now</NuxtLink
+                      >
+                      <NuxtLink to="/#somewhere" class="before"
+                        >Details</NuxtLink
+                      >
                     </div>
                   </div>
                 </div>
