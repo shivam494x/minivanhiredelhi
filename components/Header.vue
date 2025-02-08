@@ -32,7 +32,14 @@
               @click="isOpen = false"
             />
             <div class="absolute top-20 w-full left-0 mobile">
-              <UtilityNavLinks />
+              <UtilityNavLinks
+                :fn="
+                  () => {
+                    isOpen = false;
+                    console.log('halo');
+                  }
+                "
+              />
             </div>
           </div>
         </USlideover>
@@ -45,6 +52,8 @@
 </template>
 
 <script setup>
-
 const isOpen = ref(false);
+onMounted(() => {
+
+});
 </script>

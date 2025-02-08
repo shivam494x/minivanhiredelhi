@@ -3,7 +3,7 @@
     <div class="container">
     <div class="xl:space-y-15 md:space-y-11 space-y-6">
       <div class="headinngs uppercase center flex-col md:space-y-2">
-        <h6 class="text-base md:text-lg tracking-wide center text-pri">
+        <h6 class="text-base md:text-xl font-semibold tracking-wide center text-pri">
           services
         </h6>
         <h2

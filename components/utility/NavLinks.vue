@@ -164,7 +164,7 @@ ul > li > div ul li:last-child {
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 const { $gsap: gsap } = useNuxtApp();
-
+const props = defineProps({ fn: Function });
 const activeIndex = ref(null);
 const subActiveIndex = ref(null);
 const isSubOpened = ref(false);
@@ -183,6 +183,10 @@ if (data) {
 onMounted(() => {
   const list_height = 64;
   const ease = "cubic-bezier(0.84, 0.08, 0.23, 0.68)";
+  const lis = document.querySelectorAll(".mobile a");
+  lis.forEach((l) => {
+    l.addEventListener("click", props.fn);
+  });
   const outAnimation = {
     height: list_height,
     duration: 0.25,
@@ -245,10 +249,7 @@ onMounted(() => {
     link.addEventListener("click", subsubClickHandler);
   });
 
-  // const init_nav = async () => {
-  //   nav_links.value = await useFetch("/api/nav/ola");
-  // };
-  // init_nav();
+
 });
 
 const setActiveIndexWithDelay = (index) => {

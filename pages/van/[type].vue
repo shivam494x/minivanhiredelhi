@@ -5,7 +5,7 @@
         <div
           class="heading font-semibold text-5xl capitalize p-4 border-b border-pri tracking-tighter"
         >
-          <h2 class="center">
+          <h2 class="center lg:text-5xl text-3xl">
             {{ data.title }}
           </h2>
         </div>
@@ -26,11 +26,20 @@
     <section class="container section_padding relative">
       <UtilityVanSlider :arr="vans" :phase="2" :nav="van_links"  btn="view details" />
     </section>
-    <section class="container section_padding grid grid-cols-3 gap-20">
+    <section
+      class="container section_padding xl:grid grid-cols-3 2xl:gap-20 lg:gap-10 flex flex-col-reverse lg:flex-col gap-8"
+    >
       <div class="query col-span-2">
-        <UtilityQueryForm :title="data.title" />
+        <UtilityQueryForm title="van" />
       </div>
-      <div class="help"><UtilityNeedHelp /></div>
+      <div class="help xl:space-y-8 lg:grid grid-cols-2 xl:block space-y-6 lg:space-y-0">
+        <div class="order-2">
+          <OthersNav2 :nav="van_links" />
+        </div>
+        <div>
+          <UtilityNeedHelp />
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -38,9 +47,7 @@
 <script setup>
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-definePageMeta({
-  layout: "van",
-});
+
 
 const route = useRoute();
 const title = ref();

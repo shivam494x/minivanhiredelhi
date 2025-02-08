@@ -3,7 +3,7 @@
     <div class="container">
       <div class="xl:space-y-12 md:space-y-10 space-y-4">
         <div class="headinngs capitalize center flex-col md:space-y-2">
-          <h6 class="text-base md:text-lg tracking-wide center text-pri">
+          <h6 class="text-base md:text-xl font-semibold tracking-wide center text-pri ">
             come with us
           </h6>
           <h1 class="text-3xl md:text-5xl font-semibold tracking-tight">

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-complementary text-offWhite">
+  <div class="bg-complementary text-offWhite max-w-sm m-auto">
     <div class="border-b mb-5 pb-4 p-3 border-pri">
       <div
         class="capitalize brightness-150 text-lg font-bold pb-3 border-b text-center text-pri tracking-wide"
@@ -22,8 +22,8 @@
       >
         <h4>why travel with us</h4>
       </div>
-      <ul class="p-4 space-y-6">
-        <li v-for="x in travelBenefits" class="center">
+      <ul class="p-6 space-y-6">
+        <li v-for="x in travelBenefits" class="flex justify-start">
           <div class="space-y-3">
             <div class="flex space-x-2 justify-start">
               <h5 class="text-lg font-medium">{{ x.title }}</h5>

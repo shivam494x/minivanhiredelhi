@@ -1,6 +1,6 @@
 <template>
   <div class="van">
-    <div class="swiper-container px-12">
+    <div class="swiper-container lg:px-12 px-6 max-w-xs mx-auto md:max-w-max">
       <swiper
         :pagination="{ type: 'progressbar' }"
         :navigation="{
@@ -21,15 +21,19 @@
         <swiper-slide
           v-for="({ name, img, details, desc }, index) in arr"
           :key="name"
-          class=""
+          class="center"
         >
-          <div class="card border border-gray-200 flex flex-col">
-            <div class="img h-48">
-              <NuxtImg class="w-full h-full object-cover" :src="`${img}`" alt="img" />
+          <div class="card border border-gray-200 flex flex-col max-w-xs">
+            <div class="img md:h-48 h-40">
+              <NuxtImg
+                class="w-full h-full object-cover"
+                :src="`${img}`"
+                alt="img"
+              />
             </div>
             <div class="content row-span-1 flex flex-col center">
               <div
-                class="text-xl py-4 font-medium capitalize tracking-tight flex-1"
+                class="text-xl py-2 md:py-4 font-medium capitalize tracking-tight flex-1"
               >
                 <span class="before relative">
                   {{ name }}
@@ -43,10 +47,14 @@
                 {{ desc }}
               </div>
               <div
-                class="btn flex justify-start space-x-6 items-center w-max m-auto my-3 capitalize text-sm"
+                class="btn flex justify-start space-x-6 items-center w-max m-auto my-3 capitalize text-xs md:text-sm"
               >
-                <UtilityBtn2 phase="0" :title="btn" :path="getPath(name)" />
-                <UtilityBtn2 phase="1" title="Book now" :path="getPath(name)" />
+                <UtilityBtn2 :phase="0" :title="btn" :path="getPath(name)" />
+                <UtilityBtn2
+                  :phase="1"
+                  title="Book now"
+                  :path="getPath(name)"
+                />
               </div>
               <div
                 v-if="details"
@@ -57,9 +65,9 @@
                   class="border-r center gap-2"
                 >
                   <div class="icon text-pri">
-                    <Icon :name="icon" />
+                    <Icon :name="icon" class="text-sm" />
                   </div>
-                  <div class="content text-sm text-complementary">
+                  <div class="content md:text-sm text-xs text-complementary">
                     {{ quality }}
                   </div>
                 </div>
@@ -71,15 +79,20 @@
     </div>
 
     <!-- Custom Navigation Buttons -->
-    <div class="custom-prev btn">
+    <div class="custom-prev btn hidden -left-6">
       <div class="w-1/2 h-1/2 border-t-2 border-l-2 border-black"></div>
     </div>
-    <div class="custom-next btn">
+    <div class="custom-next btn hidden -right-6">
       <div class="w-1/2 h-1/2 border-t-2 border-r-2 border-black"></div>
     </div>
   </div>
 </template>
 <style scoped>
+@media screen and (min-width: 768px) {
+  .btn {
+    display: flex !important;
+  }
+}
 .card {
   width: 100%;
   height: max-content;
@@ -92,12 +105,13 @@
   transform: translateX(-50%);
   background-color: var(--primary-color);
 }
-.swiper-container {
-  position: relative;
-  padding: 0 80px;
-}
+
 .swiper-button-lock {
   cursor: not-allowed !important;
+}
+.swiper-slide {
+  display: flex !important;
+  padding-top: 0.5rem;
 }
 .custom-prev,
 .custom-next {
@@ -106,7 +120,6 @@
   transform: translateY(-50%);
   width: 30px;
   height: 30px;
-  display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -120,11 +133,9 @@
   filter: invert(1);
 }
 .custom-prev {
-  left: 2rem;
   transform: rotate(-45deg) translateY(-50%);
 }
 .custom-next {
-  right: 2rem;
   transform: rotate(45deg) translateY(-50%);
 }
 .custom-prev:hover,

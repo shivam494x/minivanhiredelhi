@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #CF2317;
+  --primary-color: #EC3323;
   --secondary-color: #14181c;
   --offWhite-color: #faf9f6;
   --complementary-color: #1e2a47;
@@ -45,6 +45,9 @@ section#hero {
   to {
     background-position: 40px 40px; /* Moves by the grid size */
   }
+}
+.container{
+  margin: auto;
 }
 .grid_bg {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;

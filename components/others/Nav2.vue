@@ -1,5 +1,5 @@
 <template>
-  <nav class="h-full overflow-hidden" id="nav2">
+  <nav class="h-full overflow-hidden max-w-sm m-auto" id="nav2">
     <div class="border overflow-y-scroll">
       <ul>
         <li
@@ -30,7 +30,7 @@
           </div>
           <div
             v-if="sub"
-            class="absolute left-0 w-full top-12 bg-complementary"
+            class="absolute left-0 w-full top-12 bg-complementary sub"
           >
             <ul>
               <li
@@ -61,7 +61,12 @@ ul > li > div a {
   display: inline-flex;
   transition: all 150ms var(--ease);
 }
-
+.sub .router-link-active {
+  color: #f08dff !important;
+}
+.sub .router-link-active:hover {
+  color: #ffffff !important;
+}
 ul > li > div > a::before {
   content: "";
   position: absolute;

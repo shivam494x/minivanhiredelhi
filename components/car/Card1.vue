@@ -37,8 +37,8 @@
         <div
           class="btn flex justify-start space-x-6 items-center w-full my-3 capitalize text-sm"
         >
-          <UtilityBtn2 phase="0" :title="btn" :path="getPath(name)" />
-          <UtilityBtn2 phase="1" title="Book now" :path="getPath(name)" />
+          <UtilityBtn2 :phase="0" :title="btn" :path="getPath(name)" />
+          <UtilityBtn2 :phase="1" title="Book now" :path="getPath(name)" />
         </div>
       </div>
       <ul

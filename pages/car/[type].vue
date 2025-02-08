@@ -104,9 +104,6 @@ nav span.iconify:where(.i-heroicons\:chevron-right-20-solid) {
 }
 </style>
 <script setup>
-definePageMeta({
-  layout: "van",
-});
 
 const route = useRoute();
 const title = ref();

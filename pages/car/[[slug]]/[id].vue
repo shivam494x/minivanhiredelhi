@@ -190,9 +190,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 const modules = [Pagination, Navigation];
-definePageMeta({
-  layout: "van",
-});
+
 const carData = ref({});
 
 const getCarData = () => {

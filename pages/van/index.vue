@@ -3,9 +3,9 @@
     <section class="container">
       <div class="content">
         <div
-          class="heading font-semibold text-5xl capitalize p-4 border-b border-red-300 tracking-tighter center"
+          class="heading font-semibold   capitalize p-4 border-b border-red-300 tracking-tighter center"
         >
-          <h2 class="">van</h2>
+          <h2 class="lg:text-5xl text-3xl">van</h2>
         </div>
         <div class="desc tracking-tight py-6 px-4 text-gray-800">
           <p>
@@ -30,24 +30,30 @@
     </section>
     <UDivider
       label="our van collection"
-      class="uppercase text-pri"
+      class="uppercase"
       :ui="{
-        label: 'text-pri dark:text-pri text-xl',
+        label: '',
       }"
     />
+
     <section class="container section_padding relative">
-      <UtilityVanSlider
-        :arr="vans"
-        :phase="1"
-        btn="read more"
-      />
+      <UtilityVanSlider :arr="vans" :phase="1" btn="read more" />
     </section>
-    <section class="container section_padding grid grid-cols-3 gap-20">
+    <UDivider
+      label="more services"
+      class="uppercase lg:hidden mt-8"
+      :ui="{
+        label: 'text-sm lg:text-lg',
+      }"
+    />
+    <section
+      class="container section_padding xl:grid grid-cols-3 2xl:gap-20 lg:gap-10 flex flex-col-reverse lg:flex-col gap-8"
+    >
       <div class="query col-span-2">
         <UtilityQueryForm title="van" />
       </div>
-      <div class="help space-y-8">
-        <div class="">
+      <div class="help xl:space-y-8 lg:grid grid-cols-2 xl:block space-y-6 lg:space-y-0">
+        <div class="order-2">
           <OthersNav2 :nav="van_links" />
         </div>
         <div>
@@ -59,9 +65,6 @@
 </template>
 
 <script setup>
-definePageMeta({
-  layout: "van",
-});
 const van_links = ref([{}]);
 const { data: navData, error } = await useFetch("/api/nav/van");
 if (navData) {

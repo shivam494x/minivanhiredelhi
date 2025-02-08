@@ -1,13 +1,17 @@
 <template>
   <div class="side_padding">
-    <div class="grid grid-cols-4">
-      <div class="col-span-3 mr-8">
+    <div class="lg:grid grid-cols-4 flex flex-col">
+      <div class="col-span-3 lg:mr-8">
         <section class="">
-          <div class="title text-3xl font-semibold tracking-tight capitalize">
+          <div
+            class="title md:text-3xl text-xl font-semibold tracking-tight capitalize"
+          >
             <h2 class="px-4 py-5">{{ data.title }}</h2>
           </div>
-          <div class="img grid grid-cols-5 h-96 border border-b-0 gap-4">
-            <div class="col-span-4 relative">
+          <div
+            class="img md:grid flex flex-col grid-cols-5 md:h-96 gap-4 max-w-sm m-auto md:max-w-2xl xl:max-w-4xl"
+          >
+            <div class="col-span-4 relative ">
               <div class="swiper-container">
                 <swiper
                   :pagination="{ type: 'fraction' }"
@@ -26,10 +30,10 @@
                 >
                   <swiper-slide v-for="img in data.img" :key="img">
                     <div class="card border border-gray-200 flex flex-col">
-                      <div class="img h-96">
+                      <div class="img md:h-96 h-56">
                         <NuxtImg
                           alt="img"
-                          class="w-full h-full object-cover"
+                          class="w-full h-full object-cover bg-center"
                           :src="`${img}`"
                         />
                       </div>
@@ -37,19 +41,19 @@
                   </swiper-slide>
                 </swiper>
               </div>
-              <div class="custom-prev">
+              <div class="custom-prev left-6 h-5 md:h-8">
                 <div
                   class="w-1/2 h-1/2 border-t-2 border-l-2 border-white"
                 ></div>
               </div>
-              <div class="custom-next">
+              <div class="custom-next right-6 h-5 md:h-8">
                 <div
                   class="w-1/2 h-1/2 border-t-2 border-r-2 border-white"
                 ></div>
               </div>
             </div>
-            <div class="max-h-96 mini">
-              <div class="swiper-container h-[28rem]">
+            <div class="md:max-h-96 mini max-h-20">
+              <div class="swiper-container md:h-[28rem]">
                 <swiper
                   :pagination="false"
                   :navigation="{
@@ -57,18 +61,22 @@
                     prevEl: '.img .custom-prev',
                   }"
                   :loop="true"
-                  :direction="'vertical'"
+                  :direction="swiperDirection"
                   :allow-touch-move="false"
                   :modules="modules"
-                  :space-between="40"
+                  :breakpoints="{
+                    0: { spaceBetween: 10 }, // Small screens (default)
+                    768: { spaceBetween: 15 }, // Medium screens (sm/md)
+                    1024: { spaceBetween: 40 }, // Large screens (lg and up)
+                  }"
                   :slides-per-view="4"
-                  class="mySwiper h-96 p-4"
+                  class="mySwiper md:h-96 h-12 p-4"
                 >
                   <swiper-slide v-for="img in data.img" :key="img">
                     <div
                       class="card border border-gray-200 flex flex-col gap-4"
                     >
-                      <div class="img h-24 aspect-square">
+                      <div class="img md:h-24 h-12 md:aspect-square">
                         <NuxtImg
                           alt="img"
                           class="w-full h-full object-cover"
@@ -88,16 +96,16 @@
               <h3>Introduction</h3>
             </div>
             <div
-              class="desc border-b py-6 px-5 text-gray-800 leading-relaxed space-y-4"
+              class="desc border-b py-6 lg:px-5 px-3 text-sm text-gray-800 leading-relaxed space-y-4"
             >
               <p v-for="p in data.desc">
                 {{ p }}
               </p>
             </div>
-            <div class="details text-pri border-b py-6 px-4">
+            <div class="details text-pri border-b py-6 px-2 md:px-4">
               <h4 class="capitalize font-medium pb-4">details</h4>
               <ul
-                class="text-sm capitalize text-gray-700 flex justify-between border-[10px] border-complementary p-4"
+                class="text-sm capitalize text-gray-700 flex flex-col lg:flex-row gap-6 justify-between border-[10px] border-complementary p-4"
               >
                 <li
                   v-for="(
@@ -130,10 +138,10 @@
                 </li>
               </ul>
             </div>
-            <div class="features text-pri border-b py-6 px-4">
+            <div class="features text-pri border-b py-6 px-2 md:px-4">
               <h4 class="capitalize font-medium pb-4">features</h4>
               <ul
-                class="pl-6 text-sm capitalize text-gray-700 grid grid-cols-2 gap-4 justify-between border-[10px] border-complementary p-4"
+                class="pl-6 text-sm capitalize text-gray-700 grid md:grid-cols-2 grid-cols-1 gap-6 justify-between border-[10px] border-complementary p-4"
               >
                 <li
                   v-for="(value, key) in data.features.list"
@@ -150,14 +158,14 @@
                 </li>
               </ul>
             </div>
-            <div class="bottom_desc text-pri border-b py-6 px-4">
+            <div class="bottom_desc text-pri border-b py-6 px-4 text-sm">
               <div class="text-gray-800 leading-relaxed">
                 <p>
                   {{ data.bottom_desc }}
                 </p>
               </div>
             </div>
-            <div class="note text-pri border-b py-6 px-4">
+            <div class="note text-pri border-b py-6 px-4 text-sm">
               <h4
                 class="capitalize font-medium pb-4 flex items-center space-x-2"
               >
@@ -178,11 +186,11 @@
           </div>
         </section>
         <section class="query border-t border-pri">
-          <UtilityQueryForm />
+          <UtilityQueryForm :title="data.title" />
         </section>
       </div>
-      <aside class="w-full h-max my-20 space-y-10">
-        <OthersNav2 :nav="van_links" />
+      <aside class="w-full h-max lg:my-20 my-10 lg:space-y-10 md:grid grid-cols-2 lg:block gap-10 flex flex-col">
+        <OthersNav2 :nav="van_links" class="w-full md:order-2"/>
         <UtilityNeedHelp />
       </aside>
     </div>
@@ -194,9 +202,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
-definePageMeta({
-  layout: "van",
-});
+
 const route = useRoute();
 const van_links = ref();
 const { data: navData, error } = await useFetch("/api/nav/van");
@@ -261,6 +267,16 @@ const data = {
   ],
 };
 const modules = [Pagination, Navigation];
+const swiperDirection = ref("horizontal");
+
+const updateSwiperDirection = () => {
+  swiperDirection.value = window.innerWidth >= 768 ? "vertical" : "horizontal";
+};
+
+onMounted(() => {
+  updateSwiperDirection();
+  window.addEventListener("resize", updateSwiperDirection);
+});
 </script>
 <style scoped>
 .custom-prev,
@@ -268,13 +284,11 @@ const modules = [Pagination, Navigation];
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
-
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  aspect-ratio: 1;
   z-index: 10;
   border: 2px solid white;
 }
@@ -306,11 +320,9 @@ const modules = [Pagination, Navigation];
 }
 
 .custom-prev {
-  left: 2rem;
   transform: rotate(-45deg) translateY(-50%);
 }
 .custom-next {
-  right: 2rem;
   transform: rotate(45deg) translateY(-50%);
 }
 </style>

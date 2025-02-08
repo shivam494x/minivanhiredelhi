@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-red-50 p-4 sm:p-12 form-wrapper overflow-hidden">
+  <div class=" bg-red-50 p-4 sm:p-12 form-wrapper overflow-hidden ">
     <div class="mx-auto w-full px-6 py-6 bg-white shadow-lg relative">
       <div
         class="absolute left-0 right-0 top-0 bottom-0 h-full w-full z-10 bg pointer-events-none"
@@ -10,14 +10,14 @@
         </div>
       </div>
       <h1
-        class="text-2xl capitalize space-x-6 font-bold mb-4 flex items-end justify-center border-red-400 border-b-4 text-secondary py-2 mx-3"
+        class="md:text-2xl text-lg capitalize center flex-col md:grid grid-cols-2 mb-4 px-4 items-end border-red-400 border-b-4 text-secondary py-2 mx-3"
       >
         <div>
-          <span class="">{{ title }}</span>
-          <span class=""> query form </span>
+          <span class="text-pri font-semibold">{{ title }}</span>
+          <span class=""> query </span>
         </div>
 
-        <div class="text-base font-normal center w-max space-x-1 text-pri">
+        <div class="text-base font-normal center w-max space-x-1 text-pri mx-auto">
           <span> Let us help you! </span>
           <Icon name="tabler:headset" class="text-lg" />
         </div>
@@ -96,12 +96,12 @@
           }}</span>
         </div>
 
-        <div class="flex justify-start space-x-5 mt-6">
+        <div class="grid grid-cols-2 h-10 justify-start space-x-5 mt-6 font-semibold max-w-80">
           <button type="submit" class="">
             <div
-              class="h-12 relative group overflow-hidden flex items-center justify-center uppercase font-semibold px-12 border border-pri hover:bg-pri hover:text-white transition duration-200 ease-in-out"
+              class="h-full relative group overflow-hidden flex items-center justify-center  px-4 border border-pri hover:bg-pri hover:text-white transition duration-200 ease-in-out"
             >
-              <span class="duration-300 group-hover:-translate-y-16"
+              <span class="duration-300 group-hover:-translate-y-16 uppercase"
                 >submit</span
               >
               <span
@@ -112,9 +112,9 @@
           </button>
           <button type="reset" class="border" @click="resetForm">
             <div
-              class="h-12 group space-x-3 flex items-center justify-center uppercase text-white font-semibold px-6 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
+              class="h-full group space-x-3 flex items-center justify-center  text-white  px-3 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
             >
-              <span>reset</span>
+              <span class="uppercase">reset</span>
               <Icon
                 name="material-symbols:restart-alt"
                 class="text-xl group-hover:-rotate-180 duration-300"

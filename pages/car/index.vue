@@ -111,7 +111,7 @@
           </div>
           <div class="help space-y-8 flex flex-col items-center">
             <div class="max-w-80 w-full">
-              <OthersNav2 :nav="carsNav" />
+              <LazyOthersNav2 :nav="carsNav" />
             </div>
             <div class="max-w-80 w-full">
               <UtilityNeedHelp />
@@ -151,9 +151,9 @@
 }
 </style>
 <script setup>
-definePageMeta({
-  layout: "van",
-});
+
+
+
 const { getPath } = useUtility();
 const carsNav = ref([{}]);
 const { data: navData, error } = await useFetch("/api/nav/car");

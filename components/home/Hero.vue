@@ -57,9 +57,9 @@
               <div
                 class="sub md:text-lg brightness-[90%] mb-8 overflow-x-hidden overflow-hidden w-3/5 tracking-normal"
               >
-                <p>
+                <h5>
                   {{ content[content.length - 1].sub }}
-                </p>
+                </h5>
               </div>
               <UtilityButton1
                 class="capitalize w-max py-2 px-6"
@@ -75,7 +75,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
 
 const { $gsap: gsap } = useNuxtApp();
 
@@ -116,7 +115,7 @@ onMounted(() => {
   const bgWrapper = document.querySelector("section#hero .bg");
   const contentWrapper = document.querySelector("section#hero .content");
   const contentObj = {
-    heading: contentWrapper.querySelector("h2"),
+    heading: contentWrapper.querySelector("h1"),
     sub: contentWrapper.querySelector("h5"),
   };
   let contentIndex = content.length - 1;

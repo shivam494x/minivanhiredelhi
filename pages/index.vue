@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <main class=" w-full">
+    <main class="w-full">
       <!-- section one -->
       <section id="hero" class="bg-secondary text-white overflow-hidden">
         <HomeHero />
@@ -17,3 +17,9 @@
     </main>
   </div>
 </template>
+
+<script setup>
+definePageMeta({
+  layout: "home",
+});
+</script>

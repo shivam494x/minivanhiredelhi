@@ -16,7 +16,7 @@
               quality="75"
               formats="webp, avif"
               sizes="(max-width: 600px) 100vw, 50vw"
-              srcset="/img/logo.png 1x, /img/logo@2x.png 2x, /img/logo@3x.png 3x"
+              srcset="/img/logo.png 1x"
             />
           </div>
 
