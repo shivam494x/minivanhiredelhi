@@ -1,5 +1,5 @@
 <template>
-  <nav class="h-full overflow-hidden max-w-sm m-auto" id="nav2">
+  <nav class="h-full overflow-hidden max-w-sm mx-auto" id="nav2">
     <div class="border overflow-y-scroll">
       <ul>
         <li

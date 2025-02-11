@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-complementary text-offWhite max-w-sm m-auto">
+  <div class="bg-complementary text-offWhite max-w-sm mx-auto h-max">
     <div class="border-b mb-5 pb-4 p-3 border-pri">
       <div
         class="capitalize brightness-150 text-lg font-bold pb-3 border-b text-center text-pri tracking-wide"

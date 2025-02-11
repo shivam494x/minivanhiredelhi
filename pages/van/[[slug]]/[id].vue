@@ -11,7 +11,7 @@
           <div
             class="img md:grid flex flex-col grid-cols-5 md:h-96 gap-4 max-w-sm m-auto md:max-w-2xl xl:max-w-4xl"
           >
-            <div class="col-span-4 relative ">
+            <div class="col-span-4 relative">
               <div class="swiper-container">
                 <swiper
                   :pagination="{ type: 'fraction' }"
@@ -89,20 +89,47 @@
               </div>
             </div>
           </div>
-          <div class="content">
-            <div
-              class="px-2 py-6 text-3xl border-b mx-1 font-medium capitalize border-pri tracking-tight text-pri"
+          <div
+            class="content_changer max-w-[30rem] lg:text-xl text-lg mx-2.5 border-b font-medium capitalize border-pri tracking-tight text-pri flex flex-wrap"
+          >
+            <h3
+              @click="change_content('intro', $event)"
+              class="px-4 py-2 sm:px-6 sm:py-4 md:px-8 md:py-5 bg-red-50 shadow-inner cursor-pointer active hover:bg-red-100 transition duration-300 ease-in-out border-r border-pri flex-1 text-center"
             >
-              <h3>Introduction</h3>
-            </div>
-            <div
-              class="desc border-b py-6 lg:px-5 px-3 text-sm text-gray-800 leading-relaxed space-y-4"
+              Introduction
+            </h3>
+
+            <h3
+              @click="change_content('details', $event)"
+              class="px-4 py-2 sm:px-6 sm:py-4 md:px-8 md:py-5 bg-red-50 shadow-inner cursor-pointer hover:bg-red-100 transition duration-300 ease-in-out border-r border-pri flex-1 text-center"
             >
-              <p v-for="p in data.desc">
+              Details
+            </h3>
+
+            <h3
+              @click="change_content('features', $event)"
+              class="px-4 py-2 sm:px-6 sm:py-4 md:px-8 md:py-5 bg-red-50 shadow-inner cursor-pointer hover:bg-red-100 transition duration-300 ease-in-out flex-1 text-center"
+            >
+              Features
+            </h3>
+          </div>
+
+          <div class="content bg-gray-50 mx-2.5">
+            <div
+              v-if="active_content === 'intro'"
+              class="desc border-b space-y-4"
+            >
+              <p v-for="p in data.desc" class="">
                 {{ p }}
               </p>
+              <p>
+                {{ data.bottom_desc }}
+              </p>
             </div>
-            <div class="details text-pri border-b py-6 px-2 md:px-4">
+            <div
+              v-else-if="active_content === 'details'"
+              class="details text-pri border-b py-6 px-2 md:px-4"
+            >
               <h4 class="capitalize font-medium pb-4">details</h4>
               <ul
                 class="text-sm capitalize text-gray-700 flex flex-col lg:flex-row gap-6 justify-between border-[10px] border-complementary p-4"
@@ -138,7 +165,10 @@
                 </li>
               </ul>
             </div>
-            <div class="features text-pri border-b py-6 px-2 md:px-4">
+            <div
+              v-else-if="active_content === 'features'"
+              class="features text-pri border-b py-6 px-2 md:px-4"
+            >
               <h4 class="capitalize font-medium pb-4">features</h4>
               <ul
                 class="pl-6 text-sm capitalize text-gray-700 grid md:grid-cols-2 grid-cols-1 gap-6 justify-between border-[10px] border-complementary p-4"
@@ -158,14 +188,7 @@
                 </li>
               </ul>
             </div>
-            <div class="bottom_desc text-pri border-b py-6 px-4 text-sm">
-              <div class="text-gray-800 leading-relaxed">
-                <p>
-                  {{ data.bottom_desc }}
-                </p>
-              </div>
-            </div>
-            <div class="note text-pri border-b py-6 px-4 text-sm">
+            <div class="note text-pri border-b py-6 px-4 text-sm bg-gray-100">
               <h4
                 class="capitalize font-medium pb-4 flex items-center space-x-2"
               >
@@ -185,12 +208,12 @@
             </div>
           </div>
         </section>
-        <section class="query border-t border-pri">
-          <UtilityQueryForm :title="data.title" />
-        </section>
       </div>
-      <aside class="w-full h-max lg:my-20 my-10 lg:space-y-10 md:grid grid-cols-2 lg:block gap-10 flex flex-col">
-        <OthersNav2 :nav="van_links" class="w-full md:order-2"/>
+      <aside
+        class="w-full h-max lg:my-20 my-10 lg:space-y-10 md:grid grid-cols-2 lg:block gap-10 flex flex-col"
+      >
+        <UtilityQueryForm :title="data.title" />
+        <OthersNav2 :nav="van_links" class="w-full md:order-2" />
         <UtilityNeedHelp />
       </aside>
     </div>
@@ -205,6 +228,8 @@ import { Pagination, Navigation } from "swiper/modules";
 
 const route = useRoute();
 const van_links = ref();
+const active_content = ref("intro");
+
 const { data: navData, error } = await useFetch("/api/nav/van");
 if (navData) {
   van_links.value = navData.value.sub;
@@ -272,13 +297,24 @@ const swiperDirection = ref("horizontal");
 const updateSwiperDirection = () => {
   swiperDirection.value = window.innerWidth >= 768 ? "vertical" : "horizontal";
 };
-
+function change_content(content, e) {
+  const previous = document.querySelector(".active");
+  if (previous) {
+    previous.classList.remove("active");
+  }
+  e.target.classList.add("active");
+  active_content.value = content;
+}
 onMounted(() => {
   updateSwiperDirection();
   window.addEventListener("resize", updateSwiperDirection);
 });
 </script>
 <style scoped>
+.content_changer > .active {
+  background-color: var(--primary-color);
+  color: white;
+}
 .custom-prev,
 .custom-next {
   position: absolute;

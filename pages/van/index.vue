@@ -3,7 +3,7 @@
     <section class="container">
       <div class="content">
         <div
-          class="heading font-semibold   capitalize p-4 border-b border-red-300 tracking-tighter center"
+          class="heading font-semibold capitalize p-4 border-b border-red-300 tracking-tighter center"
         >
           <h2 class="lg:text-5xl text-3xl">van</h2>
         </div>
@@ -46,21 +46,7 @@
         label: 'text-sm lg:text-lg',
       }"
     />
-    <section
-      class="container section_padding xl:grid grid-cols-3 2xl:gap-20 lg:gap-10 flex flex-col-reverse lg:flex-col gap-8"
-    >
-      <div class="query col-span-2">
-        <UtilityQueryForm title="van" />
-      </div>
-      <div class="help xl:space-y-8 lg:grid grid-cols-2 xl:block space-y-6 lg:space-y-0">
-        <div class="order-2">
-          <OthersNav2 :nav="van_links" />
-        </div>
-        <div>
-          <UtilityNeedHelp />
-        </div>
-      </div>
-    </section>
+  <OthersBottom :-form_-title="`van`" :nav="van_links"/>
   </div>
 </template>
 

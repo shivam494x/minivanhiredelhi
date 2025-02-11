@@ -7,7 +7,6 @@
           nextEl: '.van .custom-next',
           prevEl: '.van .custom-prev',
         }"
-        :loop="true"
         :modules="modules"
         :space-between="20"
         :autoplay="true"

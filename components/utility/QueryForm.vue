@@ -1,6 +1,6 @@
 <template>
-  <div class=" bg-red-50 p-4 sm:p-12 form-wrapper overflow-hidden ">
-    <div class="mx-auto w-full px-6 py-6 bg-white shadow-lg relative">
+  <div class="bg-red-50 form-wrapper overflow-hidden max-w-96 mx-auto">
+    <div class="mx-auto w-full bg-white shadow-lg relative py-2">
       <div
         class="absolute left-0 right-0 top-0 bottom-0 h-full w-full z-10 bg pointer-events-none"
       >
@@ -10,24 +10,19 @@
         </div>
       </div>
       <h1
-        class="md:text-2xl text-lg capitalize center flex-col md:grid grid-cols-2 mb-4 px-4 items-end border-red-400 border-b-4 text-secondary py-2 mx-3"
+        class="md:text-2xl text-lg capitalize space-x-2 center flex-col pb-4 pt-6 px-4 mb-4 items-end border-red-400 border-b-4 text-secondary mx-3"
       >
         <div>
           <span class="text-pri font-semibold">{{ title }}</span>
-          <span class=""> query </span>
-        </div>
-
-        <div class="text-base font-normal center w-max space-x-1 text-pri mx-auto">
-          <span> Let us help you! </span>
-          <Icon name="tabler:headset" class="text-lg" />
+          <span class=""> query</span>
         </div>
       </h1>
       <form @submit.prevent="submitForm">
-        <div class="md:grid grid-cols-2">
+        <div class="">
           <div
             v-for="field in fields"
             :key="field.name"
-            class="relative z-0 w-full mb-5 px-3"
+            class="relative z-0 w-full mb-5 px-3  text-sm"
           >
             <!-- Add id attribute to each input field to associate it with the label -->
             <input
@@ -37,21 +32,21 @@
               v-model="form[field.name]"
               placeholder=" "
               required
-              class="pt-3 pb-2 block w-full px-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-red-300 border-gray-300"
+              class="py-2 block w-full px-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-red-300 border-gray-300"
             />
             <!-- Associate the label using for="field.name" to improve screen reader support -->
             <label
               :for="field.name"
-              class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500 ml-1"
             >
               {{ field.label }}
             </label>
-            <span v-if="errors[field.name]" class="text-sm text-red-600">
+            <span v-if="errors[field.name]" class="text-xs text-red-600">
               {{ field.errorMessage }}
             </span>
           </div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-2 gap-4 px-3">
           <select
             name="adults"
             v-model="form.adults"
@@ -73,16 +68,17 @@
             <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
           </select>
         </div>
+        <div class="px-3">
+          <textarea
+            name="requirements"
+            v-model="form.requirements"
+            id="requirements"
+            placeholder="Enter Details of Requirements"
+            class="block w-full mt-5 p-2 border-b-2 border-gray-300 bg-white"
+          ></textarea>
+        </div>
 
-        <textarea
-          name="requirements"
-          v-model="form.requirements"
-          id="requirements"
-          placeholder="Enter Details of Requirements"
-          class="block w-full mt-5 p-2 border-b-2 border-gray-300 bg-white"
-        ></textarea>
-
-        <div class="flex items-center mt-5 focus-visible:border-0">
+        <div class="flex items-center mt-5 focus-visible:border-0 px-3">
           <input
             type="number"
             name="captcha"
@@ -91,15 +87,17 @@
             placeholder="Enter Code"
             class="block w-full p-2 border-b-2 border-gray-300 bg-white focus:border-red-500 focus:ring-0"
           />
-          <span class="bg-gray-200 py-2 px-8 ml-2 text-black font-bold">{{
+          <span class="bg-gray-200 py-1 px-4 ml-2 text-black font-bold">{{
             captchaCode
           }}</span>
         </div>
 
-        <div class="grid grid-cols-2 h-10 justify-start space-x-5 mt-6 font-semibold max-w-80">
+        <div
+          class="grid grid-cols-2 h-10 justify-start space-x-5 mt-6 font-semibold max-w-80 px-3"
+        >
           <button type="submit" class="">
             <div
-              class="h-full relative group overflow-hidden flex items-center justify-center  px-4 border border-pri hover:bg-pri hover:text-white transition duration-200 ease-in-out"
+              class="h-full relative group overflow-hidden flex items-center justify-center px-4 border border-pri hover:bg-pri hover:text-white transition duration-200 ease-in-out"
             >
               <span class="duration-300 group-hover:-translate-y-16 uppercase"
                 >submit</span
@@ -112,7 +110,7 @@
           </button>
           <button type="reset" class="border" @click="resetForm">
             <div
-              class="h-full group space-x-3 flex items-center justify-center  text-white  px-3 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
+              class="h-full group space-x-3 flex items-center justify-center text-white px-3 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
             >
               <span class="uppercase">reset</span>
               <Icon
@@ -231,12 +229,12 @@ export default {
 
 .form-wrapper .bg span:first-child {
   left: 5%;
-  transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-35deg);
 }
 
 .form-wrapper .bg span:nth-child(2) {
   right: 5%;
-  transform: translate(50%, -50%) rotate(45deg);
+  transform: translate(50%, -50%) rotate(35deg);
 }
 .origin-0 {
   transform-origin: 0%;

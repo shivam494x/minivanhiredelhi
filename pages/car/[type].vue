@@ -1,7 +1,7 @@
 <template>
   <section>
     <div
-      class="heading font-semibold text-5xl relative capitalize h-56 tracking-wide text-center px-8"
+      class="heading font-semibold lg:text-5xl text-3xl relative capitalize lg:h-56 h-32 tracking-wide text-center px-8"
     >
       <div
         :style="{ backgroundImage: `url('/img/car2.png')` }"
@@ -22,10 +22,10 @@
       label: 'text-pri dark:text-pri text-xl',
     }"
   />
-  <section class="container grid gap-10 side_padding">
+  <section class=" grid gap-10 side_padding">
     <div class="content px-4">
       <div>
-        <div class="desc tracking-tight py-6 px-4 space-y-4">
+        <div class="container desc tracking-tight lg:py-6 py-3 md:px-4 space-y-4 text-sm md:text-base">
           <p>
             Jaguar, Mercedes, BMW, Audi, Toyota luxury car is usually regarded
             as one of the top producers of finest luxury cars in the world. The
@@ -52,14 +52,11 @@
       </div>
       <UDivider
         :label="`our ${title} collection`"
-        class="uppercase w-full mr-auto my-12"
-        :ui="{
-          label: 'text-pri dark:text-pri text-xl',
-        }"
+        class="uppercase w-full mr-auto lg:my-12 my-6"
       />
-      <section class="container px-2 py-4 ">
+      <section class="px-2 py-4">
         <div class="w-full space-y-10">
-          <ul class="grid grid-cols-3 gap-8 h-max w-full">
+          <ul class="grid xl:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8 h-max w-full">
             <li v-for="{ heading, img, description } in cardData">
               <CarCard1
                 class="shadow-lg"
@@ -72,21 +69,9 @@
               />
             </li>
           </ul>
-          <div class="grid grid-cols-3 gap-10 ">
-            <div class="col-span-2">
-              <UtilityQueryForm :title="title" />
-            </div>
-            <div class="info space-y-10 ">
-              <div class="max-w-80 w-full">
-                <OthersNav2 :nav="carsNav" />
-              </div>
-              <div class="max-w-80 w-full">
-                <UtilityNeedHelp />
-              </div>
-            </div>
-          </div>
         </div>
       </section>
+      <OthersBottom :-form_-title="title" :nav="carsNav" />
     </div>
   </section>
 </template>
@@ -104,7 +89,6 @@ nav span.iconify:where(.i-heroicons\:chevron-right-20-solid) {
 }
 </style>
 <script setup>
-
 const route = useRoute();
 const title = ref();
 const carsNav = ref([{}]);

@@ -1,9 +1,12 @@
 <template>
   <div class="side_padding">
-    <section class="container grid gap-10 grid-cols-3 pt-20">
+    <section
+      class="container lg:grid gap-10 grid-cols-3 lg:pt-20 pt-10 flex flex-col"
+    >
       <div class="col-span-2 img">
-        <div class="img grid grid-cols-1 grid-rows-3 h-[28rem] gap-4">
-          <div class="row-span-2 relative">
+        <div class="img flex flex-col gap-4">
+          <!-- Main Image Slider -->
+          <div class="relative">
             <div class="swiper-container">
               <swiper
                 :pagination="{ type: 'fraction' }"
@@ -14,46 +17,54 @@
                 :draggable="false"
                 :loop="true"
                 :grab-cursor="false"
-                :grab="false"
                 :modules="modules"
-                :space-between="20"
+                :space-between="10"
                 :allow-touch-move="false"
                 :slides-per-view="1"
                 class="mySwiper"
               >
                 <swiper-slide v-for="img in carData.img" :key="img">
                   <div class="card border border-gray-200 flex flex-col">
-                    <div class="img h-72 m-auto">
+                    <div
+                      class="img h-64 sm:h-72 md:h-96 lg:h-[300px] xl:h-[400px] m-auto"
+                    >
                       <NuxtImg
                         alt="img"
-                        class="w-full h-full object-cover"
+                        class="w-full h-full object-cover rounded-lg"
                         :src="img"
                         format="webp"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 800px"
                         :width="800"
-                        :height="288"
+                        :height="500"
                         loading="lazy"
                         placeholder="blur"
-                        priority
                       />
                     </div>
                   </div>
                 </swiper-slide>
               </swiper>
             </div>
-            <div class="custom-prev group">
+
+            <!-- Custom Navigation Buttons -->
+            <div
+              class="custom-prev group absolute top-1/2 left-2 -translate-y-1/2 cursor-pointer"
+            >
               <div
-                class="w-2 h-2 border-t-2 border-l-2 border-gray-400 -rotate-45 group-hover:border-pri duration-150"
+                class="w-3 h-3 border-t-2 border-l-2 border-black -rotate-45 group-hover:border-pri duration-150"
               ></div>
             </div>
-            <div class="custom-next group">
+            <div
+              class="custom-next group absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer"
+            >
               <div
-                class="w-2 h-2 border-t-2 border-r-2 border-gray-400 rotate-45 group-hover:border-pri duration-150"
+                class="w-3 h-3 border-t-2 border-r-2 border-black rotate-45 group-hover:border-pri duration-150"
               ></div>
             </div>
           </div>
-          <div class="h-full mini">
-            <div class="swiper-container h-32">
+
+          <!-- Thumbnail Slider -->
+          <div class="h-max mini">
+            <div class="swiper-container">
               <swiper
                 :pagination="false"
                 :navigation="{
@@ -62,27 +73,30 @@
                 }"
                 :draggable="false"
                 :loop="true"
-                :direction="'horizontal'"
                 :modules="modules"
-                :space-between="40"
+                :space-between="10"
+                :grab-cursor="false"
                 :allow-touch-move="false"
-                :slides-per-view="4"
-                class="mySwiper h-32 p-4"
+                :breakpoints="{
+                  0: { slidesPerView: 2 },
+                  768: { slidesPerView: 3 },
+                  1024: { slidesPerView: 4 },
+                }"
+                class="mySwiper p-2 md:p-4"
               >
                 <swiper-slide v-for="img in carData.img" :key="img">
-                  <div class="card border border-gray-200 flex flex-col gap-4">
-                    <div class="img h-24 aspect-square">
+                  <div class="card flex flex-col">
+                    <div class="img h-20 sm:h-16 md:h-24 lg:h-28">
                       <NuxtImg
-                        class="w-full h-full object-cover"
+                        class="w-full h-full object-cover rounded-md"
                         :src="img"
                         alt="img"
                         format="webp"
-                        sizes="(max-width: 768px) 100vw, 25vw"
-                        :width="96"
-                        :height="96"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 150px"
+                        :width="150"
+                        :height="150"
                         loading="lazy"
                         placeholder="blur"
-                        priority
                       />
                     </div>
                   </div>
@@ -92,8 +106,8 @@
           </div>
         </div>
       </div>
-      <div class="info col-span-1 max-w-[21rem]">
-        <div class="border border-red-300 h-max py-2 w-full shadow-2xl grid_bg">
+      <div class="info col-span-1 mx-auto max-w-96 w-full">
+        <div class="border border-red-300 h-max py-2 w-full shadow-2 xl grid_bg">
           <div class="w-full py-3">
             <UDivider
               :label="carData.name"
@@ -123,62 +137,44 @@
       </div>
     </section>
 
-    <section class="container my-12 py-4">
-      <div
-        class="heading text-3xl capitalize font-medium tracking-tight border-b border-red-300 text-pri"
+    <section class="container my-12 py-4 lg:grid grid-cols-4 flex flex-col">
+      <div class="col-span-3 lg:mr-8">
+        <div
+          class="heading lg:text-3xl text-xl capitalize font-medium tracking-tight border-b border-red-300 text-pri"
+        >
+          <h4 class="bg-red-50 shadow-inner w-max px-8 py-4">
+            Vehical overview
+          </h4>
+        </div>
+        <div class="desc">
+          <p v-for="p in carData.description.overall">
+            {{ p }}
+          </p>
+          <p v-for="p in carData.description.bottom">
+            {{ p }}
+          </p>
+        </div>
+        <div class="flex flex-col gap-4 text-gray-600 text-sm my-4">
+          <div class="flex flex-col">
+            <ul class="h-full flex flex-col justify-around">
+              <li
+                v-for="l in carData.description.bullet_points"
+                class="flex justify-start space-x-3 py-1 items-center"
+              >
+                <Icon name="lucide:arrow-right-circle" class="text-pri" />
+                <p>{{ l }}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <aside
+        class="w-full h-max lg:space-y-10 md:grid grid-cols-2 lg:block gap-10 flex flex-col"
       >
-        <h4 class="bg-red-50 shadow-inner w-max px-8 py-4">Vehical overview</h4>
-      </div>
-      <div class="desc text-gray-600 text-sm py-5 leading-loose">
-        <p v-for="p in carData.description.overall">
-          {{ p }}
-        </p>
-      </div>
-      <div class="grid grid-cols-2 gap-4 text-gray-600 text-sm my-4">
-        <div class="vid w-full m-auto h-72 relative">
-          <div class="brightness-50 aspect-[1/0.5] w-full h-full">
-            <NuxtImg
-              alt="img"
-              class="w-full h-full object-contain"
-              src="https://minivanhiredelhi.com/uploads/72057_Land-Range%20Rover%20Vogue.jpeg"
-              format="webp"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              :width="800"
-              :height="400"
-              loading="lazy"
-              placeholder="blur"
-            />
-          </div>
-          <div
-            class="absolute top-1/2 center left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 z-10 cursor-pointer"
-          >
-            <Icon
-              name="ei:play"
-              class="h-full w-full text-5xl font-bold text-pri"
-            />
-          </div>
-        </div>
-
-        <div class="flex flex-col">
-          <ul class="h-full flex flex-col justify-around">
-            <li
-              v-for="l in carData.description.bullet_points"
-              class="flex justify-start space-x-3 py-1 items-center"
-            >
-              <Icon name="lucide:arrow-right-circle" class="text-pri" />
-              <p>{{ l }}</p>
-            </li>
-          </ul>
-          <div class="desc center my-5">
-            <p v-for="p in carData.description.bottom">
-              {{ p }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="query border-t border-pri w-3/5">
-      <UtilityQueryForm />
+        <UtilityQueryForm :title="carData.name" />
+        <OthersNav2 :nav="carLinks" class="w-full md:order-2" />
+        <UtilityNeedHelp />
+      </aside>
     </section>
   </div>
 </template>
@@ -192,6 +188,7 @@ import { Pagination, Navigation } from "swiper/modules";
 const modules = [Pagination, Navigation];
 
 const carData = ref({});
+const carLinks = ref();
 
 const getCarData = () => {
   const data = {
@@ -235,6 +232,12 @@ const getCarData = () => {
   };
   carData.value = data;
 };
+const { data: navData, error } = await useFetch("/api/nav/car");
+if (navData) {
+  carLinks.value = navData.value.sub;
+} else {
+  console.error(error);
+}
 getCarData();
 </script>
 <style scoped>
@@ -251,7 +254,7 @@ getCarData();
   justify-content: center;
   cursor: pointer;
   z-index: 10;
-  border: 1px solid rgb(189, 189, 189);
+  border: 2px solid rgb(0, 0, 0);
   transition: all 200ms linear;
 }
 .custom-prev:hover,

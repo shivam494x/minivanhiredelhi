@@ -6,8 +6,9 @@ export default defineAppConfig({
         },
         divider: {
             container: {
-                base: 'text-pri dark:text-pri text-base lg:text-lg'
+                base: 'text-pri dark:text-pri '
             },
+            label: 'text-lg lg:text-xl',
             border: {
                 base: 'border-gray-800 dark:border-gray-800',
             }

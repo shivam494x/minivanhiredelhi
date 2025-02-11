@@ -1,7 +1,7 @@
 <template>
   <section>
     <div
-      class="heading font-semibold text-8xl relative capitalize h-56 tracking-wide text-end px-8"
+      class="heading font-semibold lg:text-8xl text-6xl relative capitalize lg:h-56 h-32 tracking-wide text-end px-8"
     >
       <div
         :style="{ backgroundImage: `url('/img/car.png')` }"
@@ -14,15 +14,14 @@
   </section>
   <UDivider
     label="Introduction"
-    class="uppercase w-4/5 m-auto mt-12 mb-4"
-    :ui="{
-      label: 'text-pri dark:text-pri text-xl',
-    }"
+    class="uppercase w-[90%] m-auto mt-6 mb-4 lg:mt-12"
   />
-  <section class="container grid gap-10 side_padding">
+  <section class="grid gap-10 side_padding">
     <div class="content px-4">
       <div>
-        <div class="desc tracking-tight py-6 px-4 space-y-4">
+        <div
+          class="desc tracking-tight lg:py-6 py-3 md:px-4 space-y-4 text-sm md:text-base"
+        >
           <p>
             Car Hire Delhi- is a service provider of premium and luxury car on
             rental in all the major cities of India such as Delhi, Mumbai, Goa,
@@ -52,10 +51,7 @@
       </div>
       <UDivider
         label="Our cars"
-        class="uppercase w-full mr-auto my-12"
-        :ui="{
-          label: 'text-pri dark:text-pri text-xl',
-        }"
+        class="uppercase w-full mr-auto lg:my-12 my-6"
       />
       <!-- <UDivider
         label="Our cars"
@@ -89,10 +85,11 @@
           </div>
         </div>
       </section> -->
-      <section class="container px-2 py-4 space-y-10">
-        <ul class="grid grid-cols-2 gap-10">
+
+      <section class=" px-2 py-4 space-y-10 ">
+        <ul class="grid lg:grid-cols-2 gap-10 grid-cols-1">
           <li
-            class="hover:shadow-xl hover:-translate-y-3 shadow-pri duration-150"
+            class="hover:shadow-xl hover:-translate-y-3 shadow-pri duration-150 "
             v-for="{ heading, img, carDetails, path } in carData"
           >
             <CarCard1
@@ -105,20 +102,16 @@
             />
           </li>
         </ul>
-        <div class="grid grid-cols-3">
-          <div class="query col-span-2">
-            <UtilityQueryForm :title="'car'" />
-          </div>
-          <div class="help space-y-8 flex flex-col items-center">
-            <div class="max-w-80 w-full">
-              <LazyOthersNav2 :nav="carsNav" />
-            </div>
-            <div class="max-w-80 w-full">
-              <UtilityNeedHelp />
-            </div>
-          </div>
-        </div>
       </section>
+
+      <UDivider
+        label="more services"
+        class="uppercase lg:hidden mt-8 mb-4"
+        :ui="{
+          label: 'text-sm',
+        }"
+      />
+      <OthersBottom :-form_-title="`car`" :nav="carsNav" />
     </div>
   </section>
 </template>
@@ -151,9 +144,6 @@
 }
 </style>
 <script setup>
-
-
-
 const { getPath } = useUtility();
 const carsNav = ref([{}]);
 const { data: navData, error } = await useFetch("/api/nav/car");
