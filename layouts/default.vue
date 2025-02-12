@@ -1,6 +1,6 @@
 <template>
   <BaseLayout>
-    <div class="current-location py-4 px-4 border-b border-t side_padding">
+    <div class="current-location py-4 px-4 border-b border-t side_padding" >
       <UBreadcrumb
         :links="breadcrumbLinks"
         class="text-black"
@@ -13,7 +13,10 @@
     <main class="bg-offWhite text-black">
       <slot></slot>
     </main>
+
+    <!-- WhatsApp Button -->
     <div
+      ref="whatsappButton"
       class="whatsapp z-[999] bg-[#40c351] rounded-full px-4 py-2 fixed bottom-4 right-4 md:bottom-8 md:right-8 flex items-center space-x-2 md:space-x-4 shadow-lg cursor-pointer transition-transform hover:scale-105"
     >
       <svg
@@ -36,9 +39,7 @@
           clip-rule="evenodd"
         ></path>
       </svg>
-      <div
-        class="font-semibold text-sm sm:text-base md:text-lg lg:text-xl text-white"
-      >
+      <div class="font-semibold text-sm sm:text-base md:text-lg lg:text-xl text-white">
         WhatsApp
       </div>
     </div>
@@ -46,8 +47,10 @@
 </template>
 
 <script setup>
+import { onMounted, onBeforeUnmount, ref, computed } from 'vue';
 import BaseLayout from "~/layouts/home.vue";
 const route = useRoute();
+
 const breadcrumbLinks = computed(() => {
   const paths = route.path.split("/").filter(Boolean);
   const links = paths.map((path, index) => {
@@ -57,7 +60,36 @@ const breadcrumbLinks = computed(() => {
       to: linkPath,
     };
   });
-
   return [{ label: "Home", to: "/" }, ...links];
 });
+
+// WhatsApp button positioning logic
+const whatsappButton = ref(null);
+
+const adjustButtonPosition = () => {
+  const scrollTop = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.body.scrollHeight;
+
+  // Check if the user is near the bottom of the page
+  if (scrollTop + windowHeight >= documentHeight - 20) {
+    whatsappButton.value.style.bottom = '4rem';
+  } else {
+    whatsappButton.value.style.bottom = '';
+  }
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', adjustButtonPosition);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', adjustButtonPosition);
+});
 </script>
+
+<style scoped>
+.whatsapp {
+  transition: bottom 0.3s ease;
+}
+</style>

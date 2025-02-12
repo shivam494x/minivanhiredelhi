@@ -87,7 +87,7 @@
       </section> -->
 
       <section class=" px-2 py-4 space-y-10 ">
-        <ul class="grid lg:grid-cols-2 gap-10 grid-cols-1">
+        <ul class="grid xl:grid-cols-2 gap-10 grid-cols-1">
           <li
             class="hover:shadow-xl hover:-translate-y-3 shadow-pri duration-150 "
             v-for="{ heading, img, carDetails, path } in carData"

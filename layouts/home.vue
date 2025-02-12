@@ -97,6 +97,7 @@
   </header>
   <slot />
   <Footer />
+  
 </template>
 <style scoped>
 :root {

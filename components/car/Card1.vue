@@ -1,6 +1,6 @@
 <template>
   <div class="flex w-full border max-h-[30rem] h-full m-auto"
-    :class="grid ? 'flex-col max-w-76' : 'md:flex-row flex-col max-w-96'">
+    :class="grid ? 'flex-col max-w-80 md:max-w-96' : 'md:flex-row flex-col md:max-w-2xl max-w-96'">
 
     <div class="overflow-hidden" :class="grid ? 'h-48 md:h-52 ' : 'md:w-1/2'">
       <NuxtLink class="w-full h-full overflow-hidden" :to="getPath(name)">
