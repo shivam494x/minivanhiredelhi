@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #EC3323;
+  --primary-color: #ec3323;
   --secondary-color: #14181c;
   --offWhite-color: #faf9f6;
   --complementary-color: #1e2a47;
@@ -46,7 +46,7 @@ section#hero {
     background-position: 40px 40px; /* Moves by the grid size */
   }
 }
-.container{
+.container {
   margin: auto;
 }
 .grid_bg {
@@ -59,4 +59,12 @@ section#hero {
     linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
   background-size: 40px 40px; /* Adjust grid size */
   animation: moveGrid 3s linear infinite;
+}
+.take_screen {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

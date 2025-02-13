@@ -73,7 +73,7 @@ const adjustButtonPosition = () => {
 
   // Check if the user is near the bottom of the page
   if (scrollTop + windowHeight >= documentHeight - 20) {
-    whatsappButton.value.style.bottom = '4rem';
+    whatsappButton.value.style.bottom = '8rem';
   } else {
     whatsappButton.value.style.bottom = '';
   }
