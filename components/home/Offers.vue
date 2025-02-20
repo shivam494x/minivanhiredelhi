@@ -3,12 +3,21 @@
     <div class="container">
       <div class="xl:space-y-12 md:space-y-10 space-y-4">
         <div class="headinngs capitalize center flex-col md:space-y-2">
-          <h6 class="text-base md:text-xl font-semibold tracking-wide center text-pri ">
+          <h6
+            class="text-base md:text-xl font-semibold tracking-wide center text-pri"
+          >
             come with us
           </h6>
           <h1 class="text-3xl md:text-5xl font-semibold tracking-tight">
             hot offers
           </h1>
+          <div class="m-auto text-center">
+            Minivan Hire Delhi- is a service provider of imported luxury vans,
+            Volvo bus & Mercedes coach, luxury car on rental in all major cities
+            of India such as Delhi, Noida, Gurugram, Mumbai, Goa, Pune, Chennai,
+            Hyderabad, Kochi, Cochin, Bengaluru, Ahmedabad, Agra, Jaipur,
+            Udaipur, Kolkata, Bagdogra, Chandigarh and other adjoining cities.
+          </div>
         </div>
         <div class="categories uppercase center">
           <ul
@@ -41,13 +50,11 @@
                 type,
               } in filteredVehicles"
               :key="name"
-              class="border-2 border-[#c5c7ce96] max-w-96"
+              class="border-2 border-[#c5c7ce96] max-w-80"
               :data-type="type"
             >
-              <div
-                class="grid h-full vehicle-wrapper md:px-8 md:py-4 py-2 px-4"
-              >
-                <div class="w-full object-fill center px-4">
+              <div class="flex flex-col vehicle-wrapper md:p-4 py-2 px-4">
+                <div class="w-full object-fill center px-4 h-40">
                   <NuxtImg
                     :src="`/img/offers/${img}`"
                     class="max-h-full"
@@ -137,10 +144,7 @@
 .vehicles li .details > div span {
   margin: 0 2px;
 }
-.vehicle-wrapper {
-  height: 23rem;
-  grid-template-rows: 1fr 1.4fr;
-}
+
 .btns > .grid a {
   text-transform: capitalize;
   height: 2.5rem;
