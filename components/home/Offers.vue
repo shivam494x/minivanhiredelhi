@@ -12,11 +12,23 @@
             hot offers
           </h1>
           <div class="m-auto text-center">
-            Minivan Hire Delhi- is a service provider of imported luxury vans,
-            Volvo bus & Mercedes coach, luxury car on rental in all major cities
-            of India such as Delhi, Noida, Gurugram, Mumbai, Goa, Pune, Chennai,
-            Hyderabad, Kochi, Cochin, Bengaluru, Ahmedabad, Agra, Jaipur,
-            Udaipur, Kolkata, Bagdogra, Chandigarh and other adjoining cities.
+            Book Online Brand New Luxury Cars, Imported Vans & Buses All Over
+            India With Highly Professional & Well Trained Uniform Drivers
+          </div>
+          <div class="m-auto text-center">
+            The journey with Indian Car Rental is more than just a RIDE- it’s an
+            EXPERIENCE. That’s why we go above and beyond to deliver exceptional
+            service every single time. Experience luxury, convenience and style
+            with highest rated Indian Car Rental Chauffeur Driven Services. We
+            are a trusted service provider for all transportation needs,
+            providing impeccable, unmatched elegance and seamless coordination.
+          </div>
+          <div class="m-auto text-center">
+            Minivan makes available Luxury Car, Imported Van, Volvo, Mercedes,
+            Bharat Benz, Isuzu & Tata super luxury bus, rental requirements in
+            Delhi, Mumbai, Goa, Pune, Bengaluru, Hyderabad, Kochi, Chennai,
+            Ahmedabad and across Pan India with highly professional uniform
+            drivers.
           </div>
         </div>
         <div class="categories uppercase center">
