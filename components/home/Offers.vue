@@ -41,13 +41,13 @@
                 type,
               } in filteredVehicles"
               :key="name"
-              class="border-2 border-[#c5c7ce96] max-w-96"
+              class="border-2 border-[#c5c7ce96] max-w-80"
               :data-type="type"
             >
               <div
-                class="grid h-full vehicle-wrapper md:px-8 md:py-4 py-2 px-4"
+                class="flex flex-col vehicle-wrapper md:p-4 py-2 px-4"
               >
-                <div class="w-full object-fill center px-4">
+                <div class="w-full object-fill center px-4 h-40">
                   <NuxtImg
                     :src="`/img/offers/${img}`"
                     class="max-h-full"
@@ -137,10 +137,7 @@
 .vehicles li .details > div span {
   margin: 0 2px;
 }
-.vehicle-wrapper {
-  height: 23rem;
-  grid-template-rows: 1fr 1.4fr;
-}
+
 .btns > .grid a {
   text-transform: capitalize;
   height: 2.5rem;

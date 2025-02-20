@@ -29,10 +29,11 @@
         :phase="2"
         :nav="van_links"
         btn="view details"
+        :path="'/van/xyz/somewhere i thing'"
       />
     </section>
 
-    <OthersBottom :-form_-title="title" :nav="van_links"/>
+    <OthersBottom :-form_-title="title" :nav="van_links" />
   </div>
 </template>
 

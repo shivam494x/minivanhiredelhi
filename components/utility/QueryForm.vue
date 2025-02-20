@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-red-50 form-wrapper overflow-hidden max-w-96 mx-auto">
+  <div class="bg-red-50 form-wrapper overflow-hidden mx-auto">
     <div class="mx-auto w-full bg-white shadow-lg relative py-2">
       <div
         class="absolute left-0 right-0 top-0 bottom-0 h-full w-full z-10 bg pointer-events-none"

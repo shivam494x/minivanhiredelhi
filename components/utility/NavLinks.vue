@@ -45,8 +45,8 @@ ul li > div a:hover {
 ul > li > div ul li:last-child {
   border-bottom: 0;
 }
-.clicked.lv0 div > .show_more > .rotate-icon {
-  transform: rotate(0deg);
+.clicked .show_more > .rotate-icon {
+  transform: rotate(-90deg);
 }
 </style>
 
@@ -70,7 +70,7 @@ ul > li > div ul li:last-child {
         >
           <span>{{ name }}</span>
           <Icon
-            v-if="sub"
+            v-if="sub && sub.length > 0"
             class="text-sm rotate-45 transform transition-transform duration-300 group-hover:rotate-0 md:inline hidden"
             name="ep:close"
           />
@@ -90,7 +90,8 @@ ul > li > div ul li:last-child {
         <div
           :class="{
             hidden: !(sub && activeIndex === index) && !isSubOpened,
-            block: (sub && activeIndex === index) || isSubOpened,
+            block:
+              (sub && sub.length > 0 && activeIndex === index) || isSubOpened,
           }"
           class="absolute top-full md:left-0 right-0 z-50 w-full md:w-max h-64 md:h-auto overflow-scroll md:overflow-visible"
         >
@@ -98,8 +99,8 @@ ul > li > div ul li:last-child {
             class="md:w-max w-full bg-offWhite text-secondary font-normal text-lg md:text-sm"
           >
             <li
-              v-for="({ name, path: subpath, sub: l1sub }, subIndex) in sub"
-              :key="`${name}/${subIndex}`"
+              v-for="({ name, path: subpath, sub: l1sub, id }, subIndex) in sub"
+              :key="id"
               class="relative border-b w-[95%] md:h-full h-16 mr-auto md:w-full md:m-0 lv1 flex md:items-center overflow-hidden md:overflow-visible items-start group md:justify-center md:border-b-0"
               @mouseenter="setSubActiveIndexWithDelay(subIndex)"
               @mouseleave="resetSubActiveIndexWithDelay"
@@ -113,7 +114,7 @@ ul > li > div ul li:last-child {
                 </NuxtLink>
                 <!-- show more buttton only for smol devices -->
                 <div
-                  v-if="l1sub"
+                  v-if="l1sub && l1sub.length > 0"
                   role="button"
                   class="border-l border-[#525967] my-4 show_more lv1 center px-4 md:hidden text-base"
                 >
@@ -168,12 +169,15 @@ const props = defineProps({ fn: Function });
 const activeIndex = ref(null);
 const subActiveIndex = ref(null);
 const isSubOpened = ref(false);
+const preSub = ref(null);
+const preSubSub = ref(null);
 const isSubSubOpened = ref(false);
 const nav_links = ref([{}]);
 
 let menuHideTimer = null;
 let subMenuHideTimer = null;
 const { data, error } = await useFetch("/api/nav/all");
+
 if (data) {
   nav_links.value = data.value;
 } else {
@@ -181,6 +185,7 @@ if (data) {
 }
 
 onMounted(() => {
+  // console.log(nav_links.value)
   const list_height = 64;
   const ease = "cubic-bezier(0.84, 0.08, 0.23, 0.68)";
   const lis = document.querySelectorAll(".mobile a");
@@ -202,10 +207,11 @@ onMounted(() => {
   };
 
   function openSub(parent_li, lv) {
+    parent_li.classList.add("clicked");
     const nearestLis = parent_li.querySelectorAll(`div > ul > li.lv${lv}`);
     let height;
     if (nearestLis.length < 5) {
-      height = list_height * nearestLis.length;
+      height = list_height * (nearestLis.length + 1);
     } else {
       height = list_height * 5;
     }
@@ -214,28 +220,40 @@ onMounted(() => {
   }
 
   function closeSub(parent_li, lv) {
+    parent_li.classList.remove("clicked");
     gsap.to(parent_li, outAnimation);
   }
 
   const subClickHandler = (e) => {
     const parent_li = e.target.closest("li.lv0");
-
-    if (!isSubOpened.value) {
-      openSub(parent_li, 1);
-    } else {
-      closeSub(parent_li, 1);
+    if (isSubOpened.value) {
+      closeSub(preSub.value, 1);
     }
-
-    isSubOpened.value = !isSubOpened.value;
+    if (parent_li !== preSub.value) {
+      openSub(parent_li, 1);
+      isSubOpened.value = true;
+      preSub.value = parent_li;
+    } else {
+      isSubOpened.value = false;
+      preSub.value = null;
+    }
   };
   const subsubClickHandler = (e) => {
     const parent_li = e.target.closest("li.lv1");
-    if (!isSubSubOpened.value) {
-      openSub(parent_li, 2);
-    } else {
-      closeSub(parent_li, 2);
+    const superParent_li = e.target.closest("li.lv0");
+
+    if (isSubSubOpened.value) {
+      closeSub(preSubSub.value, 2);
     }
-    isSubSubOpened.value = !isSubSubOpened.value;
+    if (parent_li !== preSubSub.value) {
+      openSub(parent_li, 2);
+      isSubSubOpened.value = true;
+      preSubSub.value = parent_li;
+      superParent_li.scrollBy({ top: 50, behavior: "smooth" });
+    } else {
+      isSubSubOpened.value = false;
+      preSubSub.value = null;
+    }
   };
 
   const sub_links = document.querySelectorAll(".lv0 .show_more.lv0");
@@ -248,8 +266,6 @@ onMounted(() => {
   subsublinks.forEach((link) => {
     link.addEventListener("click", subsubClickHandler);
   });
-
-
 });
 
 const setActiveIndexWithDelay = (index) => {

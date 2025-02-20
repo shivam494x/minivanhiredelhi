@@ -46,7 +46,6 @@
 </template>
 
 <script setup>
-const { getPath } = useUtility();
 const props = defineProps({
   name: String,
   description: String,

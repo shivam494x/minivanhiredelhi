@@ -48,11 +48,11 @@
               <div
                 class="btn flex justify-start space-x-6 items-center w-max m-auto my-3 capitalize text-xs md:text-sm"
               >
-                <UtilityBtn2 :phase="0" :title="btn" :path="getPath(name)" />
+                <UtilityBtn2 :phase="0" :title="btn" :path="path" />
                 <UtilityBtn2
                   :phase="1"
                   title="Book now"
-                  :path="getPath(name)"
+                  :path="path"
                 />
               </div>
               <div
@@ -150,11 +150,12 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 
-const { getPath } = useUtility();
+
 const props = defineProps({
   arr: Array,
   phase: Number,
   btn: String,
+  path: String
 });
 const modules = [Pagination, Navigation];
 onMounted(() => {

@@ -29,7 +29,7 @@
             </div>
           </div>
           <div
-            v-if="sub"
+            v-if="sub.length > 0"
             class="absolute left-0 w-full top-12 bg-complementary sub"
           >
             <ul>
@@ -46,6 +46,22 @@
                       {{ name }}
                     </span>
                   </NuxtLink>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div
+            v-else
+            class="absolute left-0 w-full top-12 bg-complementary sub"
+          >
+            <ul>
+              <li
+                class="cursor-pointer h-12 flex w-full group border-b text-white"
+              >
+                <div class="relative w-full h-max">
+                  <span class="w-full h-12 flex justify-end items-center pr-10">
+                    <span> No data </span>
+                  </span>
                 </div>
               </li>
             </ul>
@@ -141,8 +157,8 @@ function closeSub(parent_li) {
 
 function handleClick(event) {
   const liElement = event.currentTarget.closest("li");
-  const x = event.currentTarget.classList.toggle("clicked");
-  if (previous_li.value?.isOpen) {
+  event.currentTarget.classList.toggle("clicked");
+  if (previous_li.value.isOpen) {
     closeSub(previous_li.value.li);
   }
   if (liElement !== previous_li.value.li) {

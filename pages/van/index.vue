@@ -37,7 +37,7 @@
     />
 
     <section class="container section_padding relative">
-      <UtilityVanSlider :arr="vans" :phase="1" btn="read more" />
+      <UtilityVanSlider :arr="vans" :phase="1" btn="read more" :path="`/van/xyz`" />
     </section>
     <UDivider
       label="more services"
@@ -54,7 +54,8 @@
 const van_links = ref([{}]);
 const { data: navData, error } = await useFetch("/api/nav/van");
 if (navData) {
-  van_links.value = navData.value.sub;
+  console.log(navData.value)
+  van_links.value = navData.value?.sub;
 } else {
   console.error(error);
 }

@@ -21,6 +21,7 @@ export const useAll = defineStore("all", {
     slider: (state) => state.data?.slider || null,
     footer: (state) => state.data?.footer || null,
     navbar: (state) => state.data?.navbar || null,
+    about: (state) => state.data?.about_us || null,
   },
   // persist: true,
 });

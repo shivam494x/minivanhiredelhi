@@ -3,7 +3,7 @@
       class="container section_padding lg:grid flex flex-wrap grid-cols-3 lg:gap-8 gap-4"
     >
       <UtilityQueryForm :title="Form_Title" />
-      <OthersNav2 :nav="nav" class="w-full"/>
+      <OthersNav2 :nav="nav" class="w-full max-w-96"/>
       <UtilityNeedHelp />
     </section>
 </template>
