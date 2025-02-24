@@ -8,8 +8,10 @@
           >
             come with us
           </h6>
-          <h1 class="text-3xl md:text-5xl font-semibold tracking-tight">
-            hot offers
+          <h1
+            class="text-2xl md:text-4xl font-bold tracking-tight text-start whitespace-nowrap text-complementary"
+          >
+            van hire for rent
           </h1>
           <div class="m-auto text-center">
             Book Online Brand New Luxury Cars, Imported Vans & Buses All Over
@@ -42,16 +44,18 @@
               class="w-full md:w-max cursor-pointer px-4 py-2 lg:px-6 relative md:border-b-0 border-r border-b border-pri"
               @click="setActive(index)"
             >
-              <div class="center">
+              <NuxtLink class="center" :to="`/${item.type}`">
                 <span class="relative">
                   {{ item.type }}
                 </span>
-              </div>
+              </NuxtLink>
             </li>
           </ul>
         </div>
-        <div class="vehicles">
-          <ul class="w-full flex flex-wrap gap-8 justify-center">
+        <div class="vehicles mx-auto max-w-5xl">
+          <ul
+            class="w-full grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-5 xl:gap-7 justify-center"
+          >
             <li
               v-for="{
                 img,
@@ -69,13 +73,13 @@
                 <div class="w-full object-fill center px-4 h-40">
                   <NuxtImg
                     :src="`/img/offers/${img}`"
-                    class="max-h-full"
+                    class="max-h-full w-full object-contain"
                     alt="img"
                   />
                 </div>
-                <div class="center flex-col gap-2 space-y-2">
+                <div class="center flex-col gap-2">
                   <div>
-                    <h2 class="text-2xl tracking-wide capitalize font-medium">
+                    <h2 class="lg:text-2xl text-lg tracking-wide capitalize">
                       {{ name }}
                     </h2>
                   </div>
@@ -83,7 +87,7 @@
                     <span class="">{{ pricing }}</span>
                     <span class="text-pri">/Day</span>
                   </div> -->
-                  <div
+                  <!-- <div
                     class="center space-x-1 details justify-between text-sm text-slate-600 tracking-wide"
                   >
                     <div>
@@ -104,9 +108,9 @@
                       </span>
                       <span>{{ mileage }}</span>
                     </div>
-                  </div>
-                  <div class="btns w-full">
-                    <div class="grid grid-cols-2 border">
+                  </div> -->
+                  <div class="btns w-full text-sm">
+                    <div class="grid grid-cols-2">
                       <NuxtLink to="/#somewhere" class="before"
                         >rent now</NuxtLink
                       >
@@ -157,9 +161,10 @@
   margin: 0 2px;
 }
 
+
 .btns > .grid a {
   text-transform: capitalize;
-  height: 2.5rem;
+  height: 2rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -272,7 +277,6 @@ const vehicleTypes = ref([
   { type: "van", active: false },
   { type: "bus", active: false },
   { type: "Airport Transfer", active: false },
-  { type: "other cities", active: false },
 ]);
 
 function setActive(index) {
@@ -282,8 +286,8 @@ function setActive(index) {
 }
 
 const filteredVehicles = computed(() => {
+  return vehicles;
   const activeCategory = vehicleTypes.value.find((item) => item.active)?.type;
-
   if (activeCategory === "all vehicles") {
     return vehicles;
   }

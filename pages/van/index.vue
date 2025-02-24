@@ -1,12 +1,11 @@
 <template>
+  <UtilityHeading
+    title="Van"
+    backgroundImage="img/van.webp"
+  />
   <div class="side_padding">
     <section class="container">
       <div class="content">
-        <div
-          class="heading font-semibold capitalize p-4 border-b border-red-300 tracking-tighter center"
-        >
-          <h2 class="lg:text-5xl text-3xl">van</h2>
-        </div>
         <div class="desc tracking-tight py-6 px-4 text-gray-800">
           <p>
             Minivan hire company provide a Imported Luxury VIP vans rental
@@ -30,23 +29,30 @@
     </section>
     <UDivider
       label="our van collection"
-      class="uppercase"
+      class="uppercase px-2 w-full mx-auto"
       :ui="{
         label: '',
       }"
     />
+  </div>
 
-    <section class="container section_padding relative">
-      <UtilityVanSlider :arr="vans" :phase="1" btn="read more" />
+  <div class="side_padding flex flex-col lg:flex-row py-8 gap-4">
+    <!-- Main Section -->
+    <section
+      class="w-full lg:w-2/3 mx-auto relative h-max py-5 px-2 sm:px-6 border max-w-3xl shadow-xl"
+    >
+      <UtilityVanSlider
+        :arr="vans"
+        :phase="1"
+        btn="read more"
+        :path="`/van/xyz`"
+      />
     </section>
-    <UDivider
-      label="more services"
-      class="uppercase lg:hidden mt-8"
-      :ui="{
-        label: 'text-sm lg:text-lg',
-      }"
-    />
-  <OthersBottom :-form_-title="`van`" :nav="van_links"/>
+
+    <!-- Sidebar -->
+    <aside class="w-full lg:w-1/3 px-2">
+      <OthersBottom :-form_-title="`van`" :nav="van_links" :form="false" />
+    </aside>
   </div>
 </template>
 
@@ -54,7 +60,7 @@
 const van_links = ref([{}]);
 const { data: navData, error } = await useFetch("/api/nav/van");
 if (navData) {
-  van_links.value = navData.value.sub;
+  van_links.value = navData.value?.sub;
 } else {
   console.error(error);
 }
@@ -133,6 +139,52 @@ const vans = [
     name: "Toyota Vellfire",
     img: "img/van/Toyota Vellfire.png",
     path: "/van/toyota-vellfire",
+    details: [
+      {
+        icon: "mdi:car",
+        quality: "2020",
+      },
+      {
+        icon: "mdi:gas-station",
+        quality: "Hybrid",
+      },
+      {
+        icon: "fa6-solid:a",
+        quality: "Auto",
+      },
+      {
+        icon: "mdi:road",
+        quality: "15000",
+      },
+    ],
+  },
+  {
+    name: "Mercedes Sprinter",
+    img: "img/van/Mercedes Sprinter.png",
+    path: "/van/Mercedes-Sprinter",
+    details: [
+      {
+        icon: "mdi:car",
+        quality: "2020",
+      },
+      {
+        icon: "mdi:gas-station",
+        quality: "Hybrid",
+      },
+      {
+        icon: "fa6-solid:a",
+        quality: "Auto",
+      },
+      {
+        icon: "mdi:road",
+        quality: "15000",
+      },
+    ],
+  },
+  {
+    name: "Toyota Commuter",
+    img: "img/van/Toyota Commuter.png",
+    path: "/van/Toyota-Commuter",
     details: [
       {
         icon: "mdi:car",

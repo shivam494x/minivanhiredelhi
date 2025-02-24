@@ -4,12 +4,12 @@
       <div class="col-span-3 lg:mr-8">
         <section class="">
           <div
-            class="title md:text-3xl text-xl font-semibold tracking-tight capitalize"
+            class="title md:text-2xl text-xl font-semibold tracking-tight capitalize"
           >
-            <h2 class="px-4 py-5">{{ data.title }}</h2>
+            <h2 class="px-2 py-3">{{ data.title }}</h2>
           </div>
           <div
-            class="img md:grid flex flex-col grid-cols-5 md:h-96 gap-4 max-w-sm m-auto md:max-w-2xl xl:max-w-4xl"
+            class="img md:grid flex flex-col grid-cols-5 md:h-96 gap-2 m-auto max-w-sm md:max-w-2xl xl:max-w-5xl"
           >
             <div class="col-span-4 relative">
               <div class="swiper-container">
@@ -90,28 +90,30 @@
             </div>
           </div>
           <div
-            class="content_changer max-w-[30rem] lg:text-xl text-lg mx-2.5 border-b font-medium capitalize border-pri tracking-tight text-pri flex flex-wrap"
+            class="content_changer my-2 max-w-sm md:max-w-2xl xl:max-w-5xl text-sm mx-auto border-b font-medium capitalize  tracking-tight text-pri "
           >
-            <h3
-              @click="change_content('intro', $event)"
-              class="px-4 py-2 sm:px-6 sm:py-4 md:px-8 md:py-5 bg-red-50 shadow-inner cursor-pointer active hover:bg-red-100 transition duration-300 ease-in-out border-r border-pri flex-1 text-center"
-            >
-              Introduction
-            </h3>
+            <div class="md:w-1/2 w-full flex border-pri">
+              <h3
+                @click="change_content('intro', $event)"
+                class="px-3 py-2 xl:py-4 xl:text-lg bg-red-50 shadow-inner cursor-pointer active hover:bg-red-100 transition duration-300 ease-in-out border-r border-pri flex-1 text-center"
+              >
+                Introduction
+              </h3>
 
-            <h3
-              @click="change_content('details', $event)"
-              class="px-4 py-2 sm:px-6 sm:py-4 md:px-8 md:py-5 bg-red-50 shadow-inner cursor-pointer hover:bg-red-100 transition duration-300 ease-in-out border-r border-pri flex-1 text-center"
-            >
-              Details
-            </h3>
+              <h3
+                @click="change_content('details', $event)"
+                class="px-3 py-2 xl:py-4 xl:text-lg bg-red-50 shadow-inner cursor-pointer hover:bg-red-100 transition duration-300 ease-in-out border-r border-pri flex-1 text-center"
+              >
+                Details
+              </h3>
 
-            <h3
-              @click="change_content('features', $event)"
-              class="px-4 py-2 sm:px-6 sm:py-4 md:px-8 md:py-5 bg-red-50 shadow-inner cursor-pointer hover:bg-red-100 transition duration-300 ease-in-out flex-1 text-center"
-            >
-              Features
-            </h3>
+              <h3
+                @click="change_content('features', $event)"
+                class="px-3 py-2 xl:py-4 xl:text-lg bg-red-50 shadow-inner cursor-pointer hover:bg-red-100 transition duration-300 ease-in-out flex-1 text-center"
+              >
+                Features
+              </h3>
+            </div>
           </div>
 
           <div class="content bg-gray-50 mx-2.5">
@@ -311,7 +313,7 @@ onMounted(() => {
 });
 </script>
 <style scoped>
-.content_changer > .active {
+.content_changer  .active {
   background-color: var(--primary-color);
   color: white;
 }

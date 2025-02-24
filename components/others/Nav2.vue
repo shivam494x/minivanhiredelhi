@@ -1,5 +1,5 @@
 <template>
-  <nav class="h-full overflow-hidden max-w-sm mx-auto" id="nav2">
+  <nav class="h-full overflow-hidden mx-auto max-w-72" id="nav2">
     <div class="border overflow-y-scroll">
       <ul>
         <li
@@ -18,7 +18,7 @@
             <div
               v-if="sub"
               @click="handleClick"
-              class="center px-4 relative py-3 btn hover:bg-gray-300 duration-150"
+              class="center px-4 relative py-3 btn hover:bg-pri duration-150"
             >
               <span
                 class="absolute left-0 top-1/2 -translate-y-1/2 h-1/2 bg-slate-300 w-[1px]"
@@ -29,7 +29,7 @@
             </div>
           </div>
           <div
-            v-if="sub"
+            v-if="sub && sub.length > 0"
             class="absolute left-0 w-full top-12 bg-complementary sub"
           >
             <ul>
@@ -50,36 +50,36 @@
               </li>
             </ul>
           </div>
+          <div
+            v-else
+            class="absolute left-0 w-full top-12 bg-complementary sub"
+          >
+            <ul>
+              <li
+                class="cursor-pointer h-12 flex w-full group border-b text-white"
+              >
+                <div class="relative w-full h-max">
+                  <span class="w-full h-12 flex justify-end items-center pr-10">
+                    <span> No data </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
     </div>
   </nav>
 </template>
 <style scoped>
-ul > li > div a {
-  position: relative;
-  display: inline-flex;
-  transition: all 150ms var(--ease);
-}
+
 .sub .router-link-active {
   color: #f08dff !important;
 }
 .sub .router-link-active:hover {
   color: #ffffff !important;
 }
-ul > li > div > a::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--primary-color);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 200ms var(--ease);
-  z-index: 0;
-}
+
 ul > li > div > a > span {
   z-index: 10;
   position: relative;
@@ -89,7 +89,7 @@ ul > li.clicked {
   transform: scaleY(1);
 }
 ul li > div a:hover {
-  color: white;
+  color: var(--primary-color);
 }
 
 ul > li > div ul li:last-child {
@@ -141,8 +141,8 @@ function closeSub(parent_li) {
 
 function handleClick(event) {
   const liElement = event.currentTarget.closest("li");
-  const x = event.currentTarget.classList.toggle("clicked");
-  if (previous_li.value?.isOpen) {
+  event.currentTarget.classList.toggle("clicked");
+  if (previous_li.value.isOpen) {
     closeSub(previous_li.value.li);
   }
   if (liElement !== previous_li.value.li) {

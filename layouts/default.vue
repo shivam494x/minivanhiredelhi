@@ -1,6 +1,6 @@
 <template>
   <BaseLayout>
-    <div class="current-location py-4 px-4 border-b border-t side_padding" >
+    <div class="current-location py-2 px-2 border-b border-t side_padding" >
       <UBreadcrumb
         :links="breadcrumbLinks"
         class="text-black"
@@ -17,12 +17,12 @@
     <!-- WhatsApp Button -->
     <div
       ref="whatsappButton"
-      class="whatsapp z-[999] bg-[#40c351] rounded-full px-4 py-2 fixed bottom-4 right-4 md:bottom-8 md:right-8 flex items-center space-x-2 md:space-x-4 shadow-lg cursor-pointer transition-transform hover:scale-105"
+      class="whatsapp z-[999] bg-[#40c351] rounded-full px-3 py-3 fixed bottom-4 right-4 md:bottom-8 md:right-8 flex items-center space-x-2 md:space-x-4 shadow-lg cursor-pointer transition-transform hover:scale-105"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 48 48"
-        class="h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 lg:h-12 lg:w-12"
+        class="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8 lg:h-10 lg:w-10"
       >
         <path
           fill="#fff"
@@ -39,9 +39,7 @@
           clip-rule="evenodd"
         ></path>
       </svg>
-      <div class="font-semibold text-sm sm:text-base md:text-lg lg:text-xl text-white">
-        WhatsApp
-      </div>
+
     </div>
   </BaseLayout>
 </template>

@@ -2,8 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  // pages: false,
-  modules: ["@nuxt/icon", "@nuxt/image", "@nuxt/ui"],
+  modules: ["@nuxt/icon", "@nuxt/image", "@nuxt/ui", "@pinia/nuxt", "pinia-plugin-persistedstate/nuxt"],
   tailwindcss: {
     cssPath: ["~/assets/css/tailwind.css", { injectPosition: "first" }],
     config: {},
@@ -24,10 +23,10 @@ export default defineNuxtConfig({
         { name: 'robots', content: 'index, follow' }
       ]
     }
-    
+
   },
-  
-  plugins: ["~/plugins/gsap.js"],
+
+  plugins: ["~/plugins/gsap.js", "~/plugins/axios.js", "~/plugins/piniaPersist.client.js"],
   css: ["~/assets/css/global.css"],
   image: {
     screens: {

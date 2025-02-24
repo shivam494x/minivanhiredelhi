@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-secondary border-t border-slate-400">
     <div
-      class="max-w-screen-xl px-4 pt-16 pb-6 mx-auto sm:px-6 lg:px-8 lg:pt-24"
+      class="max-w-screen-xl px-4 pt-8 pb-6 mx-auto sm:px-6 lg:px-8"
     >
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div>
@@ -46,7 +46,7 @@
         </div>
 
         <div
-          class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 md:grid-cols-4"
+          class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-2 md:grid-cols-4"
         >
           <div
             v-for="section in sections"
@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <div class="pt-6 mt-12 border-t border-gray-800">
+      <div class="pt-6 mt-4 border-t border-gray-800">
         <div class="text-center sm:flex sm:justify-between sm:text-left">
           <p class="text-sm text-gray-400 space-x-0.5">
             <span class="block sm:inline">Designed and developed by </span>
@@ -94,6 +94,14 @@
 </template>
 
 <script setup>
+import { onBeforeMount, ref } from "vue";
+import { useAll } from "~/stores/api";
+
+const allStore = useAll();
+const footer = ref({});
+
+// const socialLinks = ref([]);
+// const sections = ref([]);
 const socialLinks = [
   {
     name: "Facebook",
@@ -127,6 +135,7 @@ const sections = [
     links: [
       { text: "About Us", url: "/" },
       { text: "Why Travel With Us", url: "/" },
+      { text: "our awards", url: "/award" },
     ],
   },
   {
@@ -160,4 +169,46 @@ const sections = [
     ],
   },
 ];
+// onBeforeMount(async () => {
+//   await allStore.fetchData();
+//   footer.value = allStore.footer;
+
+//   if (footer.value.social_links_status) {
+//     socialLinks.value = Object.entries(footer.value)
+//       .filter(([key, value]) => key.startsWith("social_") && value)
+//       .map(([key, value]) => ({
+//         name: key.replace("social_", "").replace("_", " ").toUpperCase(),
+//         url: value,
+//         icon: `mdi-${key.replace("social_", "")}`,
+//       }));
+//   }
+
+//   sections.value = Object.keys(footer.value)
+//     .filter(
+//       (key) =>
+//         key.startsWith("block") && key.endsWith("_status") && footer.value[key]
+//     )
+//     .map((key) => {
+//       const blockNum = key.match(/block(\d+)_status/)[1];
+//       return {
+//         title:
+//           footer.value[`block${blockNum}_title`]?.en || `Section ${blockNum}`,
+//         links: Object.keys(footer.value)
+//           .filter(
+//             (subKey) =>
+//               subKey.startsWith(`block${blockNum}_sub_link`) &&
+//               footer.value[subKey]
+//           )
+//           .map((subKey) => {
+//             const subNum = subKey.match(/block\d+_sub_link(\d+)/)[1];
+//             return {
+//               text:
+//                 footer.value[`block${blockNum}_sub_title${subNum}`]?.en ||
+//                 `Link ${subNum}`,
+//               url: footer.value[subKey],
+//             };
+//           }),
+//       };
+//     });
+// });
 </script>

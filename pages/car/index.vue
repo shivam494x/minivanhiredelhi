@@ -1,16 +1,9 @@
 <template>
   <section>
-    <div
-      class="heading font-semibold lg:text-8xl text-6xl relative capitalize lg:h-56 h-32 tracking-wide text-end px-8"
-    >
-      <div
-        :style="{ backgroundImage: `url('/img/car.png')` }"
-        class="absolute left-0 top-0 z-10 h-full w-full"
-      ></div>
-      <div class="z-20 relative h-full flex flex-col justify-end items-center">
-        <h2 class="text-white uppercase font-bold">Cars</h2>
-      </div>
-    </div>
+    <UtilityHeading
+      title="Cars"
+      backgroundImage="img/car.png"
+    />
   </section>
   <UDivider
     label="Introduction"
@@ -51,48 +44,16 @@
       </div>
       <UDivider
         label="Our cars"
-        class="uppercase w-full mr-auto lg:my-12 my-6"
+        class="uppercase w-full mr-auto lg:my-6 my-3"
       />
-      <!-- <UDivider
-        label="Our cars"
-        class="uppercase w-4/6 mr-auto my-12"
-        :ui="{
-          label: 'text-pri dark:text-pri text-xl',
-        }"
-      /> -->
-      <!-- <section class="container px-2 py-4 grid grid-cols-3 gap-5">
-        <ul class="space-y-10 col-span-2">
-          <li
-          class="hover:shadow-xl hover:-translate-y-3 shadow-pri duration-150"
-          v-for="{ heading, img, carDetails } in carData">
-            <CarCard1
-              class="shadow-lg"
-              :name="heading"
-              :img="img"
-              :details="carDetails"
-              :path="getPath(carsNav, heading)"
-              :key="heading"
-            />
-          </li>
-        </ul>
-        <div class="help space-y-8 flex flex-col items-center">
-          <div class="max-w-80 w-full">
 
-            <OthersNav2 :nav="carsNav" />
-          </div>
-          <div class="max-w-80 w-full">
-            <UtilityNeedHelp />
-          </div>
-        </div>
-      </section> -->
-
-      <section class=" px-2 py-4 space-y-10 ">
+      <section class="px-2 py-4 space-y-10 mb-4">
         <ul class="grid xl:grid-cols-2 gap-10 grid-cols-1">
           <li
-            class="hover:shadow-xl hover:-translate-y-3 shadow-pri duration-150 "
+            class="hover:shadow-xl hover:-translate-y-3 shadow-pri duration-150"
             v-for="{ heading, img, carDetails, path } in carData"
           >
-            <CarCard1
+            <UtilityCard1
               class="shadow-lg"
               :name="heading"
               :img="img"
@@ -104,14 +65,11 @@
         </ul>
       </section>
 
-      <UDivider
-        label="more services"
-        class="uppercase lg:hidden mt-8 mb-4"
-        :ui="{
-          label: 'text-sm',
-        }"
-      />
-      <OthersBottom :-form_-title="`car`" :nav="carsNav" />
+      <div class="flex flex-col md:flex-row gap-4">
+        <UtilityQueryForm :title="'car'" class="w-full md:w-auto" />
+        <OthersNav2 :nav="carsNav" class="w-full" />
+        <UtilityNeedHelp class="w-full md:w-auto" />
+      </div>
     </div>
   </section>
 </template>
@@ -144,7 +102,6 @@
 }
 </style>
 <script setup>
-const { getPath } = useUtility();
 const carsNav = ref([{}]);
 const { data: navData, error } = await useFetch("/api/nav/car");
 if (navData) {

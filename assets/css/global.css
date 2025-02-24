@@ -38,6 +38,8 @@ section#hero {
 #__nuxt {
   background-color: var(--offWhite-color);
 }
+
+
 @keyframes moveGrid {
   from {
     background-position: 0 0;
@@ -46,9 +48,9 @@ section#hero {
     background-position: 40px 40px; /* Moves by the grid size */
   }
 }
-.container {
-  margin: auto;
-}
+
+
+/* background */
 .grid_bg {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   background-image: linear-gradient(
@@ -60,6 +62,12 @@ section#hero {
   background-size: 40px 40px; /* Adjust grid size */
   animation: moveGrid 3s linear infinite;
 }
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .take_screen {
   width: 100%;
   height: 100%;

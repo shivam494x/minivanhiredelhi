@@ -1,14 +1,10 @@
 <template>
+  <section>
+    <UtilityHeading :title="data.title"     backgroundImage="img/van.webp" />
+  </section>
   <div class="side_padding">
     <section class="container">
       <div class="content">
-        <div
-          class="heading font-semibold text-5xl capitalize p-4 border-b border-pri tracking-tighter"
-        >
-          <h2 class="center lg:text-5xl text-3xl">
-            {{ data.title }}
-          </h2>
-        </div>
         <div class="desc tracking-tight py-6 px-4 text-gray-800 space-y-3">
           <p v-for="p in data.paragraph">
             {{ p }}
@@ -23,16 +19,24 @@
         label: 'text-pri dark:text-pri text-xl',
       }"
     />
-    <section class="container section_padding relative">
+  </div>
+  <div class="side_padding flex flex-col lg:flex-row py-8 gap-4">
+    <!-- Main Section -->
+    <section
+      class="w-full lg:w-2/3 mx-auto relative h-max py-5 px-2 sm:px-6 border max-w-3xl shadow-xl"
+    >
       <UtilityVanSlider
         :arr="vans"
         :phase="2"
-        :nav="van_links"
-        btn="view details"
+        btn="View details"
+        :path="`/van/xyz`"
       />
     </section>
 
-    <OthersBottom :-form_-title="title" :nav="van_links"/>
+    <!-- Sidebar -->
+    <aside class="w-full lg:w-1/3 px-2">
+      <OthersBottom :-form_-title="data.title" :nav="van_links" :form="false" />
+    </aside>
   </div>
 </template>
 
