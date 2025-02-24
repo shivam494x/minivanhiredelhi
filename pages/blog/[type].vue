@@ -74,8 +74,8 @@ const getData = async () => {
 
   blogs.value = allBlogStore.blogs;
   blog.value = BlogStore.blog;
+  console.log(blog.value);
   loading.value = false;
 };
-
 getData();
 </script>

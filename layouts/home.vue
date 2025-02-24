@@ -1,7 +1,7 @@
 <template>
   <header class="text-white relative">
     <div
-      class="absolute hidden top-0 left-0 -translate-x-1/2 w-3/5 h-[70%] lg:block bg-pri z-50 skew-x-[45deg]"
+      class="absolute hidden top-0 left-0 -translate-x-1/2 w-3/5 h-[80%] lg:block bg-pri z-50 skew-x-[45deg]"
     ></div>
     <div class="info">
       <div
@@ -10,11 +10,11 @@
         <div class="logo z-[60]">
           <div class="">
             <NuxtImg
-              class="h-12"
+              class="h-16"
               src="/img/logo.png"
               alt="logo"
               width="auto"
-              height="48"
+              height="52"
               loading="lazy"
               quality="75"
               formats="webp, avif"
@@ -67,7 +67,9 @@
         </div>
         <div class="contact space-x-1 hidden md:flex">
           <div class="flex items-end flex-col">
-            Need help?
+            <span v-if="navbar">
+              {{ navbar.help_text.en }}
+            </span>
             <div class="flex justify-between w-full items-center">
               <span
                 class="center aspect-square h-4 lg:h-6 lg:p-[5px] p-[2px] xl:mx-2 rounded-full border"

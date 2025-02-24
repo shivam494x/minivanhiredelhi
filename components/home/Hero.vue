@@ -23,7 +23,7 @@
               class="h-full w-full brightness-50 object-cover absolute inset-0"
             />
             <div
-              class="overlay absolute inset-0 bg-gradient-to-r from-zinc-900/80 to-zinc-900/5"
+              class="overlay absolute inset-0 bg-gradient-to-r from-black/50 to-black/5"
             ></div>
             <div
               class="content w-full md:w-[70vw] lg:w-[50vw] z-20 relative top-1/2 lg:[45%] -translate-y-1/2 left-1/2 sm:pl-2 md:left-24 lg:left-28 xl:left-36 -translate-x-1/2 md:-translate-x-0"

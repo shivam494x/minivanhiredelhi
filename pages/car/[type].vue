@@ -1,19 +1,6 @@
 <template>
   <section>
-    <div
-      class="heading font-semibold lg:text-5xl text-3xl relative capitalize lg:h-56 h-32 tracking-wide text-center px-8"
-    >
-      <div
-        :style="{ backgroundImage: `url('/img/car2.png')` }"
-        class="absolute left-0 top-0 z-10 h-full w-full"
-      ></div>
-
-      <div
-        class="z-20 relative h-full flex flex-col justify-center items-center"
-      >
-        <h2 class="text-white font-bold">Luxury Car On Rental</h2>
-      </div>
-    </div>
+    <UtilityHeading :title="title" backgroundImage="/img/car2.png" />
   </section>
   <UDivider
     label="Introduction"
@@ -22,10 +9,12 @@
       label: 'text-pri dark:text-pri text-xl',
     }"
   />
-  <section class=" grid gap-10 side_padding">
+  <section class="grid gap-10 side_padding">
     <div class="content px-4">
       <div>
-        <div class="container desc tracking-tight lg:py-6 py-3 md:px-4 space-y-4 text-sm md:text-base">
+        <div
+          class="container desc tracking-tight lg:py-6 py-3 md:px-4 space-y-4 text-sm md:text-base"
+        >
           <p>
             Jaguar, Mercedes, BMW, Audi, Toyota luxury car is usually regarded
             as one of the top producers of finest luxury cars in the world. The
@@ -56,9 +45,11 @@
       />
       <section class="px-2 py-4">
         <div class="w-full space-y-10">
-          <ul class="grid xl:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8 h-max w-full">
+          <ul
+            class="grid xl:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8 h-max w-full"
+          >
             <li v-for="{ heading, img, description } in cardData">
-              <CarCard1
+              <UtilityCard1
                 class="shadow-lg"
                 :name="heading"
                 :img="img"
@@ -71,19 +62,12 @@
           </ul>
         </div>
       </section>
-      <OthersBottom :-form_-title="title" :nav="carsNav" />
+      <!-- <OthersBottom :-form_-title="title" :nav="carsNav" /> -->
     </div>
   </section>
 </template>
 <style scoped>
-.heading > div:first-child {
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 nav span.iconify:where(.i-heroicons\:chevron-right-20-solid) {
   background-color: white !important;
 }
@@ -97,6 +81,7 @@ const getNav = async () => {
   const { data: navData, error } = await useFetch("/api/nav/car");
   if (navData) {
     carsNav.value = navData.value.sub;
+    console.log(carsNav.value);
   } else {
     console.error(error);
   }

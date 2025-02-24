@@ -64,7 +64,8 @@ section#hero {
 }
 
 .container {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .take_screen {

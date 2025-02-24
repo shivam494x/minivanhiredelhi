@@ -22,6 +22,7 @@ export const useAll = defineStore("all", {
     footer: (state) => state.data?.footer || null,
     navbar: (state) => state.data?.navbar || null,
     about: (state) => state.data?.about_us || null,
+    privacy_policy: (state) => state.data?.privacy_policy || null,
   },
   // persist: true,
 });

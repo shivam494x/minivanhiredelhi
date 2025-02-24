@@ -28,6 +28,8 @@ export default async function () {
         }))
       : [{ name: "fetching", path: "/fetching-for-sure" }];
 
+    nav_links.shift();
+    
     if (categoryRes.data?.length) {
       const transformCategories = (categories: Category[]): NavLink[] => {
         return categories.map(category => ({

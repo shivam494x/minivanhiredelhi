@@ -1,30 +1,22 @@
 <template>
-  <div class="bg-red-50 form-wrapper overflow-hidden mx-auto">
-    <div class="mx-auto w-full bg-white shadow-lg relative py-2">
-      <div
-        class="absolute left-0 right-0 top-0 bottom-0 h-full w-full z-10 bg pointer-events-none"
-      >
-        <div class="relative left-0 right-0 top-0 bottom-0 h-full w-full">
-          <span></span>
-          <span></span>
-        </div>
-      </div>
+  <div
+    class="bg-red-50 form-wrapper overflow-hidden mx-auto border-pri border-2"
+  >
+    <div class="mx-auto w-full bg-white shadow-lg relative pb-3">
       <h1
-        class="md:text-2xl text-lg capitalize space-x-2 center flex-col pb-4 pt-6 px-4 mb-4 items-end border-red-400 border-b-4 text-secondary mx-3"
+        class="md:text-xl text-lg text-white bg-pri capitalize space-x-2 center flex-col pb-4 pt-6 px-4 mb-4 items-end border-red-400 border-b-4"
       >
         <div>
-          <span class="text-pri font-semibold">{{ title }}</span>
-          <span class=""> query</span>
+          <span class="font-semibold">{{ title }}</span>
         </div>
       </h1>
       <form @submit.prevent="submitForm">
-        <div class="">
+        <div>
           <div
             v-for="field in fields"
             :key="field.name"
-            class="relative z-0 w-full mb-5 px-3  text-sm"
+            class="relative z-0 w-full mb-5 px-3 text-sm"
           >
-            <!-- Add id attribute to each input field to associate it with the label -->
             <input
               :type="field.type"
               :name="field.name"
@@ -32,9 +24,8 @@
               v-model="form[field.name]"
               placeholder=" "
               required
-              class="py-2 block w-full px-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-red-300 border-gray-300"
+              class="py-2 block w-full px-0 bg-transparent border-0 border-b-4 appearance-none border-red-400 focus:outline-none focus:ring-0"
             />
-            <!-- Associate the label using for="field.name" to improve screen reader support -->
             <label
               :for="field.name"
               class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500 ml-1"
@@ -52,7 +43,7 @@
             v-model="form.adults"
             id="adults"
             aria-label="select no. of adults"
-            class="block w-full border-b-2 p-2 border-gray-300 bg-white"
+            class="block w-full border-b-4 p-2 border-red-400 bg-white focus:outline-none focus:ring-0"
           >
             <option value="" disabled selected>- Select Adult -</option>
             <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
@@ -62,7 +53,7 @@
             v-model="form.children"
             id="children"
             aria-label="select no. of children"
-            class="block w-full border-b-2 p-2 border-gray-300 bg-white"
+            class="block w-full border-b-4 p-2 border-red-400 bg-white focus:outline-none focus:ring-0"
           >
             <option value="" disabled selected>- Select Children -</option>
             <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
@@ -74,10 +65,9 @@
             v-model="form.requirements"
             id="requirements"
             placeholder="Enter Details of Requirements"
-            class="block w-full mt-5 p-2 border-b-2 border-gray-300 bg-white"
+            class="block w-full mt-5 p-2 border-b-4 border-red-400 bg-white focus:outline-none focus:ring-0"
           ></textarea>
         </div>
-
         <div class="flex items-center mt-5 focus-visible:border-0 px-3">
           <input
             type="number"
@@ -85,37 +75,39 @@
             v-model="form.captcha"
             id="captcha"
             placeholder="Enter Code"
-            class="block w-full p-2 border-b-2 border-gray-300 bg-white focus:border-red-500 focus:ring-0"
+            class="block w-full p-2 border-b-4 bg-white border-red-400 focus:outline-none focus:ring-0"
           />
-          <span class="bg-gray-200 py-1 px-4 ml-2 text-black font-bold">{{
-            captchaCode
-          }}</span>
+          <span class="bg-gray-200 py-1 px-4 ml-2 text-black font-bold">
+            {{ captchaCode }}
+          </span>
         </div>
-
         <div
-          class="grid grid-cols-2 h-10 justify-start space-x-5 mt-6 font-semibold max-w-80 px-3"
+          class="grid grid-cols-2 h-10 justify-start space-x-2 mt-6 font-semibold max-w-80 px-3"
         >
-          <button type="submit" class="">
+          <button type="submit">
             <div
-              class="h-full relative group overflow-hidden flex items-center justify-center px-4 border border-pri hover:bg-pri hover:text-white transition duration-200 ease-in-out"
+              class="h-full relative group overflow-hidden flex items-center justify-center px-2 border border-pri hover:bg-pri hover:text-white transition duration-200 ease-in-out"
             >
-              <span class="duration-300 group-hover:-translate-y-16 uppercase"
-                >submit</span
+              <span
+                class="duration-300 group-hover:-translate-y-16 uppercase text-sm"
               >
+                submit
+              </span>
               <span
                 class="absolute duration-300 group-hover:translate-y-0 group-hover:translate-x-0 translate-y-16 -translate-x-16 center"
-                ><Icon name="i-fa:send"
-              /></span>
+              >
+                <Icon name="i-fa:send" />
+              </span>
             </div>
           </button>
           <button type="reset" class="border" @click="resetForm">
             <div
-              class="h-full group space-x-3 flex items-center justify-center text-white px-3 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
+              class="h-full group space-x-3 flex items-center justify-center text-white px-2 border bg-pri border-pri hover:text-black hover:bg-white transition duration-500 ease-in-out"
             >
-              <span class="uppercase">reset</span>
+              <span class="uppercase text-sm">reset</span>
               <Icon
                 name="material-symbols:restart-alt"
-                class="text-xl group-hover:-rotate-180 duration-300"
+                class="text-lg group-hover:-rotate-180 duration-300"
               />
             </div>
           </button>
@@ -126,96 +118,95 @@
 </template>
 
 <script>
+import { useAll } from "~/stores/api";
+import { ref, onMounted, reactive } from "vue";
+
 export default {
-  data() {
+  setup() {
+    const allStore = useAll();
+    const allData = ref(null);
+
+    const getData = async () => {
+      await allStore.fetchData();
+      allData.value = allStore.data;
+      console.log(allData.value);
+    };
+
+    const form = reactive({
+      name: "",
+      phone: "",
+      email: "",
+      city: "",
+      travelDate: "",
+      duration: "",
+      adults: "",
+      children: "",
+      requirements: "",
+      captcha: "",
+    });
+
+    const captchaCode = ref("");
+    const errors = ref({});
+
+    const generateCaptcha = () => {
+      captchaCode.value = String(Math.floor(Math.random() * 1000));
+    };
+
+    const submitForm = () => {
+      errors.value = {};
+
+      fields.forEach((field) => {
+        if (!form[field.name]) {
+          errors.value[field.name] = field.errorMessage;
+        }
+      });
+
+      if (!form.captcha || form.captcha !== captchaCode.value) {
+        errors.value.captcha = "Invalid code";
+      }
+
+      if (Object.keys(errors.value).length === 0) {
+        alert("Form submitted successfully!");
+      }
+    };
+
+    const resetForm = () => {
+      Object.keys(form).forEach((key) => {
+        form[key] = "";
+      });
+      errors.value = {};
+      generateCaptcha(); // Reset captcha
+    };
+
+    const fields = [
+      { name: "name", type: "text", label: "Your Name", errorMessage: "Name is required" },
+      { name: "phone", type: "text", label: "Phone Number", errorMessage: "Phone number is required" },
+      { name: "email", type: "email", label: "Your Email id", errorMessage: "Email is required" },
+      { name: "city", type: "text", label: "Country/City", errorMessage: "City is required" },
+      { name: "travelDate", type: "date", label: "Travel Date (DD/MM/YYYY)", errorMessage: "Travel date is required" },
+      { name: "duration", type: "text", label: "Travel Duration", errorMessage: "Duration is required" },
+    ];
+
+    onMounted(() => {
+      generateCaptcha();
+      getData();
+    });
+
     return {
-      form: {
-        name: "",
-        phone: "",
-        email: "",
-        city: "",
-        travelDate: "",
-        duration: "",
-        adults: "",
-        children: "",
-        requirements: "",
-        captcha: "",
-      },
-      captchaCode: null,
-      errors: {},
-      fields: [
-        {
-          name: "name",
-          type: "text",
-          label: "Your Name",
-          errorMessage: "Name is required",
-        },
-        {
-          name: "phone",
-          type: "text",
-          label: "Phone Number",
-          errorMessage: "Phone number is required",
-        },
-        {
-          name: "email",
-          type: "email",
-          label: "Your Email id",
-          errorMessage: "Email is required",
-        },
-        {
-          name: "city",
-          type: "text",
-          label: "Country/City",
-          errorMessage: "City is required",
-        },
-        {
-          name: "travelDate",
-          type: "date",
-          label: "Travel Date (DD/MM/YYYY)",
-          errorMessage: "Travel date is required",
-        },
-        {
-          name: "duration",
-          type: "text",
-          label: "Travel Duration",
-          errorMessage: "Duration is required",
-        },
-      ],
+      form,
+      captchaCode,
+      errors,
+      fields,
+      submitForm,
+      resetForm,
     };
   },
   props: {
     title: String,
   },
-  mounted() {
-    this.captchaCode = Math.floor(Math.random() * 1000);
-  },
-  methods: {
-    submitForm() {
-      this.errors = {};
-      this.fields.forEach((field) => {
-        if (!this.form[field.name]) {
-          this.errors[field.name] = true;
-        }
-      });
-      if (
-        !this.form.captcha ||
-        this.form.captcha !== String(this.captchaCode)
-      ) {
-        this.errors.captcha = "Invalid code";
-      }
-      if (Object.keys(this.errors).length === 0) {
-        alert("Form submitted successfully!");
-      }
-    },
-    resetForm() {
-      Object.keys(this.form).forEach((key) => {
-        this.form[key] = "";
-      });
-      this.errors = {};
-    },
-  },
 };
 </script>
+
 
 <style scoped>
 .form-wrapper .bg span {
@@ -223,7 +214,7 @@ export default {
   width: 20rem;
   height: 1.5rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-  background-color: var(--primary-color);
+  background-color: white;
   top: 2%;
 }
 

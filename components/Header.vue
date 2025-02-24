@@ -36,7 +36,6 @@
                 :fn="
                   () => {
                     isOpen = false;
-                    console.log('halo');
                   }
                 "
               />

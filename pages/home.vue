@@ -6,20 +6,18 @@
         <HomeHero />
       </section>
       <!-- section two -->
-
-      <section id="services">
-        <HomeServices />
-      </section>
-      <!-- section three -->
       <section id="offers">
         <HomeOffers />
+      </section>
+      <!-- section three -->
+      <section id="services">
+        <HomeServices />
       </section>
     </main>
   </div>
 </template>
 
 <script setup>
-
 definePageMeta({
   layout: "home",
 });

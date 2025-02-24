@@ -52,21 +52,21 @@ ul > li > div ul li:last-child {
 
 <template>
   <ul
-    class="wrapper flex text-3xl md:text-base md:h-16 font-normal flex-col md:flex-row items-center h-full md:font-semibold capitalize z-50"
+    class="wrapper flex text-3xl md:text-base md:h-12 font-normal flex-col md:flex-row items-center h-full md:font-semibold capitalize z-50"
   >
     <li
       v-if="nav_links.length > 0"
       v-for="({ name, path, sub }, index) in nav_links"
       :key="`${name}/${index}`"
       :id="name"
-      class="md:h-full h-16 flex md:items-center w-full group md:w-auto md:justify-center border-b md:border-b-0 border-pri lv0"
+      class="md:h-full h-12 flex md:items-center w-full group md:w-auto md:justify-center border-b md:border-b-0 border-pri lv0"
       @mouseenter="setActiveIndexWithDelay(index)"
       @mouseleave="resetActiveIndexWithDelay"
     >
       <div class="relative w-full h-max flex gap-4">
         <NuxtLink
           :to="path"
-          class="relative justify-end items-center space-x-1 md:px-4 md:py-5 py-2.5 px-4 md:w-max w-full h-16 flex-1"
+          class="relative justify-end items-center space-x-1 md:px-4 md:py-5 py-2.5 px-4 md:w-max w-full h-12 flex-1"
         >
           <span>{{ name }}</span>
           <Icon
@@ -101,7 +101,7 @@ ul > li > div ul li:last-child {
             <li
               v-for="({ name, path: subpath, sub: l1sub, id }, subIndex) in sub"
               :key="id"
-              class="relative border-b w-[95%] md:h-full h-16 mr-auto md:w-full md:m-0 lv1 flex md:items-center overflow-hidden md:overflow-visible items-start group md:justify-center md:border-b-0"
+              class="relative border-b w-[95%] md:h-full h-12 mr-auto md:w-full md:m-0 lv1 flex md:items-center overflow-hidden md:overflow-visible items-start group md:justify-center md:border-b-0"
               @mouseenter="setSubActiveIndexWithDelay(subIndex)"
               @mouseleave="resetSubActiveIndexWithDelay"
             >
@@ -140,7 +140,7 @@ ul > li > div ul li:last-child {
                     <li
                       v-for="({ name, path: subsubpath }, subSubIndex) in l1sub"
                       :key="`${name}${subSubIndex}`"
-                      class="border-b relative lv2 md:h-full center w-full h-16"
+                      class="border-b relative lv2 md:h-full center w-full h-12"
                     >
                       <div class="relative w-full">
                         <NuxtLink

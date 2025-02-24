@@ -1,5 +1,5 @@
 <template>
-  <section class="side_padding container py-10">
+  <section style="max-width: 60rem;" class="side_padding container py-10">
     <div class="md:grid flex flex-col grid-cols-2 grid-rows-3">
       <div
         class="query md:w-full sm:w-4/5 w-full mx-auto h-full row-span-3 order-2 my-10 md:order-1 md:my-0"
@@ -10,25 +10,25 @@
         class="row-span-2 text-complementary grid_bg lg:text-base text-sm order-1 md:order-2"
       >
         <div
-          class="mr-auto w-max my-8 py-4 px-8 text-2xl capitalize font-bold rounded-l-3xl"
+          class="mx-auto w-max my-8 py-4 px-8 text-2xl capitalize font-bold rounded-l-3xl text-pri"
         >
           <h3>say hello!</h3>
         </div>
-        <div
-          v-for="(item, index) in contact"
-          :key="index"
-          class="w-max max-w-full mr-auto h-12 my-2 py-4 px-6 capitalize rounded-r-3xl flex items-center gap-3"
-        >
-          <Icon :name="item.icon" class="text-3xl font-semibold" />
-          <span v-if="item.name !== 'Website'"
-            >{{ item.name }}: {{ item.data }}</span
+        <div class="w-max max-w-full mx-auto">
+          <div
+            v-for="(item, index) in contact"
+            :key="index"
+            class="h-12 my-2 py-4 px-6 capitalize rounded-r-3xl flex items-center gap-3"
           >
-          <NuxtLink v-else :to="item.data" class="">
-            {{ item.name }}:
-            <span class="text-pri underline">
-              {{ item.data }}
-            </span>
-          </NuxtLink>
+            <Icon :name="item.icon" class="text-3xl font-semibold text-pri" />
+            <span v-if="item.name !== 'Website'"
+              >{{ item.name }}: {{ item.data }}</span
+            >
+            <NuxtLink v-else :to="item.data" class="">
+              {{ item.name }}:
+              <span class="text-pri underline"> minivanhiredelhi </span>
+            </NuxtLink>
+          </div>
         </div>
       </div>
       <div class="map h-full order-3">

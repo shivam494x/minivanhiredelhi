@@ -1,6 +1,6 @@
 <template>
   <div class="side_padding section_padding bg-white text-secondary">
-    <div class="container">
+    <div class="container m-auto">
       <div class="xl:space-y-15 md:space-y-11 space-y-6">
         <div class="headinngs uppercase center flex-col md:space-y-2">
           <h6
@@ -14,9 +14,9 @@
             providing amazing services to our clients
           </h2>
         </div>
-        <div class="services lg:px-24 md:px-16 px-8">
+        <div class="services lg:px-16 md:px-12 px-8 max-w-4xl mx-auto">
           <ul
-            class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-items-center gap-2 gap-y-10"
+            class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-2 gap-y-10"
           >
             <li class="max-w-60" v-for="(service, index) in services">
               <div class="flex flex-col">

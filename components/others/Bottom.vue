@@ -1,16 +1,20 @@
 <template>
-    <section
-      class="container section_padding lg:grid flex flex-wrap grid-cols-3 lg:gap-8 gap-4"
-    >
-      <UtilityQueryForm :title="Form_Title" />
-      <OthersNav2 :nav="nav" class="w-full max-w-96"/>
-      <UtilityNeedHelp />
-    </section>
+  <section
+    class="flex flex-wrap lg:gap-4 gap-2 mx-auto"
+  >
+    <UtilityQueryForm :title="Form_Title" v-if="form" />
+    <OthersNav2  :nav="nav" class="w-full" />
+    <UtilityNeedHelp />
+  </section>
 </template>
 
 <script setup>
 const props = defineProps({
   nav: Array,
   Form_Title: String,
+  form: {
+    type: Boolean,
+    default: true, 
+  },
 });
 </script>
