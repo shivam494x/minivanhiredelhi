@@ -9,6 +9,13 @@
       <section id="offers">
         <HomeOffers />
       </section>
+<<<<<<< HEAD
+      <!-- <section id="services">
+        <HomeWriteUp />
+      </section> -->
+
+=======
+>>>>>>> api
       <!-- section three -->
       <section id="services">
         <HomeServices />

@@ -1,11 +1,11 @@
 <template>
-  <section class="grid_bg w-full">
-    <div
-      class="headinngs capitalize flex gap-5 max-w-7xl w-full mx-auto py-10 px-8"
-    >
-      <div class="flex flex-col sm:w-1/2 lg:w-3/5 m-auto w-full">
-        <div class="space-y-2 border-b border-pri w-max mb-2 pb-2">
-          <h6 class="text-base md:text-xl font-semibold tracking-wide text-pri">
+  <div class="side_padding section_padding bg-offWhite text-secondary">
+    <div class="container">
+      <div class="xl:space-y-12 md:space-y-10 space-y-4">
+        <div class="headinngs capitalize center flex-col md:space-y-2">
+          <h6
+            class="text-base md:text-xl font-semibold tracking-wide center text-pri"
+          >
             come with us
           </h6>
           <h1
@@ -13,44 +13,27 @@
           >
             van hire for rent
           </h1>
-        </div>
-        <div
-          class="text-justify text-sm text-gray-600 space-y-2 w-full mx-auto"
-        >
-          <p class="m-auto">
+          <div class="m-auto text-center">
             Book Online Brand New Luxury Cars, Imported Vans & Buses All Over
             India With Highly Professional & Well Trained Uniform Drivers
-          </p>
-          <p class="m-auto">
+          </div>
+          <div class="m-auto text-center">
             The journey with Indian Car Rental is more than just a RIDE- it’s an
             EXPERIENCE. That’s why we go above and beyond to deliver exceptional
             service every single time. Experience luxury, convenience and style
             with highest rated Indian Car Rental Chauffeur Driven Services. We
             are a trusted service provider for all transportation needs,
             providing impeccable, unmatched elegance and seamless coordination.
-          </p>
-          <p class="m-auto">
+          </div>
+          <div class="m-auto text-center">
             Minivan makes available Luxury Car, Imported Van, Volvo, Mercedes,
             Bharat Benz, Isuzu & Tata super luxury bus, rental requirements in
             Delhi, Mumbai, Goa, Pune, Bengaluru, Hyderabad, Kochi, Chennai,
             Ahmedabad and across Pan India with highly professional uniform
             drivers.
-          </p>
+          </div>
         </div>
-      </div>
-
-      <div class="img justify-center items-center hidden sm:flex w-1/2 lg:w-2/5">
-        <NuxtImg
-          class="w-full rounded-xl"
-          src="https://stimg.cardekho.com/images/carexteriorimages/630x420/Force/Urbania/11849/Force-Urbania-3350WB-10Str/1721025381746/front-left-side-47.jpg?imwidth=420&impolicy=resize"
-        />
-      </div>
-    </div>
-  </section>
-  <div class="section_padding bg-offWhite text-secondary">
-    <div class="container">
-      <div class="md:space-y-8 space-y-4">
-        <div class="categories uppercase center max-w-72 m-auto">
+        <div class="categories uppercase center">
           <ul
             class="center capitalize text-lg w-full md:w-max flex-col md:flex md:flex-row"
           >
@@ -83,13 +66,11 @@
                 type,
               } in filteredVehicles"
               :key="name"
-              class="border-2 border-gray-400 max-w-80 mx-auto w-full"
+              class="border-2 border-[#c5c7ce96] max-w-80"
               :data-type="type"
             >
-              <div
-                class="flex flex-col vehicle-wrapper h-full justify-between gap-2"
-              >
-                <div class="w-full object-fill center h-max">
+              <div class="flex flex-col vehicle-wrapper md:p-4 py-2 px-4">
+                <div class="w-full object-fill center px-4 h-40">
                   <NuxtImg
                     :src="`/img/offers/${img}`"
                     class="max-h-full w-full object-contain"
@@ -179,6 +160,7 @@
 .vehicles li .details > div span {
   margin: 0 2px;
 }
+
 
 .btns > .grid a {
   text-transform: capitalize;
