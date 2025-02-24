@@ -14,7 +14,7 @@
             providing amazing services to our clients
           </h2>
         </div>
-        <div class="services lg:px-16 md:px-12 px-8 max-w-4xl mx-auto">
+        <div class="services lg:px-16 md:px-12 px-8  mx-auto">
           <ul
             class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-2 gap-y-10"
           >
